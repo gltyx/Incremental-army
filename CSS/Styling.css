@@ -20,5 +20,5 @@
     display: flex; 
     justify-content: flex-start; 
     align-items: center; 
-    min-width: 146px; 
+    min-width: 3vw; 
 }
