@@ -1,0 +1,24 @@
+@font-face {
+    font-family: 'Roboto Mono';
+    src: url('./RobotoMono-Medium.ttf');
+}
+
+* {
+    background-color: #202020;
+    font-family: 'Roboto Mono';
+    color: whitesmoke;
+}
+
+.flexBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.currencyHolder {
+    display: flex; 
+    justify-content: flex-start; 
+    align-items: center; 
+    min-width: 146px; 
+}
