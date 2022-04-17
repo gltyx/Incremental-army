@@ -9,12 +9,17 @@
 </head>
 <body>
     <div id="navBar" class="flexBox" style="flex-direction: row;">
-        <button id="mB">Manpower</button>
-        <button id="eB">Equipment</button>
-        <button id="fB">Finances</button>
-        <button id="bB">Battleground</button>
-        <button id="pB">Promotions</button>
-        <button id="sB">Settings</button>
+        <button style="margin: 0.25vw;" id="mB" onclick="changeTab(0)">Manpower</button>
+        <button style="margin: 0.25vw;" id="eB" onclick="changeTab(1)">Equipment</button>
+        <button style="margin: 0.25vw;" id="fB" onclick="changeTab(2)">Finances</button>
+        <button style="margin: 0.25vw;" id="bB" onclick="changeTab(3)">Battleground</button>
+        <button style="margin: 0.25vw;" id="pB" onclick="changeTab(4)">Promotions</button>
+        <button style="margin: 0.25vw;" id="sB" onclick="changeTab(5)">Settings</button>
+    </div>
+    <div id="newsHolder">
+        <div id="news">
+            
+        </div>
     </div>
     <div id="manpowerArea" class="flexBox">
         <h3>Enlisted<hr></h3>
@@ -61,4 +66,6 @@
     <script src="JS/Internal/MyMath.js"></script>
     <script src="JS/Data.js"></script>
     <script src="JS/Main.js"></script>
+    <script src="JS/Update.js"></script>
+    <script src="JS/Newsticker.js"></script>
 </html>

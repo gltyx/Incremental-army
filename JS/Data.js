@@ -4,7 +4,6 @@ function getDefaultObject() {
     return {
         enlisted: [D(0),D(0),D(0),D(0)],
         officers: [D(0),D(0),D(0),D(0)],
-        hasTab: [false, false, false, false, false, false, false],
         time: Date.now(),
         currentTab: 1,
         currentSubTab: [0,0,0,0,0,0,0],
@@ -67,6 +66,7 @@ window.setInterval(function(){
 }, 10000);
 window.onload = function (){
     load()
+    scrollNextMessage()
 }
 //full reset
 function fullReset(){

@@ -1,4 +1,6 @@
-
+function changeTab(a) {
+    data.currentTab = a;
+}
 
 function mainLoop() {
 

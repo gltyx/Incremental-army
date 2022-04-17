@@ -43,5 +43,24 @@ button:hover {
 
 /*IDs*/
 
+#newsHolder {
+    border: 2px solid whitesmoke;
+    padding: 2px;
+    width: 75%;
+    overflow:hidden;
+    margin:auto;
+    text-align: left;
+}
+
+#news {
+    color:inherit;
+    position: relative;
+    display:inline-block;
+    font-size:15px;
+    font-family:inherit;
+    white-space: nowrap;
+    font-weight: bold;
+}
+
 #mB {color: var(--manpower-color); border-color: var(--manpower-color);}
 #mB:hover {color: #202020; background-color: var(--manpower-color);}
