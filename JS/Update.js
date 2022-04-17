@@ -7,8 +7,9 @@ const rankNameIds = ['pvt','cpl','sgt','ssgt','2lt','1lt','cpt','maj']
 function updateHTML() {
     if(data.currentTab === 0) {
         for(let i = 0; i < 4; i++) {
-            DOMCacheGetOrSet(`${rankNameIds[i]}Amt`).innerHTML = `${format(data.enlisted[i])}`
-            DOMCacheGetOrSet(`${rankNameIds[i]}Button`).innerHTML = `${format(enlistCost[i])}`
+            DOMCacheGetOrSet(`${rankNameIds[i]}Amt`).innerHTML = `${rankNameLong[i]}: ${format(data.enlisted[i])}`
+            DOMCacheGetOrSet(`${rankNameIds[i]}Button`).innerHTML = `Enlist ${format(D(1))} ${rankNameShort[i]} | Cost: ${format(enlistCost[i])} Infantry Equipment`
+            DOMCacheGetOrSet(`${rankNameIds[i]}Button`).className = data.equipment[0].gte(enlistCost[i]) ? 'unlocked' : 'locked'
         }
     }
 }

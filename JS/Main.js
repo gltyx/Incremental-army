@@ -5,8 +5,9 @@ function changeTab(a) {
 let diff = 0;
 function mainLoop() {
     diff = (Date.now()-data.time)*data.devSpeed/1000;
+    updateMP()
     updateHTML();
 }
 
-window.setInterval(mainLoop(), 10);
+window.setInterval(function(){mainLoop()}, 10);
 
