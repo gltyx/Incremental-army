@@ -5,6 +5,7 @@
 
 :root {
     --manpower-color: #294e3e;
+    --equipment-color: #2f357f;
 }
 /*Globals*/
 * {
@@ -46,7 +47,7 @@ button:hover {
 #newsHolder {
     border: 2px solid whitesmoke;
     padding: 2px;
-    width: 75%;
+    width: 45%;
     overflow:hidden;
     margin:auto;
     text-align: left;
@@ -64,3 +65,5 @@ button:hover {
 
 #mB {color: var(--manpower-color); border-color: var(--manpower-color);}
 #mB:hover {color: #202020; background-color: var(--manpower-color);}
+#eB {color: var(--equipment-color); border-color: var(--equipment-color);}
+#eB:hover {color: #202020; background-color: var(--equipment-color);}
