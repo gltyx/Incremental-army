@@ -4,6 +4,9 @@ function getDefaultObject() {
     return {
         enlisted: [D(0),D(0),D(0),D(0)],
         officers: [D(0),D(0),D(0),D(0)],
+        equipment: [D(0),D(0),D(0),D(0)],
+        funds: D(0),
+        approval: D(0),
         time: Date.now(),
         currentTab: 1,
         currentSubTab: [0,0,0,0,0,0,0],

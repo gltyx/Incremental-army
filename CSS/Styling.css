@@ -6,6 +6,7 @@
 :root {
     --manpower-color: #294e3e;
     --equipment-color: #2f357f;
+    --finance-color: #349348;
 }
 /*Globals*/
 * {
@@ -47,6 +48,11 @@ button:hover {
     min-width: 3vw; 
 }
 
+.unlocked {color: #268135;border-color: #268135;}
+.unlocked:hover {color:#202020;background-color: #268135;}
+.locked {color: #812626;border-color: #812626;}
+.locked:hover {color:#202020;background-color: #812626;}
+
 /*IDs*/
 
 #newsHolder {
@@ -73,3 +79,5 @@ button:hover {
 #mB:hover {color: #202020; background-color: var(--manpower-color);}
 #eB {color: var(--equipment-color); border-color: var(--equipment-color);}
 #eB:hover {color: #202020; background-color: var(--equipment-color);}
+#fB {color: var(--finance-color); border-color: var(--finance-color);}
+#fB:hover {color: #202020; background-color: var(--finance-color);}
