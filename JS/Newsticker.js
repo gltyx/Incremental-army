@@ -2,7 +2,7 @@ var newsArray;
 
 function updateNewsArray() {
 newsArray = [//always true
-    ["Newsticker Moment","true","a0"], ["I don't know what I've been told, but the 5 hour joke is getting old!","true","a1"]
+    ["Newsticker Moment","true","a0"], ["I don't know what I've been told, but the 5 hour joke is getting old!","true","a1"], ["Incremental Game without Newsticker Challenge - [Failed]","true","a2"]
 ];}
 
 var s = DOMCacheGetOrSet('news');
