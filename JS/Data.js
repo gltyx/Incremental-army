@@ -66,6 +66,7 @@ window.setInterval(function(){
 }, 10000);
 window.onload = function (){
     load()
+    tabChangeHTML()
     scrollNextMessage()
 }
 //full reset

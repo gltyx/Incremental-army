@@ -28,6 +28,11 @@ button:hover {
 
 
 /*Classes*/
+
+.mainArea {
+    margin-top: 1vh;
+}
+
 .flexBox {
     display: flex;
     flex-direction: column;
@@ -62,7 +67,8 @@ button:hover {
     white-space: nowrap;
     font-weight: bold;
 }
-
+#delete {color:#812626; border-color: #812626;}
+#delete:hover{color: #202020; background-color: #812626;}
 #mB {color: var(--manpower-color); border-color: var(--manpower-color);}
 #mB:hover {color: #202020; background-color: var(--manpower-color);}
 #eB {color: var(--equipment-color); border-color: var(--equipment-color);}

@@ -21,50 +21,75 @@
             
         </div>
     </div>
-    <div id="manpowerArea" class="flexBox">
+    <div id="manpowerArea" class="flexBox mainArea">
         <h3>Enlisted<hr></h3>
         <div class="currencyHolder">
-            <img style="border: 2px solid #294e3e;" src="Imgs/PVT.png">
-            <div style="color:#294e3e;margin-left: .5vw;" id="pvtText">Private: 0.00</div>
+            <img style="border: 2px solid var(--manpower-color);" src="Imgs/PVT.png">
+            <div style="color:var(--manpower-color);margin-left: .5vw;" id="pvtText">Private: 0.00</div>
             <button style="margin-left: .5vw;">Enlist 1 PVT | Cost: 1.00 Infantry Equipment</button>
         </div>
         <div class="currencyHolder">
-            <img style="border: 2px solid #294e3e;" src="Imgs/CPL.png">
-            <div style="color:#294e3e;margin-left: .5vw;" id="cplText">Corporal: 0.00</div>
+            <img style="border: 2px solid var(--manpower-color);" src="Imgs/CPL.png">
+            <div style="color:var(--manpower-color);margin-left: .5vw;" id="cplText">Corporal: 0.00</div>
             <button style="margin-left: .5vw;">Enlist 1 CPL | Cost: 2.00 Infantry Equipment</button>
         </div>
         <div class="currencyHolder">
-            <img style="border: 2px solid #294e3e;" src="Imgs/SGT.png">
-            <div style="color:#294e3e;margin-left: .5vw;" id="sgtText">Sergeant: 0.00</div>
+            <img style="border: 2px solid var(--manpower-color);" src="Imgs/SGT.png">
+            <div style="color:var(--manpower-color);margin-left: .5vw;" id="sgtText">Sergeant: 0.00</div>
             <button style="margin-left: .5vw;">Enlist 1 SGT | Cost: 3.00 Infantry Equipment</button>
         </div>
         <div class="currencyHolder">
-            <img style="border: 2px solid #294e3e;" src="Imgs/SSGT.png">
-            <div style="color:#294e3e;margin-left: .5vw;" id="sgtText">Staff Sergeant: 0.00</div>
+            <img style="border: 2px solid var(--manpower-color);" src="Imgs/SSGT.png">
+            <div style="color:var(--manpower-color);margin-left: .5vw;" id="sgtText">Staff Sergeant: 0.00</div>
             <button style="margin-left: .5vw;">Enlist 1 SSGT | Cost: 4.00 Infantry Equipment</button>
         </div>
         <h3>Officers<hr></h3>
         <div class="currencyHolder">
-            <img style="border: 2px solid #294e3e;" src="Imgs/LT2.png">
-            <div style="color:#294e3e;margin-left: .5vw;" id="ltText">2nd Lieutenant: 0.00</div>
+            <img style="border: 2px solid var(--manpower-color);" src="Imgs/LT2.png">
+            <div style="color:var(--manpower-color);margin-left: .5vw;" id="ltText">2nd Lieutenant: 0.00</div>
             <button style="margin-left: .5vw;">Hire 1 2nd LT | Cost: 1.00 Medal</button>
         </div>
         <div class="currencyHolder">
-            <img style="border: 2px solid #294e3e;" src="Imgs/LT1.png">
-            <div style="color:#294e3e;margin-left: .5vw;" id="ltText">1st Lieutenant: 0.00</div>
+            <img style="border: 2px solid var(--manpower-color);" src="Imgs/LT1.png">
+            <div style="color:var(--manpower-color);margin-left: .5vw;" id="ltText">1st Lieutenant: 0.00</div>
             <button style="margin-left: .5vw;">Hire 1 1st LT | Cost: 2.00 Medals</button>
         </div>
         <div class="currencyHolder">
-            <img style="border: 2px solid #294e3e;" src="Imgs/CPT.png">
-            <div style="color:#294e3e;margin-left: .5vw;" id="cptText">Captain: 0.00</div>
+            <img style="border: 2px solid var(--manpower-color);" src="Imgs/CPT.png">
+            <div style="color:var(--manpower-color);margin-left: .5vw;" id="cptText">Captain: 0.00</div>
             <button style="margin-left: .5vw;">Hire 1 CPT | Cost: 5.00 Medals</button>
         </div> 
         <div class="currencyHolder">
-            <img style="border: 2px solid #294e3e;" src="Imgs/MAJ.png">
-            <div style="color:#294e3e;margin-left: .5vw;" id="majText">Major: 0.00</div>
+            <img style="border: 2px solid var(--manpower-color);" src="Imgs/MAJ.png">
+            <div style="color:var(--manpower-color);margin-left: .5vw;" id="majText">Major: 0.00</div>
             <button style="margin-left: .5vw;">Hire 1 MAJ | Cost: 10.00 Medals</button>
         </div>
 
+    </div>
+    <div id="equipmentArea" class="flexBox mainArea">
+        <h3>Equipment<hr></h3>
+        <div class="currencyHolder">
+            <img style="border: 2px solid var(--equipment-color);" src="Imgs/Ammo.png">
+            <div style="color:var(--equipment-color);margin-left: .5vw;" id="ammoText">Infantry Equipment: 0.00</div>
+            <button style="margin-left: .5vw;">Fabricate 1.00 Infantry Equipment | Cost: $15,000.00</button>
+        </div>
+    </div>
+    <div id="financesArea" class="flexBox mainArea">
+    </div>
+    <div id="battlegroundArea" class="flexBox mainArea">
+    </div>
+    <div id="promotionsArea" class="flexBox mainArea">
+    </div>
+    <div id="settingsArea" class="flexBox mainArea">
+        <div>
+            <button onclick="save()">Manual Save</button>
+            <button onclick="exportSave()">Export Save</button>
+            <button onclick="importSave()">Import Save</button>
+            <button id="delete" onclick="deleteSave()">Delete Save</button>
+        </div>
+        <div style="margin-top:1vh;">
+            <a href="https://discord.gg/JkQUnubuhx">Discord Invite!</a>
+        </div>
     </div>
 </body>
     <script src="JS/Internal/Cache.js"></script>
