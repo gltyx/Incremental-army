@@ -3,12 +3,30 @@
     src: url('./RobotoMono-Medium.ttf');
 }
 
+:root {
+    --manpower-color: #294e3e;
+}
+/*Globals*/
 * {
     background-color: #202020;
     font-family: 'Roboto Mono';
     color: whitesmoke;
 }
 
+button {
+    border: 2px solid whitesmoke;
+    transition-duration: 0.2s;
+}
+
+button:hover {
+    transition-duration: 0.2s;
+    border-color: whitesmoke;
+    background-color: whitesmoke;
+    color: #202020;
+}
+
+
+/*Classes*/
 .flexBox {
     display: flex;
     flex-direction: column;
@@ -22,3 +40,8 @@
     align-items: center; 
     min-width: 3vw; 
 }
+
+/*IDs*/
+
+#mB {color: var(--manpower-color); border-color: var(--manpower-color);}
+#mB:hover {color: #202020; background-color: var(--manpower-color);}
