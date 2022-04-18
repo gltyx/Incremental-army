@@ -12,7 +12,7 @@
         <button style="margin: 0.25vw;" id="mB" onclick="changeTab(0)">Manpower</button>
         <button style="margin: 0.25vw;" id="eB" onclick="changeTab(1)">Equipment</button>
         <button style="margin: 0.25vw;" id="fB" onclick="changeTab(2)">Finances</button>
-        <button style="margin: 0.25vw;" id="bB" class="locked" >Battleground</button>
+        <button style="margin: 0.25vw;" id="bB" onclick="changeTab(3)" >Battleground</button>
         <button style="margin: 0.25vw;" id="pB" class="locked" >Promotions</button>
         <button style="margin: 0.25vw;" id="sB" onclick="changeTab(5)">Settings</button>
     </div>
@@ -101,6 +101,12 @@
         </div>
     </div>
     <div id="battlegroundArea" class="flexBox mainArea">
+        <div id="battleAlertText">You need at least 1 Pvt to Fight</div>
+        <div id="battlegroundHolder" class="flexBox">
+            <div id="battleBar" style="display:inline;">
+                [<p>==========</p><p>==========</p>]
+            </div>
+        </div>
     </div>
     <div id="promotionsArea" class="flexBox mainArea">
     </div>

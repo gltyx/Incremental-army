@@ -7,6 +7,7 @@
     --manpower-color: #294e3e;
     --equipment-color: #2f357f;
     --finance-color: #349348;
+    --battleground-color: #935534;
 }
 /*Globals*/
 * {
@@ -84,3 +85,5 @@ hr {
 #eB:hover {color: #202020; background-color: var(--equipment-color);}
 #fB {color: var(--finance-color); border-color: var(--finance-color);}
 #fB:hover {color: #202020; background-color: var(--finance-color);}
+#bB {color: var(--battleground-color); border-color: var(--battleground-color);}
+#bB:hover {color: #202020; background-color: var(--battleground-color);}
