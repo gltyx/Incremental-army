@@ -70,23 +70,23 @@
         <h3>Equipment<hr></h3>
         <div class="currencyHolder">
             <img style="border: 2px solid var(--equipment-color);" src="Imgs/Ammo.png">
-            <div style="color:var(--equipment-color);margin-left: .5vw;" id="ammoText">Infantry Equipment: 0.00</div>
-            <button style="margin-left: .5vw;">Fabricate 1.00 Infantry Equipment | Cost: $15,000.00</button>
+            <div id="ieAmt" style="color:var(--equipment-color);margin-left: .5vw;">Infantry Equipment: 0.00</div>
+            <button id="ieButton" style="margin-left: .5vw;">Fabricate 1.00 Infantry Equipment | Cost: $15,000.00</button>
         </div>
         <div class="currencyHolder">
             <img style="border: 2px solid var(--equipment-color);" src="Imgs/AT.png">
-            <div style="color:var(--equipment-color);margin-left: .5vw;" id="ammoText">Anti-Tank Guns: 0.00</div>
-            <button style="margin-left: .5vw;">Fabricate 1.00 Anti-Tank Gun | Cost: $178,000.00</button>
+            <div id="atAmt" style="color:var(--equipment-color);margin-left: .5vw;">Anti-Tank Guns: 0.00</div>
+            <button id="atButton" style="margin-left: .5vw;">Fabricate 1.00 Anti-Tank Gun | Cost: $178,000.00</button>
         </div>
         <div class="currencyHolder">
             <img style="border: 2px solid var(--equipment-color);" src="Imgs/ART.png">
-            <div style="color:var(--equipment-color);margin-left: .5vw;" id="ammoText">Artillery Guns: 0.00</div>
-            <button style="margin-left: .5vw;">Fabricate 1.00 Artillery Gun | Cost: $500,000.00</button>
+            <div id="artAmt" style="color:var(--equipment-color);margin-left: .5vw;">Artillery Guns: 0.00</div>
+            <button id="artButton" style="margin-left: .5vw;">Fabricate 1.00 Artillery Gun | Cost: $500,000.00</button>
         </div>
         <div class="currencyHolder">
             <img style="border: 2px solid var(--equipment-color);" src="Imgs/TRANSPORT.png">
-            <div style="color:var(--equipment-color);margin-left: .5vw;" id="ammoText">Transports: 0.00</div>
-            <button style="margin-left: .5vw;">Fabricate 1.00 Transport | Cost: $220,000.00</button>
+            <div id="transportAmt" style="color:var(--equipment-color);margin-left: .5vw;">Transports: 0.00</div>
+            <button id="transportButton" style="margin-left: .5vw;">Fabricate 1.00 Transport | Cost: $220,000.00</button>
         </div>
     </div>
     <div id="financesArea" class="flexBox mainArea">
@@ -131,4 +131,5 @@
     <script src="JS/Main.js"></script>
     <script src="JS/Newsticker.js"></script>
     <script src="JS/Manpower.js"></script>
+    <script src="JS/Equipment.js"></script>
 </html>
