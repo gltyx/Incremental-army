@@ -1,3 +1,9 @@
+
+if(data.armyName === " ") {
+    let name = prompt('Name your army!:')
+    data.armyName = name
+}
+
 function changeTab(a) {
     data.currentTab = a;
     tabChangeHTML()

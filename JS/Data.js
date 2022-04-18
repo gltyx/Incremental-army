@@ -8,6 +8,7 @@ function getDefaultObject() {
         funds: D(7.5e4),
         approval: D(50),
         lobbyLevel: D(0),
+        armyName: " ",
         time: Date.now(),
         currentTab: 1,
         currentSubTab: [0,0,0,0,0,0,0],
