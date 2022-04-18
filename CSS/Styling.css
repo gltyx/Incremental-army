@@ -27,6 +27,9 @@ button:hover {
     color: #202020;
 }
 
+hr {
+    border: 1px solid whitesmoke;
+}
 
 /*Classes*/
 

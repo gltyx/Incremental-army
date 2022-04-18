@@ -27,11 +27,18 @@ function updateHTML() {
             DOMCacheGetOrSet(`${equipIds[i]}Button`).innerHTML = `Fabricate ${format(D(1))} ${equipNames[i]} | Cost: $${format(equipmentCost[i])}`
             DOMCacheGetOrSet(`${equipIds[i]}Button`).className = data.funds.gte(equipmentCost[i]) ? 'unlocked' : 'locked'
         }
+        DOMCacheGetOrSet('equipFundsText').innerHTML = `Equipment<br><br>Funds: $${format(data.funds)}<hr>`
     }
     else if(data.currentTab === 2) {
         //Funding
         DOMCacheGetOrSet('fundsText').innerHTML = `Funds: $${format(data.funds)}`
         DOMCacheGetOrSet('approvalText').innerHTML = `Congressional Approval: ${format(data.approval)}/100.00`
+        DOMCacheGetOrSet('acquireButton').innerHTML = data.approval.gt(0) ? `Acquire Funding (+$${format(fundsToRecieve)} | -${format(D(1))} Approval)` : `You need congressional approval to acquire funding`
+        
+        DOMCacheGetOrSet('lobbyButton').innerHTML = data.approval.eq(100) ? `Lobby Congress<br>[Funding Base x2 | -90.00 Approval]`: `Lobby Congress<br>[Locked - Req: 100.00/100.00 Approval]`
+        DOMCacheGetOrSet('lobbyButton').className = data.approval.eq(100) ? 'unlocked' : 'locked'
+        DOMCacheGetOrSet('propButton').innerHTML = data.approval.eq(0) ? `Release Propaganda<br>[Approval set to 50.00 | -$${format(data.funds.times(.75))}]` : `Release Propaganda<br>[Locked - Req: 0.00/100.00 Approval]`
+        DOMCacheGetOrSet('propButton').className = data.approval.eq(0) ? 'unlocked' : 'locked'
     }
 }
 

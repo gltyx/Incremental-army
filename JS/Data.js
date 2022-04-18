@@ -7,6 +7,7 @@ function getDefaultObject() {
         equipment: [D(0),D(0),D(0),D(0)],
         funds: D(7.5e4),
         approval: D(50),
+        lobbyLevel: D(0),
         time: Date.now(),
         currentTab: 1,
         currentSubTab: [0,0,0,0,0,0,0],
@@ -24,12 +25,6 @@ function save(){
 function load() {
     let savedata = JSON.parse(window.localStorage.getItem(saveName))
     if (savedata !== undefined) fixSave(data, savedata)
-    else if(data.currentUpdate !== 'v0.6.0') {
-        createAlert('Welcome Back!','The current version is Beta 6.0<br>Check the changelog for more details')
-        data.currentUpdate = 'v0.6.0' 
-        //if(data.alerted === true) 
-            //data.alerted === false
-    }
 }
 //fix saves
 function fixSave(main=getDefaultObject(), data) {

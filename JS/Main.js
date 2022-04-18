@@ -6,6 +6,7 @@ let diff = 0;
 function mainLoop() {
     diff = (Date.now()-data.time)*data.devSpeed/1000;
     updateMP()
+    updateFinances()
     updateHTML();
 }
 

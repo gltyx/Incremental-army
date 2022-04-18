@@ -12,8 +12,8 @@
         <button style="margin: 0.25vw;" id="mB" onclick="changeTab(0)">Manpower</button>
         <button style="margin: 0.25vw;" id="eB" onclick="changeTab(1)">Equipment</button>
         <button style="margin: 0.25vw;" id="fB" onclick="changeTab(2)">Finances</button>
-        <button style="margin: 0.25vw;" id="bB" onclick="changeTab(3)">Battleground</button>
-        <button style="margin: 0.25vw;" id="pB" onclick="changeTab(4)">Promotions</button>
+        <button style="margin: 0.25vw;" id="bB" class="locked" >Battleground</button>
+        <button style="margin: 0.25vw;" id="pB" class="locked" >Promotions</button>
         <button style="margin: 0.25vw;" id="sB" onclick="changeTab(5)">Settings</button>
     </div>
     <div id="newsHolder">
@@ -26,22 +26,22 @@
         <div class="currencyHolder">
             <img style="border: 2px solid var(--manpower-color);" src="Imgs/PVT.png">
             <div id="pvtAmt" style="color:var(--manpower-color);margin-left: .5vw;">Private: 0.00</div>
-            <button id="pvtButton" style="margin-left: .5vw;">Enlist 1 PVT | Cost: 1.00 Infantry Equipment</button>
+            <button id="pvtButton" style="margin-left: .5vw;" onclick="buyMP(0,0)">Enlist 1 PVT | Cost: 1.00 Infantry Equipment</button>
         </div>
         <div class="currencyHolder">
             <img style="border: 2px solid var(--manpower-color);" src="Imgs/CPL.png">
             <div id="cplAmt" style="color:var(--manpower-color);margin-left: .5vw;">Corporal: 0.00</div>
-            <button id="cplButton" style="margin-left: .5vw;">Enlist 1 CPL | Cost: 2.00 Infantry Equipment</button>
+            <button id="cplButton" style="margin-left: .5vw;" onclick="buyMP(1,0)">Enlist 1 CPL | Cost: 2.00 Infantry Equipment</button>
         </div>
         <div class="currencyHolder">
             <img style="border: 2px solid var(--manpower-color);" src="Imgs/SGT.png">
             <div id="sgtAmt" style="color:var(--manpower-color);margin-left: .5vw;">Sergeant: 0.00</div>
-            <button id="sgtButton" style="margin-left: .5vw;">Enlist 1 SGT | Cost: 3.00 Infantry Equipment</button>
+            <button id="sgtButton" style="margin-left: .5vw;" onclick="buyMP(2,0)">Enlist 1 SGT | Cost: 3.00 Infantry Equipment</button>
         </div>
         <div class="currencyHolder">
             <img style="border: 2px solid var(--manpower-color);" src="Imgs/SSGT.png">
             <div id="ssgtAmt" style="color:var(--manpower-color);margin-left: .5vw;">Staff Sergeant: 0.00</div>
-            <button id="ssgtButton" style="margin-left: .5vw;">Enlist 1 SSGT | Cost: 4.00 Infantry Equipment</button>
+            <button id="ssgtButton" style="margin-left: .5vw;" onclick="buyMP(3,0)">Enlist 1 SSGT | Cost: 4.00 Infantry Equipment</button>
         </div>
         <h3>Officers<hr></h3>
         <div class="currencyHolder">
@@ -67,37 +67,37 @@
 
     </div>
     <div id="equipmentArea" class="flexBox mainArea">
-        <h3>Equipment<hr></h3>
+        <h4 id="equipFundsText" style="text-align:center">Equipment<br><br>Funds to Spend:</h4>
         <div class="currencyHolder">
             <img style="border: 2px solid var(--equipment-color);" src="Imgs/Ammo.png">
             <div id="ieAmt" style="color:var(--equipment-color);margin-left: .5vw;">Infantry Equipment: 0.00</div>
-            <button id="ieButton" style="margin-left: .5vw;">Fabricate 1.00 Infantry Equipment | Cost: $15,000.00</button>
+            <button id="ieButton" style="margin-left: .5vw;" onclick="buyEquip(0)">Fabricate 1.00 Infantry Equipment | Cost: $15,000.00</button>
         </div>
         <div class="currencyHolder">
             <img style="border: 2px solid var(--equipment-color);" src="Imgs/AT.png">
             <div id="atAmt" style="color:var(--equipment-color);margin-left: .5vw;">Anti-Tank Guns: 0.00</div>
-            <button id="atButton" style="margin-left: .5vw;">Fabricate 1.00 Anti-Tank Gun | Cost: $178,000.00</button>
+            <button id="atButton" style="margin-left: .5vw;" onclick="buyEquip(1)">Fabricate 1.00 Anti-Tank Gun | Cost: $178,000.00</button>
         </div>
         <div class="currencyHolder">
             <img style="border: 2px solid var(--equipment-color);" src="Imgs/ART.png">
             <div id="artAmt" style="color:var(--equipment-color);margin-left: .5vw;">Artillery Guns: 0.00</div>
-            <button id="artButton" style="margin-left: .5vw;">Fabricate 1.00 Artillery Gun | Cost: $500,000.00</button>
+            <button id="artButton" style="margin-left: .5vw;" onclick="buyEquip(2)">Fabricate 1.00 Artillery Gun | Cost: $500,000.00</button>
         </div>
         <div class="currencyHolder">
             <img style="border: 2px solid var(--equipment-color);" src="Imgs/TRANSPORT.png">
             <div id="transportAmt" style="color:var(--equipment-color);margin-left: .5vw;">Transports: 0.00</div>
-            <button id="transportButton" style="margin-left: .5vw;">Fabricate 1.00 Transport | Cost: $220,000.00</button>
+            <button id="transportButton" style="margin-left: .5vw;" onclick="buyEquip(3)">Fabricate 1.00 Transport | Cost: $220,000.00</button>
         </div>
     </div>
     <div id="financesArea" class="flexBox mainArea">
         <div id="fundsText">Funds: $0.00</div>
         <div id="approvalText">Congressional Approval: 50.00/100.00</div>
         <div style="flex-direction:row;margin-top:inherit;">
-            <button id="acquireButton">Acquire Funding (+$1,000.00 | -1.00 Approval)</button>
+            <button onclick="acquire()" id="acquireButton">Acquire Funding (+$1,000.00 | -1.00 Approval)</button>
         </div>
         <div style="flex-direction:row;margin-top:inherit;">
-            <button id="lobbyButton">Lobby The Government<br>[Locked]</button>
-            <button id="propButton">Release Propaganda<br>[Locked]</button>
+            <button onclick="specialItem(0)" id="lobbyButton">Lobby The Government<br>[Locked]</button>
+            <button onclick="specialItem(1)" id="propButton">Release Propaganda<br>[Locked]</button>
         </div>
     </div>
     <div id="battlegroundArea" class="flexBox mainArea">
@@ -116,8 +116,9 @@
         </div>
         <div style="margin-top:1vh;">
             <h1>Changelog :O<hr></h1>
-            <h3>Current Version: v0.0.0</h3>
+            <h3>Current Version: v0.0.1</h3>
             <h3>Beta Versions</h3>
+            <p>v0.0.1 - Everything that isn't locked can be used.</p>
             <p>v0.0.0 - All pre beta test release stuff</p>
         </div>
     </div>
@@ -132,4 +133,5 @@
     <script src="JS/Newsticker.js"></script>
     <script src="JS/Manpower.js"></script>
     <script src="JS/Equipment.js"></script>
+    <script src="JS/Finances.js"></script>
 </html>

@@ -10,3 +10,20 @@ function updateMP() {
         officerCost[i] = officerBase[i].times(Decimal.pow(1.5,data.officers[i]))
     }
 }
+
+function buyMP(a,b) {
+    switch(b) {
+        case 0:
+            if(data.equipment[0].gte(enlistCost[a])) {
+                data.equipment[0] = data.equipment[0].sub(enlistCost[a])
+                data.enlisted[a] = data.enlisted[a].add(D(1))
+            }
+            break
+        case 1:
+            if(data.funds.gte(officerCost[a])) {
+                data.funds = data.funds.sub(officerCost[a])
+                data.officers[a] = data.officers[a].add(D(1))
+            }
+            break
+    }
+}
