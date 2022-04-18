@@ -37,9 +37,9 @@ let enemy = {
 function generateEnemy() {
     const num = getRandom(1,100)
     let ending = ''
-    if(num === 1 || num === 21 || num === 31 || num === 41 || num === 51 || num === 61 || num === 71 || num === 81 || num === 91) ending = 'st'
-    else if(num === 2 || num === 22 || num === 32 || num === 42 || num === 52 || num === 62 || num === 72 || num === 82 || num === 92) ending = 'nd'
-    else if(num === 3 || num === 23 || num === 33 || num === 43 || num === 53 || num === 63 || num === 73 || num === 83 || num === 93) ending = 'rd'
+    if(num % 10 === 1 && num !== 11) ending = 'st'
+    else if(num % 10 === 2 & num !== 12) ending = 'nd'
+    else if(num % 10 === 3 && num !== 13) ending = 'rd'
     else ending = 'th'
 
     enemy.name =  `${num}${ending} ${enemyDivNames[getRandom(0,4)]} Division`
