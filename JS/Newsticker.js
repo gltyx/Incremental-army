@@ -3,7 +3,7 @@ var newsArray;
 function updateNewsArray() {
 newsArray = [//always true
     ["Newsticker Moment","true","a0"], ["I don't know what I've been told, but the 5 hour joke is getting old!","true","a1"], ["Incremental Game without Newsticker Challenge - [Failed]","true","a2"],
-    ["Lol among US","true","a3"],["can this be a newticker?","true","a4"],["US army vs the void - coming soonTM","true","a5"],["never gonna give you                  a rickroll","true","a6"],
+    ["Lol among US","true","a3"],["can this be a newticker?","true","a4"],["US army vs the void - coming soonTM","true","a5"],["never gonna give you                a rickroll","true","a6"],
 
 ];}
 
