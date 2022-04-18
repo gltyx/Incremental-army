@@ -87,3 +87,6 @@ hr {
 #fB:hover {color: #202020; background-color: var(--finance-color);}
 #bB {color: var(--battleground-color); border-color: var(--battleground-color);}
 #bB:hover {color: #202020; background-color: var(--battleground-color);}
+
+#playerStats {color:#4a53db}
+#enemyStats {color:#db4a4a}

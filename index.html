@@ -103,8 +103,10 @@
     <div id="battlegroundArea" class="flexBox mainArea">
         <div id="battleAlertText">You need at least 1 Pvt to Fight</div>
         <div id="battlegroundHolder" class="flexBox">
-            <div id="mainStats">
-                Player v Enemy
+            <div id="mainStats" style="display:flex; flex-direction:row;">
+                <div id="playerStats" style="margin:0.25vw;">Player</div>
+                <div style="margin:0.25vw;">Vs.</div>
+                <div id="enemyStats" style="margin:0.25vw;">Enemy</div>
             </div>
         </div>
     </div>
@@ -116,6 +118,10 @@
             <button onclick="exportSave()">Export Save</button>
             <button onclick="importSave()">Import Save</button>
             <button id="delete" onclick="deleteSave()">Delete Save</button>
+            
+        </div>
+        <div style="margin-top:1vh;">
+            <button onclick="nameArmy()">Rename your Army</button>
         </div>
         <div style="margin-top:1vh;">
             <a href="https://discord.gg/JkQUnubuhx">Discord Invite!</a>
@@ -140,4 +146,5 @@
     <script src="JS/Manpower.js"></script>
     <script src="JS/Equipment.js"></script>
     <script src="JS/Finances.js"></script>
+    <script src="JS/Battleground.js"></script>
 </html>

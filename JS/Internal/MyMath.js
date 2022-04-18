@@ -1,6 +1,11 @@
 function getRandom(min, max) {
     return Math.floor(Math.random() * (max - min) ) + min
 }
+
+function getRandomDecimal(min,max) {
+    return Decimal.floor(Math.random() * (max - min) ) + min
+}
+
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
 }

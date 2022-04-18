@@ -40,6 +40,15 @@ function updateHTML() {
         DOMCacheGetOrSet('propButton').innerHTML = data.approval.eq(0) ? `Release Propaganda<br>[Approval set to 50.00 | -$${format(data.funds.times(.75))}]` : `Release Propaganda<br>[Locked - Req: 0.00/100.00 Approval]`
         DOMCacheGetOrSet('propButton').className = data.approval.eq(0) ? 'unlocked' : 'locked'
     }
+    else if(data.currentTab === 3) {
+        //Battleground
+        DOMCacheGetOrSet('battleAlertText').style.display = data.enlisted[0].gte(1) ? 'none' : 'flex'
+        DOMCacheGetOrSet('battlegroundHolder').style.display = data.enlisted[0].gte(1) ? 'flex' : 'none'
+        if(data.enlisted[0].gte(1)) {
+            DOMCacheGetOrSet('playerStats').innerHTML = `${data.armyName}<br>Manpower: ${format(manpowerTotal[0])}<br>Attack Power: ${format(attackTotal[0])}`
+            DOMCacheGetOrSet('enemyStats').innerHTML = `${data.currentEnemy.name}<br>Manpower: ${format(manpowerTotal[1])}<br>Attack Power: ${format(attackTotal[1])}`
+        }
+    }
 }
 
 const tabIDs = ['manpower','equipment','finances','battleground','promotions','settings']

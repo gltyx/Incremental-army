@@ -8,7 +8,13 @@ function getDefaultObject() {
         funds: D(7.5e4),
         approval: D(50),
         lobbyLevel: D(0),
-        armyName: " ",
+        armyName: undefined,
+        currentEnemy: {
+            name: "",
+            enlisted: [D(0),D(0),D(0),D(0)],
+            officers: [D(0),D(0),D(0),D(0)],
+            equipment: [D(0),D(0),D(0),D(0)],
+        },
         time: Date.now(),
         currentTab: 1,
         currentSubTab: [0,0,0,0,0,0,0],
@@ -26,6 +32,8 @@ function save(){
 function load() {
     let savedata = JSON.parse(window.localStorage.getItem(saveName))
     if (savedata !== undefined) fixSave(data, savedata)
+    if(data.armyName === undefined)
+        nameArmy()
 }
 //fix saves
 function fixSave(main=getDefaultObject(), data) {
@@ -67,7 +75,6 @@ window.onload = function (){
     load()
     tabChangeHTML()
     scrollNextMessage()
-    generateHoldEvents()
 }
 //full reset
 function fullReset(){
