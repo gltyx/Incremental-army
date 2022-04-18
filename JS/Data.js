@@ -66,6 +66,7 @@ window.onload = function (){
     load()
     tabChangeHTML()
     scrollNextMessage()
+    generateHoldEvents()
 }
 //full reset
 function fullReset(){
