@@ -7,11 +7,19 @@ let enemyOfficerBoost = [D(0),D(0),D(0),D(0)]
 let equipmentBoosts = [D(0),D(0),D(0)]
 let enemyEquipmentBoosts = [D(0),D(0),D(0)]
 
+const battleRewardBases = [D(10),D(5)]
+const diffRewardScales = [D(0.5),D(0.75),D(1),D(1.5),D(2)]
+let battleRewards = [D(0),D(0)]
+
+
 function updateBattleground() {
     manpowerTotal[0] = D(0)
     manpowerTotal[1] = D(0)
     attackTotal[0] = D(0)
     attackTotal[1] = D(0)
+    for(let i = 0; i < 2; i++) {
+        battleRewards[i] = battleRewardBases[i].times(diffRewardScales[data.difficultyIndex])
+    }
     for(let i = 0; i < 3; i++) {
         if(i === 2)
             equipmentBoosts[i] = D(1).plus(Decimal.sqrt(Decimal.sqrt(data.equipment[i+1])))
@@ -62,7 +70,7 @@ function generateEnemy() {
     enemy.name =  `${num}${ending} ${enemyDivNames[getRandom(0,6)]} Division`
     for(let i = 0; i < 4; i++) {
         if(data.difficultyIndex < 3) {
-            enemy.enlisted[i] = D(getRandom(0,data.enlisted[i].times(enemyDiffScales[data.difficultyIndex])))
+            enemy.enlisted[i] = D(getRandom(1,data.enlisted[i].times(enemyDiffScales[data.difficultyIndex])))
             enemy.officers[i] = D(getRandom(0,data.officers[i].times(enemyDiffScales[data.difficultyIndex])))
             enemy.equipment[i] = D(getRandom(0,data.equipment[i].times(enemyDiffScales[data.difficultyIndex])))
         }
@@ -84,32 +92,4 @@ function switchDifficulty() {
 }
 let roundDelay = 0;
 let roundDelayTimer = 0;
-function battle() {
-    let round = 0
-    let battleComplete = false
-    while(!battleComplete) {
-        switch(round) {
-            case 0:
-                for(let i = 0; i < 4; i++) {
-                    let currentEnlistedCheck = [(data.enlisted[i].times(equipmentBoosts[2]).sub(enemyEquipmentBoosts[1])),(data.currentEnemy.enlisted[i].times(enemyEquipmentBoosts[2]).sub(equipmentBoosts[1]))]
-                    let currentOfficerCheck = [(data.officers[i].times(equipmentBoosts[2]).sub(enemyEquipmentBoosts[1])),(data.currentEnemy.officers[i].times(enemyEquipmentBoosts[2]).sub(equipmentBoosts[1]))]
-                    if(currentEnlistedCheck[0].gt(currentEnlistedCheck[1])) {
-                        data.enlisted[i] = data.enlisted[i].sub(data.currentEnemy.enlisted[i])
-                        data.currentEnemy.enlisted[i] = D(0)
-                    }
-                    else if(currentEnlistedCheck[0].lt(currentEnlistedCheck[1])) {
-                        data.currentEnemy.enlisted[i] = data.currentEnemy.enlisted[i].sub(data.enlisted[i])
-                        data.enlisted[i] = D(0)
-                    }
-                    if(currentOfficerCheck[0].gt(currentOfficerCheck[1])) {
-                        data.officers[i] = data.officers[i].sub(data.currentEnemy.officers[i])
-                        data.currentEnemy.officers[i] = D(0)
-                    }
-                    else if(currentOfficerCheck[0].lt(currentOfficerCheck[1])) {
-                        data.currentEnemy.officers[i] = data.currentEnemy.officers[i].sub(data.officers[i])
-                        data.officers[i] = D(0)
-                    }
-                }
-        }
-    }
-}
+    

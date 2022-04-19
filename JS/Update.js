@@ -58,6 +58,7 @@ function updateHTML() {
             <br>Equipment<hr>Infantry Equipment: ${format(data.currentEnemy.equipment[0])}<br>Anti-Tank Guns: ${format(data.currentEnemy.equipment[1])} [+${format(enemyEquipmentBoosts[0])} Damage to Armor]<br>Artillery Guns: ${format(data.currentEnemy.equipment[2])} [+${format(enemyEquipmentBoosts[1])} Damage to Infantry]<br>Transports: ${format(data.currentEnemy.equipment[3])}
             [${format(enemyEquipmentBoosts[2])}x More Troops]`
             DOMCacheGetOrSet('diffText').innerHTML = `Current Difficulty: ${difficultyNames[data.difficultyIndex]}`
+            DOMCacheGetOrSet('battleRewardText').innerHTML = `Rewards: +${format(battleRewards[0])} Medals | +/-${format(battleRewards[1])} Approval`
         }
     }
 }

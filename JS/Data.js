@@ -15,7 +15,6 @@ function getDefaultObject() {
             officers: [D(0),D(0),D(0),D(0)],
             equipment: [D(0),D(0),D(0),D(0)],
         },
-        morale: D(50),
         difficultyIndex: 0,
         medals: D(0),
         time: Date.now(),
@@ -34,6 +33,7 @@ function save(){
 }
 function load() {
     let savedata = JSON.parse(window.localStorage.getItem(saveName))
+    if(savedata === null || savedata === undefined) savedata = getDefaultObject()
     if (savedata !== undefined) fixSave(data, savedata)
     if(data.armyName === undefined)
         nameArmy()
