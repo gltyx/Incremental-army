@@ -5,6 +5,8 @@ const rankNameIds = ['pvt','cpl','sgt','ssgt','2lt','1lt','cpt','maj']
 const equipIds = ['ie','at','art','transport']
 const equipNames = ['Infantry Equipment','Anti-Tank Gun','Artillery Gun','Transport']
 
+const difficultyNames = ['Recruit','Novice','Veteran','Specialist','Commando']
+
 function updateHTML() {
     //Global HTML Updates
 
@@ -15,7 +17,7 @@ function updateHTML() {
             DOMCacheGetOrSet(`${rankNameIds[i]}Button`).innerHTML = `Enlist ${format(D(1))} ${rankNameShort[i]} | Cost: ${format(enlistCost[i])} Infantry Equipment`
             DOMCacheGetOrSet(`${rankNameIds[i]}Button`).className = data.equipment[0].gte(enlistCost[i]) ? 'unlocked' : 'locked'
             
-            DOMCacheGetOrSet(`${rankNameIds[i+4]}Amt`).innerHTML = `${rankNameLong[i+4]}: ${format(data.officers[i])}`
+            DOMCacheGetOrSet(`${rankNameIds[i+4]}Amt`).innerHTML = `${rankNameLong[i+4]}: ${format(data.officers[i])} | ${format(officerBoost[i])}x to ${rankNameShort[i]} Attack`
             DOMCacheGetOrSet(`${rankNameIds[i+4]}Button`).innerHTML = officerCost[i].gt(1) ? `Hire ${format(D(1))} ${rankNameShort[i+4]} | Cost: ${format(officerCost[i])} Medals` : `Hire ${format(D(1))} ${rankNameShort[i+4]} | Cost: ${format(officerCost[i])} Medal`
             DOMCacheGetOrSet(`${rankNameIds[i+4]}Button`).className = 'locked'
         }
@@ -43,16 +45,19 @@ function updateHTML() {
     else if(data.currentTab === 3) {
         //Battleground
         DOMCacheGetOrSet('battleAlertText').style.display = data.enlisted[0].gte(1) ? 'none' : 'flex'
-        DOMCacheGetOrSet('battlegroundHolder').style.display = data.enlisted[0].gte(1) ? 'flex' : 'none'
+        DOMCacheGetOrSet('battlegroundStatsHolder').style.display = data.enlisted[0].gte(1) ? 'flex' : 'none'
         if(data.enlisted[0].gte(1)) {
             DOMCacheGetOrSet('playerStats').innerHTML = `${data.armyName}<br>Manpower: ${format(manpowerTotal[0])}<br>Attack Power: ${format(attackTotal[0])}`
             DOMCacheGetOrSet('enemyStats').innerHTML = `${data.currentEnemy.name}<br>Manpower: ${format(manpowerTotal[1])}<br>Attack Power: ${format(attackTotal[1])}`
-            DOMCacheGetOrSet('playerArmy').innerHTML = `Soldiers<hr>${rankNameShort[0]}: ${format(data.enlisted[0])}<br>${rankNameShort[1]}: ${format(data.enlisted[1])}<br>${rankNameShort[2]}: ${format(data.enlisted[2])}<br>${rankNameShort[3]}: ${format(data.enlisted[3])}<br>
-            <br>Officers<hr>${rankNameShort[4]}: ${format(data.officers[0])}<br>${rankNameShort[5]}: ${format(data.officers[1])}<br>${rankNameShort[6]}: ${format(data.officers[2])}<br>${rankNameShort[7]}: ${format(data.officers[3])}<br>
-            <br>Equipment<hr>Infantry Equipment: ${format(data.equipment[0])}<br>Anti-Tank Guns: ${format(data.equipment[1])}<br>Artillery Guns: ${format(data.equipment[2])}<br>Transports: ${format(data.equipment[3])}`
-            DOMCacheGetOrSet('enemyArmy').innerHTML = `Soldiers<hr>${rankNameShort[0]}: ${format(data.currentEnemy.enlisted[0])}<br>${rankNameShort[1]}: ${format(data.currentEnemy.enlisted[1])}<br>${rankNameShort[2]}: ${format(data.currentEnemy.enlisted[2])}<br>${rankNameShort[3]}: ${format(data.currentEnemy.enlisted[3])}<br>
-            <br>Officers<hr>${rankNameShort[4]}: ${format(data.currentEnemy.officers[0])}<br>${rankNameShort[5]}: ${format(data.currentEnemy.officers[1])}<br>${rankNameShort[6]}: ${format(data.currentEnemy.officers[2])}<br>${rankNameShort[7]}: ${format(data.currentEnemy.officers[3])}<br>
-            <br>Equipment<hr>Infantry Equipment: ${format(data.currentEnemy.equipment[0])}<br>Anti-Tank Guns: ${format(data.currentEnemy.equipment[1])}<br>Artillery Guns: ${format(data.currentEnemy.equipment[2])}<br>Transports: ${format(data.currentEnemy.equipment[3])}`
+            DOMCacheGetOrSet('playerArmy').innerHTML = `Soldiers<hr>${rankNameShort[0]}: ${format(data.enlisted[0].times(equipmentBoosts[2]))}<br>${rankNameShort[1]}: ${format(data.enlisted[1].times(equipmentBoosts[2]))}<br>${rankNameShort[2]}: ${format(data.enlisted[2].times(equipmentBoosts[2]))}<br>${rankNameShort[3]}: ${format(data.enlisted[3].times(equipmentBoosts[2]))}<br>
+            <br>Officers<hr>${rankNameShort[4]}: ${format(data.officers[0].times(equipmentBoosts[2]))}<br>${rankNameShort[5]}: ${format(data.officers[1].times(equipmentBoosts[2]))}<br>${rankNameShort[6]}: ${format(data.officers[2].times(equipmentBoosts[2]))}<br>${rankNameShort[7]}: ${format(data.officers[3].times(equipmentBoosts[2]))}<br>
+            <br>Equipment<hr>Infantry Equipment: ${format(data.equipment[0])}<br>Anti-Tank Guns: ${format(data.equipment[1])} [+${format(equipmentBoosts[0])} Damage to Armor]<br>Artillery Guns: ${format(data.equipment[2])} [+${format(equipmentBoosts[1])} Damage to Infantry]<br>Transports: ${format(data.equipment[3])}
+            [${format(equipmentBoosts[2])}x More Troops]`
+            DOMCacheGetOrSet('enemyArmy').innerHTML = `Soldiers<hr>${rankNameShort[0]}: ${format(data.currentEnemy.enlisted[0].times(enemyEquipmentBoosts[2]))}<br>${rankNameShort[1]}: ${format(data.currentEnemy.enlisted[1].times(enemyEquipmentBoosts[2]))}<br>${rankNameShort[2]}: ${format(data.currentEnemy.enlisted[2].times(enemyEquipmentBoosts[2]))}<br>${rankNameShort[3]}: ${format(data.currentEnemy.enlisted[3].times(enemyEquipmentBoosts[2]))}<br>
+            <br>Officers<hr>${rankNameShort[4]}: ${format(data.currentEnemy.officers[0].times(enemyEquipmentBoosts[2]))}<br>${rankNameShort[5]}: ${format(data.currentEnemy.officers[1].times(enemyEquipmentBoosts[2]))}<br>${rankNameShort[6]}: ${format(data.currentEnemy.officers[2].times(enemyEquipmentBoosts[2]))}<br>${rankNameShort[7]}: ${format(data.currentEnemy.officers[3].times(enemyEquipmentBoosts[2]))}<br>
+            <br>Equipment<hr>Infantry Equipment: ${format(data.currentEnemy.equipment[0])}<br>Anti-Tank Guns: ${format(data.currentEnemy.equipment[1])} [+${format(enemyEquipmentBoosts[0])} Damage to Armor]<br>Artillery Guns: ${format(data.currentEnemy.equipment[2])} [+${format(enemyEquipmentBoosts[1])} Damage to Infantry]<br>Transports: ${format(data.currentEnemy.equipment[3])}
+            [${format(enemyEquipmentBoosts[2])}x More Troops]`
+            DOMCacheGetOrSet('diffText').innerHTML = `Current Difficulty: ${difficultyNames[data.difficultyIndex]}`
         }
     }
 }

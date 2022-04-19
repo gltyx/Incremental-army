@@ -15,6 +15,8 @@ function getDefaultObject() {
             officers: [D(0),D(0),D(0),D(0)],
             equipment: [D(0),D(0),D(0),D(0)],
         },
+        morale: D(50),
+        difficultyIndex: 0,
         medals: D(0),
         time: Date.now(),
         currentTab: 1,

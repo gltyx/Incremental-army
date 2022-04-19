@@ -102,7 +102,7 @@
     </div>
     <div id="battlegroundArea" class="flexBox mainArea">
         <div id="battleAlertText">You need at least 1 Pvt to Fight</div>
-        <div id="battlegroundHolder" class="flexBox">
+        <div id="battlegroundStatsHolder" class="flexBox">
             <div id="mainStats" style="display:flex; flex-direction:row;">
                 <div id="playerStats" style="margin-top:0.25vw; text-align: left;">Player</div>
                 <div style="margin-top:0.25vw; margin-left: 6vw; margin-right: 6vw;">Vs.</div>
@@ -112,6 +112,16 @@
                 <div id="playerArmy" style="margin-right:5vw; text-align: left;">Army</div>
                 <hr>
                 <div id="enemyArmy" style="margin-left:5vw; text-align: right;">Army</div>
+            </div>
+            <div id="bottomHolder" style="display:flex; flex-direction:row; margin-top: 1vh">
+                <div id="diffHolder" class="flexBox" style="margin-right:1vw">
+                    <div id="diffText" style="margin-top:0.25vw; text-align: left;">Current Difficulty: Novice</div>
+                    <button onclick="switchDifficulty()">Switch Difficulty</button>
+                </div>
+                <div id="battleButtons" class="flexBox" style="margin-left:1vw">
+                    <button id="battleButton" style="margin-top:0.25vw;">Begin the Battle</button>
+                    <div id="battleRewardText">Rewards: Medals: +0.00 | Approval: +0.00 | Morale +/-0.00</div>
+                </div>
             </div>
         </div>
     </div>
