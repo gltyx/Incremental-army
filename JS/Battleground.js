@@ -92,4 +92,35 @@ function switchDifficulty() {
 }
 let roundDelay = 0;
 let roundDelayTimer = 0;
+
+function battle() {
+    //Round 1 
+    for(let i = 0; i < 4; i++) {
+        let enlistedChecks = [(data.enlisted[i].times(equipmentBoosts[2])).sub(enemyEquipmentBoosts[1]),(data.currentEnemy.enlisted[i].times(enemyEquipmentBoosts[2])).sub(equipmentBoosts[1])]
+        let officerChecks = [(data.officers[i].times(equipmentBoosts[2])).sub(enemyEquipmentBoosts[1]),(data.currentEnemy.officers[i].times(enemyEquipmentBoosts[2])).sub(equipmentBoosts[1])]
+
+        if(enlistedChecks[0].gt(enlistedChecks[1])) {
+            data.enlisted[i] = data.enlisted[i].sub(data.currentEnemy.enlisted[i])
+            data.currentEnemy.enlisted[i] = D(0)
+        }
+        else if(enlistedChecks[0].lt(enlistedChecks[1])) {
+            data.currentEnemy.enlisted[i] = data.currentEnemy.enlisted[i].sub(data.enlisted[i])
+            data.enlisted[i] = D(0)
+        }
+
+        if(officerChecks[0].gt(officerChecks[1])) {
+            data.officers[i] = data.officers[i].sub(data.currentEnemy.officers[i])
+            data.currentEnemy.officers[i] = D(0)
+        }
+        else if(officerChecks[0].lt(officerChecks[1])) {
+            data.currentEnemy.officers[i] = data.currentEnemy.officers[i].sub(data.officers[i])
+            data.officers[i] = D(0)
+        }
+    }
+    while(roundDelayTimer < roundDelay) {
+        roundDelayTimer += diff
+    }
+    roundDelayTimer = 0
+    //Round 2
     
+}    
