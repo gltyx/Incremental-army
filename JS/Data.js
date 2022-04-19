@@ -21,7 +21,7 @@ function getDefaultObject() {
         currentTab: 1,
         currentSubTab: [0,0,0,0,0,0,0],
         currentElement: 0,
-        currentUpdate: 'v0.0.0',
+        currentUpdate: 'v0.0.2',
         devSpeed: 1,
     }
 }
@@ -37,6 +37,9 @@ function load() {
     if (savedata !== undefined) fixSave(data, savedata)
     if(data.armyName === undefined)
         nameArmy()
+    if(data.currentUpdate !== "v0.0.2")
+        createAlert("Welcome Back!","The current version is v0.0.2, View the Changelog for details")
+    data.currentUpdate = "v0.0.2"
 }
 //fix saves
 function fixSave(main=getDefaultObject(), data) {

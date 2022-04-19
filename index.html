@@ -8,6 +8,14 @@
     <title>Incremental Army</title>
 </head>
 <body>
+    <div id="modalContainer">
+        <div id="alert">
+            <h3 id="alertTitle">Welcome back gamer!</h3>
+            <p id="alertContent">New things have been added since last time</p>
+            <button id="closeAlert" style="border: 2px solid;" onclick="closeModal()">Thanks!</button>
+            <br>
+        </div>
+    </div>
     <div id="navBar" class="flexBox" style="flex-direction: row;">
         <button style="margin: 0.25vw;" id="mB" onclick="changeTab(0)">Manpower</button>
         <button style="margin: 0.25vw;" id="eB" onclick="changeTab(1)">Equipment</button>
@@ -143,8 +151,9 @@
         </div>
         <div style="margin-top:1vh;">
             <h1>Changelog :O<hr></h1>
-            <h3>Current Version: v0.0.1</h3>
+            <h3>Current Version: v0.0.2</h3>
             <h3>Beta Versions</h3>
+            <p>v0.0.2 - Added Battleground</p>
             <p>v0.0.1 - Everything that isn't locked can be used.</p>
             <p>v0.0.0 - All pre beta test release stuff</p>
         </div>
