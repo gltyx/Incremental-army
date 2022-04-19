@@ -24,6 +24,7 @@ function save(){
 }
 function load() {
     let savedata = JSON.parse(window.localStorage.getItem(saveName))
+    if(savedata === null || savedata === undefined) savedata = getDefaultObject()
     if (savedata !== undefined) fixSave(data, savedata)
 }
 //fix saves
