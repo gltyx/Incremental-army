@@ -34,7 +34,7 @@ function save(){
 function load() {
     let savedata = JSON.parse(window.localStorage.getItem(saveName))
     if(savedata === null || savedata === undefined) savedata = getDefaultObject()
-    if (savedata !== undefined) fixSave(data, savedata)
+    else if (savedata !== undefined) fixSave(data, savedata)
     if(data.armyName === undefined)
         nameArmy()
     if(data.currentUpdate !== "v0.0.2")
