@@ -7,8 +7,9 @@ let enemyOfficerBoost = [D(0),D(0),D(0),D(0)]
 let equipmentBoosts = [D(0),D(0),D(0)]
 let enemyEquipmentBoosts = [D(0),D(0),D(0)]
 
-const battleRewardBases = [D(10),D(5)]
-const diffRewardScales = [D(0.5),D(0.75),D(1),D(1.5),D(2)]
+const battleRewardBases = [D(10),D(20)]
+const diffRewardScales = [D(0.5),D(1),D(1.5),D(2),D(4)]
+const moneyLossScales = [D(0.3),D(0.45),D(0.5),D(0.75),D(0.95)]
 let battleRewards = [D(0),D(0)]
 
 
@@ -90,8 +91,6 @@ function switchDifficulty() {
     else data.difficultyIndex = 0
     generateEnemy()
 }
-let roundDelay = 0;
-let roundDelayTimer = 0;
 
 function battle() {
     //Round 1 
@@ -108,11 +107,12 @@ function battle() {
             data.enlisted[i] = D(0)
         }
         else if(enlistedChecks[0].eq(enlistedChecks[1])) {
+            updateBattleground()
             const composite = [manpowerTotal[0].sub(attackTotal[1]),manpowerTotal[1].sub(attackTotal[0])]
             data.enlisted[i] = composite[0].gt(composite[1]) ? data.enlisted[i].sub(data.currentEnemy.enlisted[i]) : D(0)
             data.currentEnemy.enlisted[i] = composite[0].lt(composite[1]) ? data.currentEnemy.enlisted[i].sub(data.enlisted[i]) : D(0)
         }
-
+        
         if(officerChecks[0].gt(officerChecks[1])) {
             data.officers[i] = data.officers[i].sub(data.currentEnemy.officers[i])
             data.currentEnemy.officers[i] = D(0)
@@ -122,15 +122,25 @@ function battle() {
             data.officers[i] = D(0)
         }
         else if(officerChecks[0].eq(officerChecks[1])) {
+            updateBattleground()
             const composite = [manpowerTotal[0].sub(attackTotal[1]),manpowerTotal[1].sub(attackTotal[0])]
             data.officers[i] = composite[0].gt(composite[1]) ? data.officers[i].sub(data.currentEnemy.officers[i]) : D(0)
             data.currentEnemy.officers[i] = composite[0].lt(composite[1]) ? data.currentEnemy.officers[i].sub(data.officers[i]) : D(0)
         }
     }
-    while(roundDelayTimer < roundDelay) {
-        roundDelayTimer += diff
+    updateBattleground()
+    const composite = [manpowerTotal[0].sub(attackTotal[1]),manpowerTotal[1].sub(attackTotal[0])]
+    if(composite[0].gt(composite[1])) {
+        data.medals = data.medals.plus(battleRewards[0])
+        data.approval = data.approval.plus(battleRewards[1])
+        if(data.approval.gt(100)) data.approval = D(100)
+        createAlert("Victory!","You have defeated the enemy and earned " + format(battleRewards[0]) + " Medals and " + format(battleRewards[1]) + " Approval","268135")
     }
-    roundDelayTimer = 0
-    //Round 2
-    
+    else if(composite[0].lt(composite[1])) {
+        data.approval = data.approval.sub(battleRewards[1])
+        if(data.approval.lt(D(0))) data.approval = D(0)
+        data.funds = data.funds.sub(data.funds.times(moneyLossScales[data.difficultyIndex]))
+        if(data.funds.lt(D(0))) data.funds = D(0)
+        creatAlert("Defeat!","You have been defeated by the enemy and lost " + format(battleRewards[1]) + "Approval and " + format(data.funds.times(moneyLossScales[data.difficultyIndex])) + " Funds","812626")
+    }
 }    

@@ -25,7 +25,8 @@ function changeTab(a) {
 }
 let diff = 0;
 function mainLoop() {
-    diff = (Date.now()-data.time)*data.devSpeed/1000;
+    diff = (Date.now()-data.time)*data.devSpeed/1000
+    data.time = Date.now()
     updateMP()
     updateFinances()
     updateBattleground()
@@ -42,8 +43,8 @@ function stopHold(event) {
  clearInterval(holdInterval)//stop it
 }
 
-function createAlert(a,b) {
-    document.getElementById('modalContainer').style.border = '4px solid #812626'
+function createAlert(a,b,c) {
+    document.getElementById('modalContainer').style.border = `4px solid #${c}`
     document.getElementById('alertTitle').innerHTML = a
     document.getElementById('alertContent').innerHTML = b
     document.getElementById('alert').style.display = 'block'
