@@ -54,7 +54,7 @@ hr {
 }
 
 .unlocked {color: #268135;border-color: #268135;}
-.unlocked:hover {color:#202020;background-color: #268135;border-color: #268135;cursor: pointer;}
+.unlocked:hover {color:#202020;background-color: #268135;border-color: #268135;}
 .locked {color: #812626;border-color: #812626;}
 .locked:hover {color:#202020;background-color: #812626;border-color: #812626;cursor: not-allowed;}
 
