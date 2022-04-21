@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="CSS/Styling.css">
+    <link rel="icon" type="image/png" href="Imgs/PVT.png">
     <title>Incremental Army</title>
 </head>
 <body>
@@ -20,8 +21,8 @@
         <button style="margin: 0.25vw;" id="mB" onclick="changeTab(0)">Manpower</button>
         <button style="margin: 0.25vw;" id="eB" onclick="changeTab(1)">Equipment</button>
         <button style="margin: 0.25vw;" id="fB" onclick="changeTab(2)">Finances</button>
-        <button style="margin: 0.25vw;" id="bB" onclick="changeTab(3)" >Battleground</button>
-        <button style="margin: 0.25vw;" id="pB" onclick="changeTab(4)" >Promotions</button>
+        <button style="margin: 0.25vw;" id="bB" onclick="changeTab(3)">Battleground</button>
+        <button style="margin: 0.25vw;" id="pB" onclick="changeTab(4)">Promotions</button>
         <button style="margin: 0.25vw;" id="sB" onclick="changeTab(5)">Settings</button>
     </div>
     <div id="newsHolder">
@@ -139,6 +140,9 @@
             <div id="promotionProgressText" style="margin-left:1vw;margin-right:1vw;">Colonel ==Progress to promotion: 0.00% (0/1e3 Medals)=> Bridgadier General</div>
             <img id="nextRankImg" src="Imgs/brigadier_general.svg" style="height:32px;width:32px;">
         </div>
+        <div id="dualPromotionText">Medals: 0.00</div>
+        
+        <button id="promotionButton" onclick="promote()">Promote</button>
     </div>
     <div id="settingsArea" class="flexBox mainArea">
         <div>

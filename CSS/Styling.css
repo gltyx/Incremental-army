@@ -8,6 +8,7 @@
     --equipment-color: #2f357f;
     --finance-color: #349348;
     --battleground-color: #935534;
+    --promotion-color: #346d93;
 }
 /*Globals*/
 * {
@@ -107,6 +108,8 @@ hr {
 #fB:hover {color: #202020; background-color: var(--finance-color);}
 #bB {color: var(--battleground-color); border-color: var(--battleground-color);}
 #bB:hover {color: #202020; background-color: var(--battleground-color);}
+#pB {color: var(--promotion-color); border-color: var(--promotion-color);}
+#pB:hover {color: #202020; background-color: var(--promotion-color);}
 
 #playerStats {color:#4a53db}
 #enemyStats {color:#db4a4a}

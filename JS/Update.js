@@ -19,7 +19,7 @@ function updateHTML() {
             
             DOMCacheGetOrSet(`${rankNameIds[i+4]}Amt`).innerHTML = `${rankNameLong[i+4]}: ${format(data.officers[i])} | ${format(officerBoost[i])}x to ${rankNameShort[i]} Attack`
             DOMCacheGetOrSet(`${rankNameIds[i+4]}Button`).innerHTML = officerCost[i].gt(1) ? `Hire ${format(D(1))} ${rankNameShort[i+4]} | Cost: ${format(officerCost[i])} Medals` : `Hire ${format(D(1))} ${rankNameShort[i+4]} | Cost: ${format(officerCost[i])} Medal`
-            DOMCacheGetOrSet(`${rankNameIds[i+4]}Button`).className = 'locked'
+            DOMCacheGetOrSet(`${rankNameIds[i+4]}Button`).className = data.medals.gte(officerCost[i]) ? 'unlocked' : 'locked'
         }
     }
     else if(data.currentTab === 1) {
@@ -67,6 +67,10 @@ function updateHTML() {
             DOMCacheGetOrSet('currentRankImg').src = levelImgSrcs[data.level]
         if((DOMCacheGetOrSet('nextRankImg').getAttribute('src') !== levelImgSrcs[data.level.plus(1)] && data.level.lt(5)) || (DOMCacheGetOrSet('nextRankImg').getAttribute('src') !== levelImgSrcs[5] && data.level.gte(5)))
             DOMCacheGetOrSet('nextRankImg').src = data.level.lt(5) ? levelImgSrcs[data.level.plus(1)] : levelImgSrcs[5]
+        DOMCacheGetOrSet('dualPromotionText').innerHTML = `Current Rank: ${levelNameList[data.level]} | Medals: ${format(data.medals)}`
+        DOMCacheGetOrSet('promotionButton').style.display = data.level.lt(5) ? 'flex' : 'none'
+        DOMCacheGetOrSet('promotionButton').innerHTML =  `Promote to ${levelNameList[data.level.plus(1)]}`
+        DOMCacheGetOrSet('promotionButton').className = data.medals.lt(promotionReqs[data.level]) ? 'locked' : 'unlocked'
     }
 }
 
