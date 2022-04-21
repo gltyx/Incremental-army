@@ -61,6 +61,13 @@ function updateHTML() {
             DOMCacheGetOrSet('battleRewardText').innerHTML = `Rewards: +${format(battleRewards[0])} Medals | +/-${format(battleRewards[1])} Approval | Loss Only: -$${format(data.funds.times(moneyLossScales[data.difficultyIndex]))}`
         }
     }
+    else if(data.currentTab === 4) {
+        DOMCacheGetOrSet('promotionProgressText').innerHTML = data.level.lt(5) ? `${levelNameList[data.level]} ==Progress to Promotion: ${format(Decimal.divide(data.medals,promotionReqs[data.level]).times(100))}% (${format(data.medals)}/${format(promotionReqs[data.level])})=> ${levelNameList[data.level.plus(1)]}` : `General of the Army`
+        if(DOMCacheGetOrSet('currentRankImg').getAttribute('src') !== levelImgSrcs[data.level]) 
+            DOMCacheGetOrSet('currentRankImg').src = levelImgSrcs[data.level]
+        if((DOMCacheGetOrSet('nextRankImg').getAttribute('src') !== levelImgSrcs[data.level.plus(1)] && data.level.lt(5)) || (DOMCacheGetOrSet('nextRankImg').getAttribute('src') !== levelImgSrcs[5] && data.level.gte(5)))
+            DOMCacheGetOrSet('nextRankImg').src = data.level.lt(5) ? levelImgSrcs[data.level.plus(1)] : levelImgSrcs[5]
+    }
 }
 
 const tabIDs = ['manpower','equipment','finances','battleground','promotions','settings']
