@@ -12,6 +12,8 @@ function updateHTML() {
 
     if(data.currentTab === 0) {
         //Manpower
+        DOMCacheGetOrSet('enlistedDisplay').innerHTML = `Enlisted<br>Equipment: ${format(data.equipment[0])}<hr>`
+        DOMCacheGetOrSet('officerDisplay').innerHTML = `Officers<br>Medals: ${format(data.medals)}<hr>`
         for(let i = 0; i < 4; i++) {
             DOMCacheGetOrSet(`${rankNameIds[i]}Amt`).innerHTML = `${rankNameLong[i]}: ${format(data.enlisted[i])}`
             DOMCacheGetOrSet(`${rankNameIds[i]}Button`).innerHTML = `Enlist ${format(D(1))} ${rankNameShort[i]} | Cost: ${format(enlistCost[i])} Infantry Equipment`
