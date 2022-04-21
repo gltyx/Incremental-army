@@ -142,7 +142,7 @@ function battle() {
         if(data.approval.lt(D(0))) data.approval = D(0)
         data.funds = data.funds.sub(data.funds.times(moneyLossScales[data.difficultyIndex]))
         if(data.funds.lt(D(0))) data.funds = D(0)
-        creatAlert("Defeat!","You have been defeated by the enemy and lost " + format(battleRewards[1]) + "Approval and " + format(data.funds.times(moneyLossScales[data.difficultyIndex])) + " Funds","812626")
+        createAlert("Defeat!","You have been defeated by the enemy and lost " + format(battleRewards[1]) + "Approval and " + format(data.funds.times(moneyLossScales[data.difficultyIndex])) + " Funds","812626")
         generateEnemy()
     }
 }    
