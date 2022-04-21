@@ -8,11 +8,20 @@ function getDefaultObject() {
         funds: D(7.5e4),
         approval: D(50),
         lobbyLevel: D(0),
+        armyName: undefined,
+        currentEnemy: {
+            name: "",
+            enlisted: [D(0),D(0),D(0),D(0)],
+            officers: [D(0),D(0),D(0),D(0)],
+            equipment: [D(0),D(0),D(0),D(0)],
+        },
+        difficultyIndex: 0,
+        medals: D(0),
         time: Date.now(),
         currentTab: 1,
         currentSubTab: [0,0,0,0,0,0,0],
         currentElement: 0,
-        currentUpdate: 'v0.0.0',
+        currentUpdate: 'v0.0.2',
         devSpeed: 1,
     }
 }
@@ -25,7 +34,12 @@ function save(){
 function load() {
     let savedata = JSON.parse(window.localStorage.getItem(saveName))
     if(savedata === null || savedata === undefined) savedata = getDefaultObject()
-    if (savedata !== undefined) fixSave(data, savedata)
+    else if (savedata !== undefined) fixSave(data, savedata)
+    if(data.armyName === undefined)
+        nameArmy()
+    if(data.currentUpdate !== "v0.0.2")
+        createAlert("Welcome Back!","The current version is v0.0.2, View the Changelog for details","812626")
+    data.currentUpdate = "v0.0.2"
 }
 //fix saves
 function fixSave(main=getDefaultObject(), data) {

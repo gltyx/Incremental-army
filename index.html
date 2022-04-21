@@ -8,11 +8,19 @@
     <title>Incremental Army</title>
 </head>
 <body>
+    <div id="modalContainer">
+        <div id="alert">
+            <h3 id="alertTitle">Welcome back gamer!</h3>
+            <p id="alertContent">New things have been added since last time</p>
+            <button id="closeAlert" style="border: 2px solid;" onclick="closeModal()">Thanks!</button>
+            <br>
+        </div>
+    </div>
     <div id="navBar" class="flexBox" style="flex-direction: row;">
         <button style="margin: 0.25vw;" id="mB" onclick="changeTab(0)">Manpower</button>
         <button style="margin: 0.25vw;" id="eB" onclick="changeTab(1)">Equipment</button>
         <button style="margin: 0.25vw;" id="fB" onclick="changeTab(2)">Finances</button>
-        <button style="margin: 0.25vw;" id="bB" class="locked" >Battleground</button>
+        <button style="margin: 0.25vw;" id="bB" onclick="changeTab(3)" >Battleground</button>
         <button style="margin: 0.25vw;" id="pB" class="locked" >Promotions</button>
         <button style="margin: 0.25vw;" id="sB" onclick="changeTab(5)">Settings</button>
     </div>
@@ -101,6 +109,29 @@
         </div>
     </div>
     <div id="battlegroundArea" class="flexBox mainArea">
+        <div id="battleAlertText">You need at least 1 Pvt to Fight</div>
+        <div id="battlegroundStatsHolder" class="flexBox">
+            <div id="mainStats" style="display:flex; flex-direction:row;">
+                <div id="playerStats" style="margin-top:0.25vw; text-align: left;">Player</div>
+                <div style="margin-top:0.25vw; margin-left: 6vw; margin-right: 6vw;">Vs.</div>
+                <div id="enemyStats" style="margin-top:0.25vw; text-align: right;">Enemy</div>
+            </div>
+            <div id="armyStats" style="display:flex; flex-direction:row; margin-top: 1vh;">
+                <div id="playerArmy" style="margin-right:5vw; text-align: left;">Army</div>
+                <hr>
+                <div id="enemyArmy" style="margin-left:5vw; text-align: right;">Army</div>
+            </div>
+            <div id="bottomHolder" style="display:flex; flex-direction:row; margin-top: 1vh">
+                <div id="diffHolder" class="flexBox" style="margin-right:1vw">
+                    <div id="diffText" style="margin-top:0.25vw; text-align: left;">Current Difficulty: Novice</div>
+                    <button onclick="switchDifficulty()">Switch Difficulty</button>
+                </div>
+                <div id="battleButtons" class="flexBox" style="margin-left:1vw">
+                    <button id="battleButton" style="margin-top:0.25vw;" onclick="battle()">Begin the Battle</button>
+                    <div id="battleRewardText">Rewards: Medals: +0.00 | Approval: +0.00 | Morale +/-0.00</div>
+                </div>
+            </div>
+        </div>
     </div>
     <div id="promotionsArea" class="flexBox mainArea">
     </div>
@@ -110,14 +141,19 @@
             <button onclick="exportSave()">Export Save</button>
             <button onclick="importSave()">Import Save</button>
             <button id="delete" onclick="deleteSave()">Delete Save</button>
+            
+        </div>
+        <div style="margin-top:1vh;">
+            <button onclick="nameArmy()">Rename your Army</button>
         </div>
         <div style="margin-top:1vh;">
             <a href="https://discord.gg/JkQUnubuhx">Discord Invite!</a>
         </div>
         <div style="margin-top:1vh;">
             <h1>Changelog :O<hr></h1>
-            <h3>Current Version: v0.0.1</h3>
+            <h3>Current Version: v0.0.2</h3>
             <h3>Beta Versions</h3>
+            <p>v0.0.2 - Added Battleground</p>
             <p>v0.0.1 - Everything that isn't locked can be used.</p>
             <p>v0.0.0 - All pre beta test release stuff</p>
         </div>
@@ -134,4 +170,5 @@
     <script src="JS/Manpower.js"></script>
     <script src="JS/Equipment.js"></script>
     <script src="JS/Finances.js"></script>
+    <script src="JS/Battleground.js"></script>
 </html>

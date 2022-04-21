@@ -7,6 +7,7 @@
     --manpower-color: #294e3e;
     --equipment-color: #2f357f;
     --finance-color: #349348;
+    --battleground-color: #935534;
 }
 /*Globals*/
 * {
@@ -25,6 +26,7 @@ button:hover {
     border-color: whitesmoke;
     background-color: whitesmoke;
     color: #202020;
+    cursor: pointer;
 }
 
 hr {
@@ -54,7 +56,7 @@ hr {
 .unlocked {color: #268135;border-color: #268135;}
 .unlocked:hover {color:#202020;background-color: #268135;border-color: #268135;}
 .locked {color: #812626;border-color: #812626;}
-.locked:hover {color:#202020;background-color: #812626;border-color: #812626;}
+.locked:hover {color:#202020;background-color: #812626;border-color: #812626;cursor: not-allowed;}
 
 /*IDs*/
 
@@ -76,6 +78,25 @@ hr {
     white-space: nowrap;
     font-weight: bold;
 }
+
+#modalContainer {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 6969;
+    padding: 5px;
+    border: 4px solid #812626;
+}
+
+#alert {
+    height: 100%;
+    display: none;
+    align-content: center;
+    text-align: center;
+}
+
 #delete {color:#812626; border-color: #812626;}
 #delete:hover{color: #202020; background-color: #812626;}
 #mB {color: var(--manpower-color); border-color: var(--manpower-color);}
@@ -84,3 +105,8 @@ hr {
 #eB:hover {color: #202020; background-color: var(--equipment-color);}
 #fB {color: var(--finance-color); border-color: var(--finance-color);}
 #fB:hover {color: #202020; background-color: var(--finance-color);}
+#bB {color: var(--battleground-color); border-color: var(--battleground-color);}
+#bB:hover {color: #202020; background-color: var(--battleground-color);}
+
+#playerStats {color:#4a53db}
+#enemyStats {color:#db4a4a}
