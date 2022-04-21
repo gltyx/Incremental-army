@@ -23,8 +23,8 @@ function buyMP(a,b) {
             }
             break
         case 1:
-            if(data.funds.gte(officerCost[a])) {
-                data.funds = data.funds.sub(officerCost[a])
+            if(data.medals.gte(officerCost[a])) {
+                data.medals = data.medals.sub(officerCost[a])
                 data.officers[a] = data.officers[a].add(D(1))
             }
             break
