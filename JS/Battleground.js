@@ -21,6 +21,10 @@ function updateBattleground() {
     for(let i = 0; i < 2; i++) {
         battleRewards[i] = Decimal.round(battleRewardBases[i].times(diffRewardScales[data.difficultyIndex]))
     }
+    if(data.promotionUpgrades[4])
+        battleRewards[0] = Decimal.round(battleRewards[0].times(2.0))
+    if(data.promotionUpgrades[9])
+        battleRewards[0] = Decimal.round(battleRewards[0].times(4.0))
     for(let i = 0; i < 3; i++) {
         if(i === 2)
             equipmentBoosts[i] = D(1).plus(Decimal.sqrt(Decimal.sqrt(data.equipment[i+1])))

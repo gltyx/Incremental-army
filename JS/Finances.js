@@ -4,6 +4,10 @@ let fundsToRecieve = D(0)
 
 function updateFinances() {
     fundBase = data.lobbyLevel.gt(0) ? D(1e3).times(data.lobbyLevel.times(2)) : D(1e3)
+    if(data.promotionUpgrades[7])
+        fundBase = fundBase.times(D(5.0))
+    if(data.promotionUpgrades[11])
+        fundBase = fundBase.times(D(10.0))
     if(data.approval.gte(50)) {
         fundsToRecieve = fundBase.times(Decimal.pow(1.5,D(1).plus(data.approval.div(100))))
     } 
@@ -30,7 +34,12 @@ function specialItem(a) {
         case 1:
             if(data.approval.gt(0)) return
             data.approval = D(50)
-            data.funds = data.funds.sub(data.funds.times(.75))
+            if(!data.promotionUpgrades[1] && !data.promotionUpgrades[6])
+                data.funds = data.funds.sub(data.funds.times(.75))
+            else if(data.promotionUpgrades[1] && !data.promotionUpgrades[6])
+                data.funds = data.funds.sub(data.funds.times(.5))
+            else if((!data.promotionUpgrades[1] && data.promotionUpgrades[6]) || (data.promotionUpgrades[1] && data.promotionUpgrades[6]))
+                data.funds = data.funds.sub(data.funds.times(.25))
             break
 
     }
