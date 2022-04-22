@@ -36,42 +36,50 @@
             <img style="border: 2px solid var(--manpower-color);" src="Imgs/PVT.png">
             <div id="pvtAmt" style="color:var(--manpower-color);margin-left: .5vw;">Private: 0.00</div>
             <button id="pvtButton" style="margin-left: .5vw;" onclick="buyMP(0,0)">Enlist 1 PVT | Cost: 1.00 Infantry Equipment</button>
+            <button id="auto0" style="margin-left: .5vw;" class="off">Automator: OFF</button>
         </div>
         <div class="currencyHolder">
             <img style="border: 2px solid var(--manpower-color);" src="Imgs/CPL.png">
             <div id="cplAmt" style="color:var(--manpower-color);margin-left: .5vw;">Corporal: 0.00</div>
             <button id="cplButton" style="margin-left: .5vw;" onclick="buyMP(1,0)">Enlist 1 CPL | Cost: 2.00 Infantry Equipment</button>
+            <button id="auto1" style="margin-left: .5vw;" class="off">Automator: OFF</button>
         </div>
         <div class="currencyHolder">
             <img style="border: 2px solid var(--manpower-color);" src="Imgs/SGT.png">
             <div id="sgtAmt" style="color:var(--manpower-color);margin-left: .5vw;">Sergeant: 0.00</div>
             <button id="sgtButton" style="margin-left: .5vw;" onclick="buyMP(2,0)">Enlist 1 SGT | Cost: 3.00 Infantry Equipment</button>
+            <button id="auto2" style="margin-left: .5vw;" class="off">Automator: OFF</button>
         </div>
         <div class="currencyHolder">
             <img style="border: 2px solid var(--manpower-color);" src="Imgs/SSGT.png">
             <div id="ssgtAmt" style="color:var(--manpower-color);margin-left: .5vw;">Staff Sergeant: 0.00</div>
             <button id="ssgtButton" style="margin-left: .5vw;" onclick="buyMP(3,0)">Enlist 1 SSGT | Cost: 4.00 Infantry Equipment</button>
+            <button id="auto3" style="margin-left: .5vw;" class="off">Automator: OFF</button>
         </div>
         <h3 id="officerDisplay" style="text-align:center">Officers<br>Medals: 0.00<hr></h3>
         <div class="currencyHolder">
             <img style="border: 2px solid var(--manpower-color);" src="Imgs/LT2.png">
             <div id="2ltAmt" style="color:var(--manpower-color);margin-left: .5vw;">2nd Lieutenant: 0.00</div>
             <button id="2ltButton" style="margin-left: .5vw;">Hire 1 2nd LT | Cost: 1.00 Medal</button>
+            <button id="auto9" style="margin-left: .5vw;" class="off">Automator: OFF</button>
         </div>
         <div class="currencyHolder">
             <img style="border: 2px solid var(--manpower-color);" src="Imgs/LT1.png">
             <div id="1ltAmt" style="color:var(--manpower-color);margin-left: .5vw;">1st Lieutenant: 0.00</div>
             <button id="1ltButton" style="margin-left: .5vw;">Hire 1 1st LT | Cost: 2.00 Medals</button>
+            <button id="auto10" style="margin-left: .5vw;" class="off">Automator: OFF</button>
         </div>
         <div class="currencyHolder">
             <img style="border: 2px solid var(--manpower-color);" src="Imgs/CPT.png">
             <div id="cptAmt" style="color:var(--manpower-color);margin-left: .5vw;">Captain: 0.00</div>
             <button id="cptButton" style="margin-left: .5vw;">Hire 1 CPT | Cost: 5.00 Medals</button>
+            <button id="auto11" style="margin-left: .5vw;" class="off">Automator: OFF</button>
         </div> 
         <div class="currencyHolder">
             <img style="border: 2px solid var(--manpower-color);" src="Imgs/MAJ.png">
             <div id="majAmt" style="color:var(--manpower-color);margin-left: .5vw;">Major: 0.00</div>
             <button id="majButton" style="margin-left: .5vw;">Hire 1 MAJ | Cost: 10.00 Medals</button>
+            <button id="auto12" style="margin-left: .5vw;" class="off">Automator: OFF</button>
         </div>
 
     </div>
@@ -81,21 +89,25 @@
             <img style="border: 2px solid var(--equipment-color);" src="Imgs/Ammo.png">
             <div id="ieAmt" style="color:var(--equipment-color);margin-left: .5vw;">Infantry Equipment: 0.00</div>
             <button id="ieButton" style="margin-left: .5vw;" onclick="buyEquip(0)">Fabricate 1.00 Infantry Equipment | Cost: $15,000.00</button>
+            <button id="auto4" style="margin-left: .5vw;" class="off">Automator: OFF</button>
         </div>
         <div class="currencyHolder">
             <img style="border: 2px solid var(--equipment-color);" src="Imgs/AT.png">
             <div id="atAmt" style="color:var(--equipment-color);margin-left: .5vw;">Anti-Tank Guns: 0.00</div>
             <button id="atButton" style="margin-left: .5vw;" onclick="buyEquip(1)">Fabricate 1.00 Anti-Tank Gun | Cost: $178,000.00</button>
+            <button id="auto5" style="margin-left: .5vw;" class="off">Automator: OFF</button>
         </div>
         <div class="currencyHolder">
             <img style="border: 2px solid var(--equipment-color);" src="Imgs/ART.png">
             <div id="artAmt" style="color:var(--equipment-color);margin-left: .5vw;">Artillery Guns: 0.00</div>
             <button id="artButton" style="margin-left: .5vw;" onclick="buyEquip(2)">Fabricate 1.00 Artillery Gun | Cost: $500,000.00</button>
+            <button id="auto6" style="margin-left: .5vw;" class="off">Automator: OFF</button>
         </div>
         <div class="currencyHolder">
             <img style="border: 2px solid var(--equipment-color);" src="Imgs/TRANSPORT.png">
             <div id="transportAmt" style="color:var(--equipment-color);margin-left: .5vw;">Transports: 0.00</div>
             <button id="transportButton" style="margin-left: .5vw;" onclick="buyEquip(3)">Fabricate 1.00 Transport | Cost: $220,000.00</button>
+            <button id="auto7" style="margin-left: .5vw;" class="off">Automator: OFF</button>
         </div>
     </div>
     <div id="financesArea" class="flexBox mainArea">
@@ -107,6 +119,10 @@
         <div style="flex-direction:row;margin-top:inherit;">
             <button onclick="specialItem(0)" id="lobbyButton">Lobby The Government<br>[Locked]</button>
             <button onclick="specialItem(1)" id="propButton">Release Propaganda<br>[Locked]</button>
+        </div>
+        <div style="flex-direction: row;margin-top:inherit">
+            <button id="auto8" style="margin-left: .5vw;" class="off">Automator: OFF</button>
+            <button id="auto13" style="margin-left: .5vw;" class="off">Automator: OFF</button>
         </div>
     </div>
     <div id="battlegroundArea" class="flexBox mainArea">

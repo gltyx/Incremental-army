@@ -60,7 +60,10 @@ hr {
 .locked:hover {color:#202020;background-color: #812626;border-color: #812626;cursor: not-allowed;}
 .maxed {color: #34a3b1;border-color: #34a3b1;}
 .maxed:hover {color:#202020;background-color: #34a3b1;border-color: #34a3b1;cursor: not-allowed;}
-
+.on {color: #268135;border-color: #268135;}
+.on:hover {color:#202020;background-color: #268135;border-color: #268135;}
+.off {color: #812626;border-color: #812626;}
+.off:hover {color:#202020;background-color: #812626;border-color: #812626;}
 /*IDs*/
 
 #newsHolder {
