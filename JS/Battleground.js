@@ -19,7 +19,7 @@ function updateBattleground() {
     attackTotal[0] = D(0)
     attackTotal[1] = D(0)
     for(let i = 0; i < 2; i++) {
-        battleRewards[i] = battleRewardBases[i].times(diffRewardScales[data.difficultyIndex])
+        battleRewards[i] = Decimal.round(battleRewardBases[i].times(diffRewardScales[data.difficultyIndex]))
     }
     for(let i = 0; i < 3; i++) {
         if(i === 2)
@@ -94,11 +94,11 @@ function switchDifficulty() {
 
 function battle() {
     //Round 1 
+    const mpTotals = manpowerTotal
+    const atkTotals = attackTotal
     for(let i = 0; i < 4; i++) {
         const enlistedChecks = [(data.enlisted[i].times(equipmentBoosts[2])).sub(enemyEquipmentBoosts[1]),(data.currentEnemy.enlisted[i].times(enemyEquipmentBoosts[2])).sub(equipmentBoosts[1])]
         const officerChecks = [(data.officers[i].times(equipmentBoosts[2])).sub(enemyEquipmentBoosts[1]),(data.currentEnemy.officers[i].times(enemyEquipmentBoosts[2])).sub(equipmentBoosts[1])]
-        const mpTotals = manpowerTotal
-        const atkTotals = attackTotal
 
         if(enlistedChecks[0].gt(enlistedChecks[1])) {
             data.enlisted[i] = data.enlisted[i].sub(data.currentEnemy.enlisted[i])
