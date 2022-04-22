@@ -42,6 +42,7 @@ function purchasePromotionUpgrade(i) {
     data.medals = data.medals.sub(promotionCosts[i])
     data.promotionUpgrades[i] = true
     updatePromotionButtons()
+    updateAutomators()
 }
 
 function toggleAutomators(i) {
