@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="CSS/Styling.css">
+    <link rel="icon" type="image/png" href="Imgs/PVT.png">
     <title>Incremental Army</title>
 </head>
 <body>
@@ -20,8 +21,8 @@
         <button style="margin: 0.25vw;" id="mB" onclick="changeTab(0)">Manpower</button>
         <button style="margin: 0.25vw;" id="eB" onclick="changeTab(1)">Equipment</button>
         <button style="margin: 0.25vw;" id="fB" onclick="changeTab(2)">Finances</button>
-        <button style="margin: 0.25vw;" id="bB" onclick="changeTab(3)" >Battleground</button>
-        <button style="margin: 0.25vw;" id="pB" class="locked" >Promotions</button>
+        <button style="margin: 0.25vw;" id="bB" onclick="changeTab(3)">Battleground</button>
+        <button style="margin: 0.25vw;" id="pB" onclick="changeTab(4)">Promotions</button>
         <button style="margin: 0.25vw;" id="sB" onclick="changeTab(5)">Settings</button>
     </div>
     <div id="newsHolder">
@@ -30,47 +31,55 @@
         </div>
     </div>
     <div id="manpowerArea" class="flexBox mainArea">
-        <h3>Enlisted<hr></h3>
+        <h3 id="enlistedDisplay" style="text-align:center">Enlisted<br>Infantry Equipment: 0.00<hr></h3>
         <div class="currencyHolder">
             <img style="border: 2px solid var(--manpower-color);" src="Imgs/PVT.png">
             <div id="pvtAmt" style="color:var(--manpower-color);margin-left: .5vw;">Private: 0.00</div>
             <button id="pvtButton" style="margin-left: .5vw;" onclick="buyMP(0,0)">Enlist 1 PVT | Cost: 1.00 Infantry Equipment</button>
+            <button id="auto0" style="margin-left: .5vw;" class="off">Automator: OFF</button>
         </div>
         <div class="currencyHolder">
             <img style="border: 2px solid var(--manpower-color);" src="Imgs/CPL.png">
             <div id="cplAmt" style="color:var(--manpower-color);margin-left: .5vw;">Corporal: 0.00</div>
             <button id="cplButton" style="margin-left: .5vw;" onclick="buyMP(1,0)">Enlist 1 CPL | Cost: 2.00 Infantry Equipment</button>
+            <button id="auto1" style="margin-left: .5vw;" class="off">Automator: OFF</button>
         </div>
         <div class="currencyHolder">
             <img style="border: 2px solid var(--manpower-color);" src="Imgs/SGT.png">
             <div id="sgtAmt" style="color:var(--manpower-color);margin-left: .5vw;">Sergeant: 0.00</div>
             <button id="sgtButton" style="margin-left: .5vw;" onclick="buyMP(2,0)">Enlist 1 SGT | Cost: 3.00 Infantry Equipment</button>
+            <button id="auto2" style="margin-left: .5vw;" class="off">Automator: OFF</button>
         </div>
         <div class="currencyHolder">
             <img style="border: 2px solid var(--manpower-color);" src="Imgs/SSGT.png">
             <div id="ssgtAmt" style="color:var(--manpower-color);margin-left: .5vw;">Staff Sergeant: 0.00</div>
             <button id="ssgtButton" style="margin-left: .5vw;" onclick="buyMP(3,0)">Enlist 1 SSGT | Cost: 4.00 Infantry Equipment</button>
+            <button id="auto3" style="margin-left: .5vw;" class="off">Automator: OFF</button>
         </div>
-        <h3>Officers<hr></h3>
+        <h3 id="officerDisplay" style="text-align:center">Officers<br>Medals: 0.00<hr></h3>
         <div class="currencyHolder">
             <img style="border: 2px solid var(--manpower-color);" src="Imgs/LT2.png">
             <div id="2ltAmt" style="color:var(--manpower-color);margin-left: .5vw;">2nd Lieutenant: 0.00</div>
             <button id="2ltButton" style="margin-left: .5vw;">Hire 1 2nd LT | Cost: 1.00 Medal</button>
+            <button id="auto9" style="margin-left: .5vw;" class="off">Automator: OFF</button>
         </div>
         <div class="currencyHolder">
             <img style="border: 2px solid var(--manpower-color);" src="Imgs/LT1.png">
             <div id="1ltAmt" style="color:var(--manpower-color);margin-left: .5vw;">1st Lieutenant: 0.00</div>
             <button id="1ltButton" style="margin-left: .5vw;">Hire 1 1st LT | Cost: 2.00 Medals</button>
+            <button id="auto10" style="margin-left: .5vw;" class="off">Automator: OFF</button>
         </div>
         <div class="currencyHolder">
             <img style="border: 2px solid var(--manpower-color);" src="Imgs/CPT.png">
             <div id="cptAmt" style="color:var(--manpower-color);margin-left: .5vw;">Captain: 0.00</div>
             <button id="cptButton" style="margin-left: .5vw;">Hire 1 CPT | Cost: 5.00 Medals</button>
+            <button id="auto11" style="margin-left: .5vw;" class="off">Automator: OFF</button>
         </div> 
         <div class="currencyHolder">
             <img style="border: 2px solid var(--manpower-color);" src="Imgs/MAJ.png">
             <div id="majAmt" style="color:var(--manpower-color);margin-left: .5vw;">Major: 0.00</div>
             <button id="majButton" style="margin-left: .5vw;">Hire 1 MAJ | Cost: 10.00 Medals</button>
+            <button id="auto12" style="margin-left: .5vw;" class="off">Automator: OFF</button>
         </div>
 
     </div>
@@ -80,21 +89,25 @@
             <img style="border: 2px solid var(--equipment-color);" src="Imgs/Ammo.png">
             <div id="ieAmt" style="color:var(--equipment-color);margin-left: .5vw;">Infantry Equipment: 0.00</div>
             <button id="ieButton" style="margin-left: .5vw;" onclick="buyEquip(0)">Fabricate 1.00 Infantry Equipment | Cost: $15,000.00</button>
+            <button id="auto4" style="margin-left: .5vw;" class="off">Automator: OFF</button>
         </div>
         <div class="currencyHolder">
             <img style="border: 2px solid var(--equipment-color);" src="Imgs/AT.png">
             <div id="atAmt" style="color:var(--equipment-color);margin-left: .5vw;">Anti-Tank Guns: 0.00</div>
             <button id="atButton" style="margin-left: .5vw;" onclick="buyEquip(1)">Fabricate 1.00 Anti-Tank Gun | Cost: $178,000.00</button>
+            <button id="auto5" style="margin-left: .5vw;" class="off">Automator: OFF</button>
         </div>
         <div class="currencyHolder">
             <img style="border: 2px solid var(--equipment-color);" src="Imgs/ART.png">
             <div id="artAmt" style="color:var(--equipment-color);margin-left: .5vw;">Artillery Guns: 0.00</div>
             <button id="artButton" style="margin-left: .5vw;" onclick="buyEquip(2)">Fabricate 1.00 Artillery Gun | Cost: $500,000.00</button>
+            <button id="auto6" style="margin-left: .5vw;" class="off">Automator: OFF</button>
         </div>
         <div class="currencyHolder">
             <img style="border: 2px solid var(--equipment-color);" src="Imgs/TRANSPORT.png">
             <div id="transportAmt" style="color:var(--equipment-color);margin-left: .5vw;">Transports: 0.00</div>
             <button id="transportButton" style="margin-left: .5vw;" onclick="buyEquip(3)">Fabricate 1.00 Transport | Cost: $220,000.00</button>
+            <button id="auto7" style="margin-left: .5vw;" class="off">Automator: OFF</button>
         </div>
     </div>
     <div id="financesArea" class="flexBox mainArea">
@@ -107,13 +120,23 @@
             <button onclick="specialItem(0)" id="lobbyButton">Lobby The Government<br>[Locked]</button>
             <button onclick="specialItem(1)" id="propButton">Release Propaganda<br>[Locked]</button>
         </div>
+        <div style="flex-direction: row;margin-top:inherit">
+            <button id="auto8" class="off">Automator: OFF</button>
+            
+        </div>
+        <div id="acquireAutoHolder" class="flexBox" style="margin-top:inherit">
+            <button id="auto13" style="margin-bottom: 1vh" class="off">Automator: OFF</button>
+            <input id="acquireInput" type="number" min="0" max="100" style="border: 2px solid whitesmoke;margin-bottom: 1vh;">
+            <div id="inputText">Input Minimum Req to Acquire Funds (Current: 0)</div>
+        </div>
+        
     </div>
     <div id="battlegroundArea" class="flexBox mainArea">
         <div id="battleAlertText">You need at least 1 Pvt to Fight</div>
         <div id="battlegroundStatsHolder" class="flexBox">
             <div id="mainStats" style="display:flex; flex-direction:row;">
                 <div id="playerStats" style="margin-top:0.25vw; text-align: left;">Player</div>
-                <div style="margin-top:0.25vw; margin-left: 6vw; margin-right: 6vw;">Vs.</div>
+                <div id="tiebreakText" style="margin-top:0.25vw; margin-left: 6vw; margin-right: 6vw;text-align: center;">Vs.<br>Current Tiebreaker status</div>
                 <div id="enemyStats" style="margin-top:0.25vw; text-align: right;">Enemy</div>
             </div>
             <div id="armyStats" style="display:flex; flex-direction:row; margin-top: 1vh;">
@@ -125,6 +148,7 @@
                 <div id="diffHolder" class="flexBox" style="margin-right:1vw">
                     <div id="diffText" style="margin-top:0.25vw; text-align: left;">Current Difficulty: Novice</div>
                     <button onclick="switchDifficulty()">Switch Difficulty</button>
+                    <div style="color:#812626">!Warning this will generate a new enemy!<br>Which scales based on your current stats</div>
                 </div>
                 <div id="battleButtons" class="flexBox" style="margin-left:1vw">
                     <button id="battleButton" style="margin-top:0.25vw;" onclick="battle()">Begin the Battle</button>
@@ -134,6 +158,50 @@
         </div>
     </div>
     <div id="promotionsArea" class="flexBox mainArea">
+        <div id="progressBarHolder" class="currencyHolder">
+            <img id="currentRankImg" src="Imgs/colonel.svg" style="height:32px;width:32px;">
+            <div id="promotionProgressText" style="margin-left:1vw;margin-right:1vw;">Colonel ==Progress to promotion: 0.00% (0/1e3 Medals)=> Bridgadier General</div>
+            <img id="nextRankImg" src="Imgs/brigadier_general.svg" style="height:32px;width:32px;">
+        </div>
+        <div id="dualPromotionText">Medals: 0.00</div>
+        <div class="flexBox" style="flex-direction:row;">
+            <h3 id="promotionUpAlert">Must be promoted once to Unlock Upgrades</h3>
+            <div id="oneUp" class="flexBox" style="margin:1vh">
+                <h4>One Star Upgrades</h3>
+                    <button id="pr0" style="margin-bottom:1vh;">Automated Enlistment<br>Cost: 100 Medals</button>
+                    <button id="pr1" style="margin-bottom:1vh;">Automated Fabrication<br>Cost: 500 Medals</button>
+                    <button id="pr2">Automated Enlistment<br>Cost: 100 Medals</button>
+            </div> 
+            <br>
+            <div id="twoUp" class="flexBox" style="margin:1vh">
+                <h4>Two Star Upgrades</h4>
+                    <button id="pr3" style="margin-bottom:1vh;">Automated Enlistment<br>Cost: 100 Medals</button>
+                    <button id="pr4" style="margin-bottom:1vh;">Automated Fabrication<br>Cost: 500 Medals</button>
+                    <button id="pr5">Automated Enlistment<br>Cost: 100 Medals</button>
+            </div> 
+            <br>
+            <div id="thrUp" class="flexBox" style="margin:1vh">
+                <h4>Three Star Upgrades</h4>
+                    <button id="pr6" style="margin-bottom:1vh;">Automated Enlistment<br>Cost: 100 Medals</button>
+                    <button id="pr7" style="margin-bottom:1vh;">Automated Fabrication<br>Cost: 500 Medals</button>
+                    <button id="pr8">Automated Enlistment<br>Cost: 100 Medals</button>
+            </div> 
+            <br>
+            <div id="forUp" class="flexBox" style="margin:1vh">
+                <h4>Four Star Upgrades</h4>
+                    <button id="pr9" style="margin-bottom:1vh;">Automated Enlistment<br>Cost: 100 Medals</button>
+                    <button id="pr10" style="margin-bottom:1vh;">Automated Fabrication<br>Cost: 500 Medals</button>
+                    <button id="pr11">Automated Enlistment<br>Cost: 100 Medals</button>
+            </div> 
+            <br>
+            <div id="fivUp" class="flexBox" style="margin:1vh">
+                <h4>Five Star Upgrades</h4>
+                    <button id="pr12" style="margin-bottom:1vh;">Automated Enlistment<br>Cost: 100 Medals</button>
+                    <button id="pr13" style="margin-bottom:1vh;">Automated Fabrication<br>Cost: 500 Medals</button>
+                    <button id="pr14">Automated Enlistment<br>Cost: 100 Medals</button>
+            </div> 
+        </div>
+        <button id="promotionButton" onclick="promote()">Promote</button>
     </div>
     <div id="settingsArea" class="flexBox mainArea">
         <div>
@@ -151,8 +219,9 @@
         </div>
         <div style="margin-top:1vh;">
             <h1>Changelog :O<hr></h1>
-            <h3>Current Version: v0.0.2</h3>
+            <h3>Current Version: v0.0.3</h3>
             <h3>Beta Versions</h3>
+            <p>v0.0.3 - Added Promotions System, Automation, 12/15 Promotion Upgrades</p>
             <p>v0.0.2 - Added Battleground</p>
             <p>v0.0.1 - Everything that isn't locked can be used.</p>
             <p>v0.0.0 - All pre beta test release stuff</p>
@@ -171,4 +240,5 @@
     <script src="JS/Equipment.js"></script>
     <script src="JS/Finances.js"></script>
     <script src="JS/Battleground.js"></script>
+    <script src="JS/Promotions.js"></script>
 </html>

@@ -8,7 +8,7 @@ let officerBoost = [D(0),D(0),D(0),D(0)]
 
 function updateMP() {
     for(let i = 0; i < 4; i++) {
-        enlistCost[i] = enlistBase[i].times(Decimal.pow(1.25,data.enlisted[i]))
+        enlistCost[i] = data.promotionUpgrades[10] ? enlistBase[i].times(Decimal.pow(1.15,data.enlisted[i]))  : enlistBase[i].times(Decimal.pow(1.25,data.enlisted[i]))
         officerCost[i] = officerBase[i].times(Decimal.pow(1.35,data.officers[i]))
         officerBoost[i] = D(1).plus(Decimal.sqrt(data.officers[i]))
     }
@@ -23,10 +23,11 @@ function buyMP(a,b) {
             }
             break
         case 1:
-            if(data.funds.gte(officerCost[a])) {
-                data.funds = data.funds.sub(officerCost[a])
+            if(data.medals.gte(officerCost[a])) {
+                data.medals = data.medals.sub(officerCost[a])
                 data.officers[a] = data.officers[a].add(D(1))
             }
             break
     }
+    updateMP()
 }

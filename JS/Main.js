@@ -19,7 +19,7 @@ function nameArmy() {
 
 function changeTab(a) {
     data.currentTab = a;
-    if(a === 3 && data.currentEnemy.name === "" && data.enlisted[0].gte(D(1))) 
+    if(a === 3 && (data.currentEnemy.name === "" && data.enlisted[0].gte(D(1))) || (attackTotal[1].eq(0) && data.enlisted[0].gte(D(1)))) 
         generateEnemy()
     tabChangeHTML()
 }
@@ -30,6 +30,7 @@ function mainLoop() {
     updateMP()
     updateFinances()
     updateBattleground()
+    runAutomators()
     updateHTML()
 }
 

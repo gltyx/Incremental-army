@@ -12,6 +12,8 @@ function updateHTML() {
 
     if(data.currentTab === 0) {
         //Manpower
+        DOMCacheGetOrSet('enlistedDisplay').innerHTML = `Enlisted<br>Equipment: ${format(data.equipment[0])}<hr>`
+        DOMCacheGetOrSet('officerDisplay').innerHTML = `Officers<br>Medals: ${format(data.medals)}<hr>`
         for(let i = 0; i < 4; i++) {
             DOMCacheGetOrSet(`${rankNameIds[i]}Amt`).innerHTML = `${rankNameLong[i]}: ${format(data.enlisted[i])}`
             DOMCacheGetOrSet(`${rankNameIds[i]}Button`).innerHTML = `Enlist ${format(D(1))} ${rankNameShort[i]} | Cost: ${format(enlistCost[i])} Infantry Equipment`
@@ -19,7 +21,7 @@ function updateHTML() {
             
             DOMCacheGetOrSet(`${rankNameIds[i+4]}Amt`).innerHTML = `${rankNameLong[i+4]}: ${format(data.officers[i])} | ${format(officerBoost[i])}x to ${rankNameShort[i]} Attack`
             DOMCacheGetOrSet(`${rankNameIds[i+4]}Button`).innerHTML = officerCost[i].gt(1) ? `Hire ${format(D(1))} ${rankNameShort[i+4]} | Cost: ${format(officerCost[i])} Medals` : `Hire ${format(D(1))} ${rankNameShort[i+4]} | Cost: ${format(officerCost[i])} Medal`
-            DOMCacheGetOrSet(`${rankNameIds[i+4]}Button`).className = 'locked'
+            DOMCacheGetOrSet(`${rankNameIds[i+4]}Button`).className = data.medals.gte(officerCost[i]) ? 'unlocked' : 'locked'
         }
     }
     else if(data.currentTab === 1) {
@@ -41,6 +43,12 @@ function updateHTML() {
         DOMCacheGetOrSet('lobbyButton').className = data.approval.eq(100) ? 'unlocked' : 'locked'
         DOMCacheGetOrSet('propButton').innerHTML = data.approval.eq(0) ? `Release Propaganda<br>[Approval set to 50.00 | -$${format(data.funds.times(.75))}]` : `Release Propaganda<br>[Locked - Req: 0.00/100.00 Approval]`
         DOMCacheGetOrSet('propButton').className = data.approval.eq(0) ? 'unlocked' : 'locked'
+        if(!data.promotionUpgrades[1] && !data.promotionUpgrades[6])
+            DOMCacheGetOrSet('propButton').innerHTML = data.approval.eq(0) ? `Release Propaganda<br>[Approval set to 50.00 | -$${format(data.funds.times(.75))}]` : `Release Propaganda<br>[Locked - Req: 0.00/100.00 Approval]`
+        else if(data.promotionUpgrades[1] && !data.promotionUpgrades[6])
+            DOMCacheGetOrSet('propButton').innerHTML = data.approval.eq(0) ? `Release Propaganda<br>[Approval set to 50.00 | -$${format(data.funds.times(.5))}]` : `Release Propaganda<br>[Locked - Req: 0.00/100.00 Approval]`
+        else if((!data.promotionUpgrades[1] && data.promotionUpgrades[6]) || (data.promotionUpgrades[1] && data.promotionUpgrades[6]))
+            DOMCacheGetOrSet('propButton').innerHTML = data.approval.eq(0) ? `Release Propaganda<br>[Approval set to 50.00 | -$${format(data.funds.times(.25))}]` : `Release Propaganda<br>[Locked - Req: 0.00/100.00 Approval]`
     }
     else if(data.currentTab === 3) {
         //Battleground
@@ -60,6 +68,27 @@ function updateHTML() {
             DOMCacheGetOrSet('diffText').innerHTML = `Current Difficulty: ${difficultyNames[data.difficultyIndex]}`
             DOMCacheGetOrSet('battleRewardText').innerHTML = `Rewards: +${format(battleRewards[0])} Medals | +/-${format(battleRewards[1])} Approval | Loss Only: -$${format(data.funds.times(moneyLossScales[data.difficultyIndex]))}`
         }
+    }
+    else if(data.currentTab === 4) {
+        DOMCacheGetOrSet('promotionProgressText').innerHTML = data.level < 5 ? `${levelNameList[data.level]} ==Progress to Promotion: ${format(Decimal.divide(data.medals,promotionReqs[data.level]).times(100))}% (${format(data.medals)}/${format(promotionReqs[data.level])})=> ${levelNameList[data.level+1]}` : `General of the Army`
+        if(DOMCacheGetOrSet('currentRankImg').getAttribute('src') !== levelImgSrcs[data.level]) 
+            DOMCacheGetOrSet('currentRankImg').src = levelImgSrcs[data.level]
+        if((DOMCacheGetOrSet('nextRankImg').getAttribute('src') !== levelImgSrcs[data.level+1] && data.level < 5) || (DOMCacheGetOrSet('nextRankImg').getAttribute('src') !== levelImgSrcs[5] && data.level >= 5))
+            DOMCacheGetOrSet('nextRankImg').src = data.level < 5 ? levelImgSrcs[data.level+1] : levelImgSrcs[5]
+        DOMCacheGetOrSet('dualPromotionText').innerHTML = `Current Rank: ${levelNameList[data.level]} | Medals: ${format(data.medals)}`
+        DOMCacheGetOrSet('promotionButton').style.display = data.level < 5 ? 'flex' : 'none'
+        DOMCacheGetOrSet('promotionButton').innerHTML =  `Promote to ${levelNameList[data.level+1]}`
+        if(data.level < 5)
+            DOMCacheGetOrSet('promotionButton').className = data.medals.lt(promotionReqs[data.level]) ? 'locked' : 'unlocked'
+        else
+            DOMCacheGetOrSet('promotionButton').className = 'maxed'
+        
+        DOMCacheGetOrSet('promotionUpAlert').style.display = data.level === 0 ? 'inline' : 'none'
+        DOMCacheGetOrSet('oneUp').style.display = data.level >= 1 ? 'flex' : 'none'
+        DOMCacheGetOrSet('twoUp').style.display = data.level >= 2 ? 'flex' : 'none'
+        DOMCacheGetOrSet('thrUp').style.display = data.level >= 3 ? 'flex' : 'none'
+        DOMCacheGetOrSet('forUp').style.display = data.level >= 4 ? 'flex' : 'none'
+        DOMCacheGetOrSet('fivUp').style.display = data.level >= 5 ? 'flex' : 'none'
     }
 }
 

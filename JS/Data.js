@@ -17,11 +17,15 @@ function getDefaultObject() {
         },
         difficultyIndex: 0,
         medals: D(0),
+        promotionUpgrades: [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
+        autoActive: [false,false,false,false,false,false,false,false,false,false,false,false,false,false],
+        acquireAutoReq: D(0),
+        level: 0,
         time: Date.now(),
         currentTab: 1,
         currentSubTab: [0,0,0,0,0,0,0],
         currentElement: 0,
-        currentUpdate: 'v0.0.2',
+        currentUpdate: 'v0.0.3',
         devSpeed: 1,
     }
 }
@@ -37,9 +41,11 @@ function load() {
     else if (savedata !== undefined) fixSave(data, savedata)
     if(data.armyName === undefined)
         nameArmy()
-    if(data.currentUpdate !== "v0.0.2")
-        createAlert("Welcome Back!","The current version is v0.0.2, View the Changelog for details","812626")
-    data.currentUpdate = "v0.0.2"
+    if(data.currentUpdate !== "v0.0.3")
+        createAlert("Welcome Back!","The current version is v0.0.3, View the Changelog for details","812626")
+    data.currentUpdate = "v0.0.3"
+    updatePromotionButtons()
+    updateAutomators()
 }
 //fix saves
 function fixSave(main=getDefaultObject(), data) {
