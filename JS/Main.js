@@ -69,11 +69,6 @@ function generateHoldEvents() {
 
     DOMCacheGetOrSet('acquireButton').addEventListener('touchstart',startHold(event,acquire()))
     DOMCacheGetOrSet('acquireButton').addEventListener('touchend',stopHold(event))
-
-    DOMCacheGetOrSet('lobbyButton').addEventListener('touchstart',startHold(event,specialItem(0)))
-    DOMCacheGetOrSet('lobbyButton').addEventListener('touchend',stopHold(event))
-    DOMCacheGetOrSet('propButton').addEventListener('touchstart',startHold(event,specialItem(1)))
-    DOMCacheGetOrSet('propButton').addEventListener('touchend',stopHold(event))
 }
 
 window.setInterval(function(){mainLoop()}, 50);
