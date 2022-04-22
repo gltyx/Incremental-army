@@ -26,7 +26,7 @@ function updateAutomators() {
         else if(i <= 12)
             DOMCacheGetOrSet(`auto${i}`).style.display = data.promotionUpgrades[5]?"inline-block":"none"
         else if(i === 13)
-            DOMCacheGetOrSet(`acquireAutoHolder`).style.display = data.promotionUpgrades[8]?"flex":"flex"
+            DOMCacheGetOrSet(`acquireAutoHolder`).style.display = data.promotionUpgrades[8]?"flex":"none"
     }
 }
 
