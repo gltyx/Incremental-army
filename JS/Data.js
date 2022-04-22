@@ -17,6 +17,7 @@ function getDefaultObject() {
         },
         difficultyIndex: 0,
         medals: D(0),
+        promotionUpgrades: [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
         level: D(0),
         time: Date.now(),
         currentTab: 1,

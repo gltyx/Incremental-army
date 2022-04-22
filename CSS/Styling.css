@@ -58,6 +58,8 @@ hr {
 .unlocked:hover {color:#202020;background-color: #268135;border-color: #268135;}
 .locked {color: #812626;border-color: #812626;}
 .locked:hover {color:#202020;background-color: #812626;border-color: #812626;cursor: not-allowed;}
+.maxed {color: #34a3b1;border-color: #34a3b1;}
+.maxed:hover {color:#202020;background-color: #34a3b1;border-color: #34a3b1;cursor: not-allowed;}
 
 /*IDs*/
 
