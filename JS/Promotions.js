@@ -27,6 +27,8 @@ function updateAutomators() {
             DOMCacheGetOrSet(`auto${i}`).style.display = data.promotionUpgrades[5]?"inline-block":"none"
         else if(i === 13)
             DOMCacheGetOrSet(`acquireAutoHolder`).style.display = data.promotionUpgrades[8]?"flex":"none"
+        DOMCacheGetOrSet(`auto${i}`).className = data.autoActive[i]?"on":"off"
+        DOMCacheGetOrSet(`auto${i}`).innerHTML = data.autoActive[i]?"Automator: ON":"Automator: OFF"
     }
 }
 

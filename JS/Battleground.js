@@ -147,6 +147,7 @@ function battle() {
         if(data.approval.gt(100)) data.approval = D(100)
         createAlert("Victory!","You have defeated the enemy and earned " + format(battleRewards[0]) + " Medals and " + format(battleRewards[1]) + " Approval","268135")
         generateEnemy()
+        updatePromotionButtons()
     }
     else if(composite[0].lt(composite[1])) {
         data.approval = data.approval.sub(battleRewards[1])

@@ -44,6 +44,8 @@ function load() {
     if(data.currentUpdate !== "v0.0.3")
         createAlert("Welcome Back!","The current version is v0.0.3, View the Changelog for details","812626")
     data.currentUpdate = "v0.0.3"
+    updatePromotionButtons()
+    updateAutomators()
 }
 //fix saves
 function fixSave(main=getDefaultObject(), data) {
