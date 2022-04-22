@@ -15,6 +15,23 @@ function updatePromotionButtons() {
     }
 }
 
+function updateAutomators() {
+    for(let i = 0; i < 14; i++) {
+        if(i <= 3)
+            DOMCacheGetOrSet(`auto${i}`).style.display = data.promotionUpgrades[0]?"inline-block":"none"
+        else if(i <= 7)
+            DOMCacheGetOrSet(`auto${i}`).style.display = data.promotionUpgrades[2]?"inline-block":"none"
+        else if(i === 8)
+            DOMCacheGetOrSet(`auto${i}`).style.display = data.promotionUpgrades[3]?"inline-block":"none"
+        else if(i <= 12)
+            DOMCacheGetOrSet(`auto${i}`).style.display = data.promotionUpgrades[5]?"inline-block":"none"
+        else if(i === 13)
+            DOMCacheGetOrSet(`auto${i}`).style.display = data.promotionUpgrades[8]?"inline-block":"none"
+    }
+}
+
+updateAutomators()
+
 for(let i = 0; i < promotionDescs.length; i++) 
     DOMCacheGetOrSet(`pr${i}`).addEventListener("click",()=>{ purchasePromotionUpgrade(i) })
 
