@@ -79,6 +79,13 @@ function updateHTML() {
         DOMCacheGetOrSet('promotionButton').style.display = data.level.lt(5) ? 'flex' : 'none'
         DOMCacheGetOrSet('promotionButton').innerHTML =  `Promote to ${levelNameList[data.level.plus(1)]}`
         DOMCacheGetOrSet('promotionButton').className = data.medals.lt(promotionReqs[data.level]) ? 'locked' : 'unlocked'
+        
+        DOMCacheGetOrSet('promotionUpAlert').style.display = data.level.eq(0) ? 'inline' : 'none'
+        DOMCacheGetOrSet('oneUp').style.display = data.level.gte(1) ? 'flex' : 'none'
+        DOMCacheGetOrSet('twoUp').style.display = data.level.gte(2) ? 'flex' : 'none'
+        DOMCacheGetOrSet('thrUp').style.display = data.level.gte(3) ? 'flex' : 'none'
+        DOMCacheGetOrSet('forUp').style.display = data.level.gte(4) ? 'flex' : 'none'
+        DOMCacheGetOrSet('fivUp').style.display = data.level.gte(5) ? 'flex' : 'none'
     }
 }
 
