@@ -71,7 +71,8 @@ for(let i = 0; i < 14; i++) {
 }
 
 function promote() {
-    if(data.medals.lt(promotionReqs[data.level.add(1)]) || data.level.eq(5)) return
-    data.medals = data.medals.sub(promotionReqs[data.level.add(1)])
-    data.level = data.level.add(1)
+    if(data.medals.lt(promotionReqs[data.level]) || data.level === 5) return
+    
+    data.medals = data.medals.sub(promotionReqs[data.level])
+    data.level += 1
 }

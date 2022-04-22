@@ -20,7 +20,7 @@ function getDefaultObject() {
         promotionUpgrades: [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
         autoActive: [false,false,false,false,false,false,false,false,false,false,false,false,false,false],
         acquireAutoReq: D(0),
-        level: D(0),
+        level: 0,
         time: Date.now(),
         currentTab: 1,
         currentSubTab: [0,0,0,0,0,0,0],
