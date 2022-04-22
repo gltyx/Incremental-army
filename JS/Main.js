@@ -30,6 +30,7 @@ function mainLoop() {
     updateMP()
     updateFinances()
     updateBattleground()
+    runAutomators()
     updateHTML()
 }
 

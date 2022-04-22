@@ -26,8 +26,23 @@ function updateAutomators() {
         else if(i <= 12)
             DOMCacheGetOrSet(`auto${i}`).style.display = data.promotionUpgrades[5]?"inline-block":"none"
         else if(i === 13)
-            DOMCacheGetOrSet(`auto${i}`).style.display = data.promotionUpgrades[8]?"inline-block":"none"
+            DOMCacheGetOrSet(`acquireAutoHolder`).style.display = data.promotionUpgrades[8]?"flex":"flex"
     }
+}
+
+function runAutomators() {
+    if(DOMCacheGetOrSet('acquireInput').value > data.acquireAutoReq)
+        data.acquireAutoReq = D(DOMCacheGetOrSet('acquireInput').value)
+    DOMCacheGetOrSet('inputText').innerHTML = `Input Minimum Req to Acquire (Current: ${format(data.acquireAutoReq)})`
+    for(let i = 3; i > -1; i--)
+        if(data.autoActive[i]) buyMP(i,0)
+    for(let i = 3; i > -1; i--) 
+        if(data.autoActive[i + 4]) buyEquip(i)
+    if(data.autoActive[8] && data.approval.eq(0)) specialItem(1)
+    for(let i = 3; i > -1; i--)
+        if(data.autoActive[i + 9]) buyMP(i,1)
+    if(data.autoActive[13] && data.acquireAutoReq.lt(data.approval)) acquire()
+
 }
 
 updateAutomators()

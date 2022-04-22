@@ -29,4 +29,5 @@ function buyMP(a,b) {
             }
             break
     }
+    updateMP()
 }
