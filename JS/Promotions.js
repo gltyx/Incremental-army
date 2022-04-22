@@ -26,3 +26,13 @@ function purchasePromotionUpgrade(i) {
     data.promotionUpgrades[i] = true
     updatePromotionButtons()
 }
+
+function toggleAutomators(i) {
+    data.autoActive[i] = !data.autoActive[i]
+    DOMCacheGetOrSet(`auto${i}`).className = data.autoActive[i]?"on":"off"
+    DOMCacheGetOrSet(`auto${i}`).innerHTML = data.autoActive[i]?"Automator: ON":"Automator: OFF"
+}
+
+for(let i = 0; i < 14; i++) {
+    DOMCacheGetOrSet(`auto${i}`).addEventListener("click",()=>{ toggleAutomators(i) })
+}
