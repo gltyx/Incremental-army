@@ -23,8 +23,7 @@ function getDefaultObject() {
         level: 0,
         time: Date.now(),
         currentTab: 1,
-        currentSubTab: [0,0,0,0,0,0,0],
-        currentElement: 0,
+        settingsToggles: [true],
         currentUpdate: 'v0.0.3',
         devSpeed: 1,
     }
@@ -46,6 +45,8 @@ function load() {
     data.currentUpdate = "v0.0.3"
     updateAutomators()
     updatePromotionButtons()
+    for(let i = 0; i < toggleNames.length; i++)
+        DOMCacheGetOrSet(`setTog${i}`).innerHTML = data.settingsToggles[i] ? `${toggleNames[i]}: On` : `${toggleNames[i]}: Off`
 }
 //fix saves
 function fixSave(main=getDefaultObject(), data) {

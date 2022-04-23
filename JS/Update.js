@@ -9,7 +9,10 @@ const difficultyNames = ['Recruit','Novice','Veteran','Specialist','Commando']
 
 function updateHTML() {
     //Global HTML Updates
-
+    if(DOMCacheGetOrSet('newsHolder').style.display !== 'none' && !data.settingsToggles[0])
+        DOMCacheGetOrSet('newsHolder').style.display = 'none'
+    else if(DOMCacheGetOrSet('newsHolder').style.display !== 'block' && data.settingsToggles[0])
+        DOMCacheGetOrSet('newsHolder').style.display = 'block'
     if(data.currentTab === 0) {
         //Manpower
         DOMCacheGetOrSet('enlistedDisplay').innerHTML = `Enlisted<br>Equipment: ${format(data.equipment[0])}<hr>`
