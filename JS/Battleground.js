@@ -7,7 +7,7 @@ let enemyOfficerBoost = [D(0),D(0),D(0),D(0)]
 let equipmentBoosts = [D(0),D(0),D(0)]
 let enemyEquipmentBoosts = [D(0),D(0),D(0)]
 
-const battleRewardBases = [D(10),D(20)]
+const battleRewardBases = [D(15),D(20)]
 const diffRewardScales = [D(0.5),D(1),D(1.5),D(2),D(4)]
 const moneyLossScales = [D(0.3),D(0.45),D(0.5),D(0.75),D(0.95)]
 let battleRewards = [D(0),D(0)]
