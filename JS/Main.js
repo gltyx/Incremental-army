@@ -74,6 +74,6 @@ function mobileCheck() {
     return check;
 }
 
-if(mobileCheck())
-    generateHoldEvents()
+//if(mobileCheck())
+    //generateHoldEvents()
 

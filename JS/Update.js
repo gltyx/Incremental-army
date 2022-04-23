@@ -70,6 +70,7 @@ function updateHTML() {
         }
     }
     else if(data.currentTab === 4) {
+        updatePromotionButtons()
         DOMCacheGetOrSet('promotionProgressText').innerHTML = data.level < 5 ? `${levelNameList[data.level]} ==Progress to Promotion: ${format(Decimal.divide(data.medals,promotionReqs[data.level]).times(100))}% (${format(data.medals)}/${format(promotionReqs[data.level])})=> ${levelNameList[data.level+1]}` : `General of the Army`
         if(DOMCacheGetOrSet('currentRankImg').getAttribute('src') !== levelImgSrcs[data.level]) 
             DOMCacheGetOrSet('currentRankImg').src = levelImgSrcs[data.level]
