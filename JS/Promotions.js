@@ -47,15 +47,8 @@ function runAutomators() {
 
 }
 
-updateAutomators()
-
-for(let i = 0; i < promotionDescs.length; i++) 
-    DOMCacheGetOrSet(`pr${i}`).addEventListener("click",()=>{ purchasePromotionUpgrade(i) })
-
-updatePromotionButtons()
-
 function purchasePromotionUpgrade(i) {
-    if(data.medals.lt(promotionCosts[i]) || i >= 12 || data.promotionUpgrades[i] === true) return
+    if(data.medals.lt(promotionCosts[i]) || data.promotionUpgrades[i] === true) return
     data.medals = data.medals.sub(promotionCosts[i])
     data.promotionUpgrades[i] = true
     updatePromotionButtons()
