@@ -4,18 +4,19 @@ function nameArmy() {
     // \w = word library (i.e. all numbers & letters, not case-specific)
     let name = prompt("Name your army!:")
     if (!name) { //lol why would you input nothing?
-      alert("name is too short!")
+      alert("Error!: You must name your army!")
+      nameArmy()
       return
     }
     if (name.length > 20) {//prevent too long names
-      alert("name is too long")
+      alert("Error!: Your army name is too long!")
+      nameArmy()
       return
     }
       name = name.replace(nameRegex, "")
       console.log(name)
     data.armyName = name
 }
-
 
 function changeTab(a) {
     data.currentTab = a;
