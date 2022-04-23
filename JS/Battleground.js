@@ -116,8 +116,8 @@ function battle() {
         }
         else if(enlistedChecks[0].eq(enlistedChecks[1])) {
             const composite = [mpTotals[0].sub(atkTotals[1]),mpTotals[1].sub(atkTotals[0])]
-            data.enlisted[i] = composite[0].gt(composite[1]) ? data.enlisted[i].sub(data.currentEnemy.enlisted[i]) : D(0)
-            data.currentEnemy.enlisted[i] = composite[0].lt(composite[1]) ? D(0) : data.currentEnemy.enlisted[i].sub(data.enlisted[i])
+            data.enlisted[i] = composite[0].gte(composite[1]) ? data.enlisted[i].sub(data.currentEnemy.enlisted[i]) : D(0)
+            data.currentEnemy.enlisted[i] = composite[0].gte(composite[1]) ? D(0) : data.currentEnemy.enlisted[i].sub(data.enlisted[i])
             if(data.enlisted[i].lt(0))
                 data.enlisted[i] = D(0)
         }
@@ -134,8 +134,8 @@ function battle() {
         }
         else if(officerChecks[0].eq(officerChecks[1])) {
             const composite = [mpTotals[0].sub(atkTotals[1]),mpTotals[1].sub(atkTotals[0])]
-            data.officers[i] = composite[0].gt(composite[1]) ? data.officers[i].sub(data.currentEnemy.officers[i]) : D(0)
-            data.currentEnemy.officers[i] = composite[0].gt(composite[1]) ? D(0) : data.currentEnemy.officers[i].sub(data.officers[i])
+            data.officers[i] = composite[0].gte(composite[1]) ? data.officers[i].sub(data.currentEnemy.officers[i]) : D(0)
+            data.currentEnemy.officers[i] = composite[0].gte(composite[1]) ? D(0) : data.currentEnemy.officers[i].sub(data.officers[i])
             if(data.officers[i].lt(0))
                 data.officers[i] = D(0)
         }

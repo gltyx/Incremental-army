@@ -70,6 +70,7 @@ function updateHTML() {
             [${format(enemyEquipmentBoosts[2])}x More Troops]`
             DOMCacheGetOrSet('diffText').innerHTML = `Current Difficulty: ${difficultyNames[data.difficultyIndex]}`
             DOMCacheGetOrSet('battleRewardText').innerHTML = `Rewards: +${format(battleRewards[0])} Medals | +/-${format(battleRewards[1])} Approval | Loss Only: -$${format(data.funds.times(moneyLossScales[data.difficultyIndex]))}`
+            DOMCacheGetOrSet('tiebreakText').innerHTML = (manpowerTotal[0].sub(attackTotal[1])).gte(manpowerTotal[1].sub(attackTotal[0])) ? `Vs.<br>Tie Breaker Status: Win` : `Vs.<br>Tie Breaker Status: Lose`
         }
     }
     else if(data.currentTab === 4) {
