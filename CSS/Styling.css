@@ -15,12 +15,13 @@
     background-color: #202020;
     font-family: 'Roboto Mono';
     color: whitesmoke;
-    font-size: .98em;
+    font-size: 0.995em;
 }
 
 button {
     border: 2px solid whitesmoke;
     transition-duration: 0.2s;
+    font-size: 0.995em;
 }
 
 button:hover {
