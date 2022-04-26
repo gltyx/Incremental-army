@@ -68,7 +68,6 @@ function updateHTML() {
             <br>Officers<hr>${rankNameShort[4]}: ${format(data.currentEnemy.officers[0].times(enemyEquipmentBoosts[2]))}<br>${rankNameShort[5]}: ${format(data.currentEnemy.officers[1].times(enemyEquipmentBoosts[2]))}<br>${rankNameShort[6]}: ${format(data.currentEnemy.officers[2].times(enemyEquipmentBoosts[2]))}<br>${rankNameShort[7]}: ${format(data.currentEnemy.officers[3].times(enemyEquipmentBoosts[2]))}<br>
             <br>Equipment<hr>Infantry Equipment: ${format(data.currentEnemy.equipment[0])}<br>Anti-Tank Guns: ${format(data.currentEnemy.equipment[1])} [+${format(enemyEquipmentBoosts[0])} Damage to Armor]<br>Artillery Guns: ${format(data.currentEnemy.equipment[2])} [+${format(enemyEquipmentBoosts[1])} Damage to Infantry]<br>Transports: ${format(data.currentEnemy.equipment[3])}
             [${format(enemyEquipmentBoosts[2])}x More Troops]`
-            DOMCacheGetOrSet('diffText').innerHTML = `Current Difficulty: ${difficultyNames[data.difficultyIndex]}`
             DOMCacheGetOrSet('battleRewardText').innerHTML = `Rewards: +${format(battleRewards[0])} Medals | +/-${format(battleRewards[1])} Approval<br>Total Wins: ${format(data.wins)} | Difficulty Scale ${format(difficultyScale)}x`
             DOMCacheGetOrSet('tiebreakText').innerHTML = (manpowerTotal[0].sub(attackTotal[1])).gte(manpowerTotal[1].sub(attackTotal[0])) ? `Vs.<br>Tie Breaker Status: Win` : `Vs.<br>Tie Breaker Status: Lose`
         }

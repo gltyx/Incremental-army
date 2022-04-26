@@ -15,7 +15,6 @@ function getDefaultObject() {
             officers: [D(0),D(0),D(0),D(0)],
             equipment: [D(0),D(0),D(0),D(0)],
         },
-        difficultyIndex: 0,
         medals: D(0),
         wins: D(0),
         promotionUpgrades: [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
