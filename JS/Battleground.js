@@ -151,9 +151,9 @@ function battle() {
     else if(composite[0].lt(composite[1])) {
         data.approval = data.approval.sub(battleRewards[1])
         if(data.approval.lt(D(0))) data.approval = D(0)
-        data.funds = data.funds.sub(data.funds.times(moneyLossScales[data.difficultyIndex]))
+        //data.funds = data.funds.sub(data.funds.times(moneyLossScales[data.difficultyIndex]))
         if(data.funds.lt(D(0))) data.funds = D(0)
-        createAlert("Defeat!","You have been defeated by the enemy and lost " + format(battleRewards[1]) + "Approval and " + format(data.funds.times(moneyLossScales[data.difficultyIndex])) + " Funds","812626")
+        createAlert("Defeat!","You have been defeated by the enemy and lost " + format(battleRewards[1]) + " Approval","812626")
         generateEnemy()
     }
     else if(composite[0].eq(composite[1])) {
