@@ -55,9 +55,9 @@ function updateHTML() {
     }
     else if(data.currentTab === 3) {
         //Battleground
-        DOMCacheGetOrSet('battleAlertText').style.display = data.enlisted[0].gte(1) ? 'none' : 'flex'
-        DOMCacheGetOrSet('battlegroundStatsHolder').style.display = data.enlisted[0].gte(1) ? 'flex' : 'none'
-        if(data.enlisted[0].gte(1)) {
+        DOMCacheGetOrSet('battleAlertText').style.display = data.enlisted[0].gte(1) || data.enlisted[1].gte(1) || data.enlisted[2].gte(1) || data.enlisted[3].gte(1) ? 'none' : 'flex'
+        DOMCacheGetOrSet('battlegroundStatsHolder').style.display = data.enlisted[0].gte(1) || data.enlisted[1].gte(1) || data.enlisted[2].gte(1) || data.enlisted[3].gte(1) ? 'flex' : 'none'
+        if(data.enlisted[0].gte(1) || data.enlisted[1].gte(1) || data.enlisted[2].gte(1) || data.enlisted[3].gte(1)) {
             DOMCacheGetOrSet('playerStats').innerHTML = `${data.armyName}<br>Manpower: ${format(manpowerTotal[0])}<br>Attack Power: ${format(attackTotal[0])}`
             DOMCacheGetOrSet('enemyStats').innerHTML = `${data.currentEnemy.name}<br>Manpower: ${format(manpowerTotal[1])}<br>Attack Power: ${format(attackTotal[1])}`
             DOMCacheGetOrSet('playerArmy').innerHTML = `Soldiers<hr>${rankNameShort[0]}: ${format(data.enlisted[0].times(equipmentBoosts[2]))}<br>${rankNameShort[1]}: ${format(data.enlisted[1].times(equipmentBoosts[2]))}<br>${rankNameShort[2]}: ${format(data.enlisted[2].times(equipmentBoosts[2]))}<br>${rankNameShort[3]}: ${format(data.enlisted[3].times(equipmentBoosts[2]))}<br>
@@ -69,7 +69,7 @@ function updateHTML() {
             <br>Equipment<hr>Infantry Equipment: ${format(data.currentEnemy.equipment[0])}<br>Anti-Tank Guns: ${format(data.currentEnemy.equipment[1])} [+${format(enemyEquipmentBoosts[0])} Damage to Armor]<br>Artillery Guns: ${format(data.currentEnemy.equipment[2])} [+${format(enemyEquipmentBoosts[1])} Damage to Infantry]<br>Transports: ${format(data.currentEnemy.equipment[3])}
             [${format(enemyEquipmentBoosts[2])}x More Troops]`
             DOMCacheGetOrSet('diffText').innerHTML = `Current Difficulty: ${difficultyNames[data.difficultyIndex]}`
-            DOMCacheGetOrSet('battleRewardText').innerHTML = `Rewards: +${format(battleRewards[0])} Medals | +/-${format(battleRewards[1])} Approval | Loss Only: -$${format(data.funds.times(moneyLossScales[data.difficultyIndex]))}`
+            DOMCacheGetOrSet('battleRewardText').innerHTML = `Rewards: +${format(battleRewards[0])} Medals | +/-${format(battleRewards[1])} Approval<br>Total Wins: ${format(data.wins)} | Difficulty Scale ${format(difficultyScale)}x`
             DOMCacheGetOrSet('tiebreakText').innerHTML = (manpowerTotal[0].sub(attackTotal[1])).gte(manpowerTotal[1].sub(attackTotal[0])) ? `Vs.<br>Tie Breaker Status: Win` : `Vs.<br>Tie Breaker Status: Lose`
         }
     }

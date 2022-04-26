@@ -1,5 +1,5 @@
 const enemyDivNames = ["Armored","Recon","Airborne","Infantry","Motorized","Mechanized"]
-const enemyDiffScales = [D(1.25),D(1.5),D(1.75),D(2.0),D(2.5)]
+
 
 let manpowerTotal = [D(0),D(0)]
 let attackTotal = [D(0),D(0)]
@@ -8,18 +8,17 @@ let equipmentBoosts = [D(0),D(0),D(0)]
 let enemyEquipmentBoosts = [D(0),D(0),D(0)]
 
 const battleRewardBases = [D(15),D(20)]
-const diffRewardScales = [D(0.5),D(1),D(1.5),D(2),D(4)]
-const moneyLossScales = [D(0.3),D(0.45),D(0.5),D(0.75),D(0.95)]
 let battleRewards = [D(0),D(0)]
-
+let difficultyScale = D(0)
 
 function updateBattleground() {
     manpowerTotal[0] = D(0)
     manpowerTotal[1] = D(0)
     attackTotal[0] = D(0)
     attackTotal[1] = D(0)
+    difficultyScale = D(1).plus(Decimal.sqrt(data.wins))
     for(let i = 0; i < 2; i++) {
-        battleRewards[i] = Decimal.round(battleRewardBases[i].times(diffRewardScales[data.difficultyIndex]))
+        battleRewards[i] = Decimal.round(battleRewardBases[i].times(difficultyScale))
     }
     if(data.promotionUpgrades[4])
         battleRewards[0] = Decimal.round(battleRewards[0].times(2.0))
@@ -73,19 +72,18 @@ function generateEnemy() {
     else ending = 'th'
 
     enemy.name =  `${num}${ending} ${enemyDivNames[getRandom(0,6)]} Division`
-    for(let i = 0; i < 4; i++) {
-        if(data.difficultyIndex < 3) {
-            enemy.enlisted[i] = D(getRandom(1,data.enlisted[i].times(enemyDiffScales[data.difficultyIndex])))
-            enemy.officers[i] = D(getRandom(0,data.officers[i].times(enemyDiffScales[data.difficultyIndex])))
-            enemy.equipment[i] = D(getRandom(0,data.equipment[i].times(enemyDiffScales[data.difficultyIndex])))
-        }
-        else if(data.difficultyIndex >= 3) {
-            enemy.enlisted[i] = D(getRandom(Math.ceil(5 * Number(enemyDiffScales[data.difficultyIndex])),data.enlisted[i].times(enemyDiffScales[data.difficultyIndex])))
-            enemy.officers[i] = D(getRandom(Math.ceil(5 * Number(enemyDiffScales[data.difficultyIndex])),data.officers[i].times(enemyDiffScales[data.difficultyIndex])))
-            enemy.equipment[i] = D(getRandom(Math.ceil(5 * Number(enemyDiffScales[data.difficultyIndex])),data.equipment[i].times(enemyDiffScales[data.difficultyIndex])))
-        }
-        
-    }
+    //Difficulty Progression 0-10 Pvt Only, 11-20 Pvt/Cpl, 21-30 Pvt/Cpl/Sgt, 31-40 Pvt/Cpl/SSgt
+
+    enemy.enlisted[0] = getRandomDecimal(D(1), D(1).times(difficultyScale))
+    enemy.enlisted[1] = data.wins.gt(10) ? getRandomDecimal(D(1), D(2).times(difficultyScale)) : D(0)
+    enemy.enlisted[2] = data.wins.gt(20) ? getRandomDecimal(D(1), D(3).times(difficultyScale)) : D(0)
+    enemy.enlisted[3] = data.wins.gt(30) ? getRandomDecimal(D(1), D(4).times(difficultyScale)) : D(0)
+
+    enemy.officers[0] = data.wins.gt(50) ? getRandomDecimal(D(1), D(1).times(difficultyScale)) : D(0)
+    enemy.officers[1] = data.wins.gt(60) ? getRandomDecimal(D(1), D(1).times(difficultyScale)) : D(0)
+    enemy.officers[2] = data.wins.gt(70) ? getRandomDecimal(D(1), D(1).times(difficultyScale)) : D(0)
+    enemy.officers[3] = data.wins.gt(80) ? getRandomDecimal(D(1), D(1).times(difficultyScale)) : D(0)
+    
     data.currentEnemy = enemy
     enemy = defaultEnemyObj
 }
@@ -146,6 +144,7 @@ function battle() {
         data.approval = data.approval.plus(battleRewards[1])
         if(data.approval.gt(100)) data.approval = D(100)
         createAlert("Victory!","You have defeated the enemy and earned " + format(battleRewards[0]) + " Medals and " + format(battleRewards[1]) + " Approval","268135")
+        data.wins = data.wins.plus(1)
         generateEnemy()
         updatePromotionButtons()
     }
