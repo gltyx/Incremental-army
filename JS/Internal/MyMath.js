@@ -3,7 +3,7 @@ function getRandom(min, max) {
 }
 
 function getRandomDecimal(min,max) {
-    return Decimal.floor(Math.random() * (max - min) ) + min
+    return Decimal.floor(D(Math.random()).times(max.sub(min))).plus(min)
 }
 
 function getRandomInt(max) {

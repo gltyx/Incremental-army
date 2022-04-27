@@ -15,17 +15,16 @@ function getDefaultObject() {
             officers: [D(0),D(0),D(0),D(0)],
             equipment: [D(0),D(0),D(0),D(0)],
         },
-        difficultyIndex: 0,
         medals: D(0),
+        wins: D(0),
         promotionUpgrades: [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
         autoActive: [false,false,false,false,false,false,false,false,false,false,false,false,false,false],
         acquireAutoReq: D(0),
         level: 0,
         time: Date.now(),
         currentTab: 1,
-        currentSubTab: [0,0,0,0,0,0,0],
-        currentElement: 0,
-        currentUpdate: 'v0.0.3',
+        settingsToggles: [true],
+        currentUpdate: 'v0.0.4',
         devSpeed: 1,
     }
 }
@@ -41,11 +40,14 @@ function load() {
     else if (savedata !== undefined) fixSave(data, savedata)
     if(data.armyName === undefined)
         nameArmy()
-    if(data.currentUpdate !== "v0.0.3")
-        createAlert("Welcome Back!","The current version is v0.0.3, View the Changelog for details","812626")
-    data.currentUpdate = "v0.0.3"
+    if(data.currentUpdate !== "v0.0.4") {
+        createAlert("Welcome Back!","The current version is v0.0.4, View the Changelog for details","812626")
+        data.currentUpdate = "v0.0.4"
+    }
     updateAutomators()
     updatePromotionButtons()
+    for(let i = 0; i < toggleNames.length; i++)
+        DOMCacheGetOrSet(`setTog${i}`).innerHTML = data.settingsToggles[i] ? `${toggleNames[i]}: On` : `${toggleNames[i]}: Off`
 }
 //fix saves
 function fixSave(main=getDefaultObject(), data) {

@@ -17,6 +17,11 @@ function nameArmy() {
       console.log(name)
     data.armyName = name
 }
+const toggleNames = ['Newsticker']
+function toggle(i) {
+    data.settingsToggles[i] = !data.settingsToggles[i]
+    DOMCacheGetOrSet(`setTog${i}`).innerHTML = data.settingsToggles[i] ? `${toggleNames[i]}: On` : `${toggleNames[i]}: Off`
+}
 
 function changeTab(a) {
     data.currentTab = a;

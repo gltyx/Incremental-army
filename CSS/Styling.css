@@ -5,7 +5,7 @@
 
 :root {
     --manpower-color: #4f9979;
-    --equipment-color: #4850bc;
+    --equipment-color: #544f99;
     --finance-color: #349348;
     --battleground-color: #935534;
     --promotion-color: #346d93;
@@ -15,11 +15,13 @@
     background-color: #202020;
     font-family: 'Roboto Mono';
     color: whitesmoke;
+    font-size: 0.995em;
 }
 
 button {
     border: 2px solid whitesmoke;
     transition-duration: 0.2s;
+    font-size: 0.995em;
 }
 
 button:hover {

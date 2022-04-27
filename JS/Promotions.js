@@ -33,8 +33,9 @@ function updateAutomators() {
 }
 
 function runAutomators() {
-    if(DOMCacheGetOrSet('acquireInput').value > data.acquireAutoReq)
+    if(D(DOMCacheGetOrSet('acquireInput').value).gt(data.acquireAutoReq) || D(DOMCacheGetOrSet('acquireInput').value).lt(data.acquireAutoReq))
         data.acquireAutoReq = D(DOMCacheGetOrSet('acquireInput').value)
+    if(data.acquireAutoReq.gt(100)) data.acquireAutoReq = D(100)
     DOMCacheGetOrSet('inputText').innerHTML = `Input Minimum Req to Acquire (Current: ${format(data.acquireAutoReq)})`
     for(let i = 3; i > -1; i--)
         if(data.autoActive[i]) buyMP(i,0)

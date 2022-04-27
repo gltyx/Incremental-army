@@ -1,5 +1,5 @@
 const enemyDivNames = ["Armored","Recon","Airborne","Infantry","Motorized","Mechanized"]
-const enemyDiffScales = [D(1.25),D(1.5),D(1.75),D(2.0),D(2.5)]
+
 
 let manpowerTotal = [D(0),D(0)]
 let attackTotal = [D(0),D(0)]
@@ -7,24 +7,24 @@ let enemyOfficerBoost = [D(0),D(0),D(0),D(0)]
 let equipmentBoosts = [D(0),D(0),D(0)]
 let enemyEquipmentBoosts = [D(0),D(0),D(0)]
 
-const battleRewardBases = [D(15),D(20)]
-const diffRewardScales = [D(0.5),D(1),D(1.5),D(2),D(4)]
-const moneyLossScales = [D(0.3),D(0.45),D(0.5),D(0.75),D(0.95)]
+const battleRewardBases = [D(20),D(15)]
 let battleRewards = [D(0),D(0)]
-
+let difficultyScale = D(0)
 
 function updateBattleground() {
     manpowerTotal[0] = D(0)
     manpowerTotal[1] = D(0)
     attackTotal[0] = D(0)
     attackTotal[1] = D(0)
+    difficultyScale = D(1).plus(Decimal.sqrt(data.wins))
     for(let i = 0; i < 2; i++) {
-        battleRewards[i] = Decimal.round(battleRewardBases[i].times(diffRewardScales[data.difficultyIndex]))
+        battleRewards[i] = Decimal.round(battleRewardBases[i].times(difficultyScale))
     }
     if(data.promotionUpgrades[4])
         battleRewards[0] = Decimal.round(battleRewards[0].times(2.0))
     if(data.promotionUpgrades[9])
         battleRewards[0] = Decimal.round(battleRewards[0].times(4.0))
+    if(battleRewards[1].gt(100)) battleRewards[1] = D(100)
     for(let i = 0; i < 3; i++) {
         if(i === 2)
             equipmentBoosts[i] = D(1).plus(Decimal.sqrt(Decimal.sqrt(data.equipment[i+1])))
@@ -73,19 +73,18 @@ function generateEnemy() {
     else ending = 'th'
 
     enemy.name =  `${num}${ending} ${enemyDivNames[getRandom(0,6)]} Division`
-    for(let i = 0; i < 4; i++) {
-        if(data.difficultyIndex < 3) {
-            enemy.enlisted[i] = D(getRandom(1,data.enlisted[i].times(enemyDiffScales[data.difficultyIndex])))
-            enemy.officers[i] = D(getRandom(0,data.officers[i].times(enemyDiffScales[data.difficultyIndex])))
-            enemy.equipment[i] = D(getRandom(0,data.equipment[i].times(enemyDiffScales[data.difficultyIndex])))
-        }
-        else if(data.difficultyIndex >= 3) {
-            enemy.enlisted[i] = D(getRandom(Math.ceil(5 * Number(enemyDiffScales[data.difficultyIndex])),data.enlisted[i].times(enemyDiffScales[data.difficultyIndex])))
-            enemy.officers[i] = D(getRandom(Math.ceil(5 * Number(enemyDiffScales[data.difficultyIndex])),data.officers[i].times(enemyDiffScales[data.difficultyIndex])))
-            enemy.equipment[i] = D(getRandom(Math.ceil(5 * Number(enemyDiffScales[data.difficultyIndex])),data.equipment[i].times(enemyDiffScales[data.difficultyIndex])))
-        }
-        
-    }
+    //Difficulty Progression 0-10 Pvt Only, 11-20 Pvt/Cpl, 21-30 Pvt/Cpl/Sgt, 31-40 Pvt/Cpl/SSgt
+
+    enemy.enlisted[0] = getRandomDecimal(D(1), D(1).times(difficultyScale))
+    enemy.enlisted[1] = data.wins.gt(10) ? getRandomDecimal(D(1), D(2).times(difficultyScale)) : D(0)
+    enemy.enlisted[2] = data.wins.gt(20) ? getRandomDecimal(D(1), D(3).times(difficultyScale)) : D(0)
+    enemy.enlisted[3] = data.wins.gt(30) ? getRandomDecimal(D(1), D(4).times(difficultyScale)) : D(0)
+
+    enemy.officers[0] = data.wins.gt(50) ? getRandomDecimal(D(1), D(1).times(difficultyScale)) : D(0)
+    enemy.officers[1] = data.wins.gt(60) ? getRandomDecimal(D(1), D(1).times(difficultyScale)) : D(0)
+    enemy.officers[2] = data.wins.gt(70) ? getRandomDecimal(D(1), D(1).times(difficultyScale)) : D(0)
+    enemy.officers[3] = data.wins.gt(80) ? getRandomDecimal(D(1), D(1).times(difficultyScale)) : D(0)
+    
     data.currentEnemy = enemy
     enemy = defaultEnemyObj
 }
@@ -116,12 +115,11 @@ function battle() {
         }
         else if(enlistedChecks[0].eq(enlistedChecks[1])) {
             const composite = [mpTotals[0].sub(atkTotals[1]),mpTotals[1].sub(atkTotals[0])]
-            data.enlisted[i] = composite[0].gt(composite[1]) ? data.enlisted[i].sub(data.currentEnemy.enlisted[i]) : D(0)
-            data.currentEnemy.enlisted[i] = composite[0].lt(composite[1]) ? D(0) : data.currentEnemy.enlisted[i].sub(data.enlisted[i])
+            data.enlisted[i] = composite[0].gte(composite[1]) ? data.enlisted[i].sub(data.currentEnemy.enlisted[i]) : D(0)
+            data.currentEnemy.enlisted[i] = composite[0].gte(composite[1]) ? D(0) : data.currentEnemy.enlisted[i].sub(data.enlisted[i])
             if(data.enlisted[i].lt(0))
                 data.enlisted[i] = D(0)
         }
-        
         if(officerChecks[0].gt(officerChecks[1])) {
             data.officers[i] = data.officers[i].sub(data.currentEnemy.officers[i])
             data.currentEnemy.officers[i] = D(0)
@@ -134,8 +132,8 @@ function battle() {
         }
         else if(officerChecks[0].eq(officerChecks[1])) {
             const composite = [mpTotals[0].sub(atkTotals[1]),mpTotals[1].sub(atkTotals[0])]
-            data.officers[i] = composite[0].gt(composite[1]) ? data.officers[i].sub(data.currentEnemy.officers[i]) : D(0)
-            data.currentEnemy.officers[i] = composite[0].gt(composite[1]) ? D(0) : data.currentEnemy.officers[i].sub(data.officers[i])
+            data.officers[i] = composite[0].gte(composite[1]) ? data.officers[i].sub(data.currentEnemy.officers[i]) : D(0)
+            data.currentEnemy.officers[i] = composite[0].gte(composite[1]) ? D(0) : data.currentEnemy.officers[i].sub(data.officers[i])
             if(data.officers[i].lt(0))
                 data.officers[i] = D(0)
         }
@@ -146,15 +144,16 @@ function battle() {
         data.approval = data.approval.plus(battleRewards[1])
         if(data.approval.gt(100)) data.approval = D(100)
         createAlert("Victory!","You have defeated the enemy and earned " + format(battleRewards[0]) + " Medals and " + format(battleRewards[1]) + " Approval","268135")
+        data.wins = data.wins.plus(1)
         generateEnemy()
         updatePromotionButtons()
     }
     else if(composite[0].lt(composite[1])) {
         data.approval = data.approval.sub(battleRewards[1])
         if(data.approval.lt(D(0))) data.approval = D(0)
-        data.funds = data.funds.sub(data.funds.times(moneyLossScales[data.difficultyIndex]))
+        //data.funds = data.funds.sub(data.funds.times(moneyLossScales[data.difficultyIndex]))
         if(data.funds.lt(D(0))) data.funds = D(0)
-        createAlert("Defeat!","You have been defeated by the enemy and lost " + format(battleRewards[1]) + "Approval and " + format(data.funds.times(moneyLossScales[data.difficultyIndex])) + " Funds","812626")
+        createAlert("Defeat!","You have been defeated by the enemy and lost " + format(battleRewards[1]) + " Approval","812626")
         generateEnemy()
     }
     else if(composite[0].eq(composite[1])) {

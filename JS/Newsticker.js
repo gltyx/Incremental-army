@@ -18,6 +18,7 @@ var scrollTimeouts = [];
 var nextMsgIndex;
 function scrollNextMessage() {
   //don't run if hidden to save performance
+  if(DOMCacheGetOrSet('newsHolder').style.display === 'none') return
   updateNewsArray();
   //select a message at random
 

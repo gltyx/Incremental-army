@@ -145,11 +145,6 @@
                 <div id="enemyArmy" style="margin-left:5vw; text-align: right;">Army</div>
             </div>
             <div id="bottomHolder" style="display:flex; flex-direction:row; margin-top: 1vh">
-                <div id="diffHolder" class="flexBox" style="margin-right:1vw">
-                    <div id="diffText" style="margin-top:0.25vw; text-align: left;">Current Difficulty: Novice</div>
-                    <button onclick="switchDifficulty()">Switch Difficulty</button>
-                    <div style="color:#812626">!Warning this will generate a new enemy!<br>Which scales based on your current stats</div>
-                </div>
                 <div id="battleButtons" class="flexBox" style="margin-left:1vw">
                     <button id="battleButton" style="margin-top:0.25vw;" onclick="battle()">Begin the Battle</button>
                     <div id="battleRewardText">Rewards: Medals: +0.00 | Approval: +0.00 | Morale +/-0.00</div>
@@ -212,6 +207,9 @@
             
         </div>
         <div style="margin-top:1vh;">
+            <button id="setTog0" onclick="toggle(0)">Newsticker: ON</button>
+        </div>
+        <div style="margin-top:1vh;">
             <button onclick="nameArmy()">Rename your Army</button>
         </div>
         <div style="margin-top:1vh;">
@@ -219,8 +217,9 @@
         </div>
         <div style="margin-top:1vh;">
             <h1>Changelog :O<hr></h1>
-            <h3>Current Version: v0.0.3</h3>
+            <h3>Current Version: v0.0.4</h3>
             <h3>Beta Versions</h3>
+            <p>v0.0.4 - Battleground Rework/QoL Pt.1</p>
             <p>v0.0.3 - Added Promotions System, Automation, 12/15 Promotion Upgrades</p>
             <p>v0.0.2 - Added Battleground</p>
             <p>v0.0.1 - Everything that isn't locked can be used.</p>
