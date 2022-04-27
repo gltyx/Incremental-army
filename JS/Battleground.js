@@ -7,7 +7,7 @@ let enemyOfficerBoost = [D(0),D(0),D(0),D(0)]
 let equipmentBoosts = [D(0),D(0),D(0)]
 let enemyEquipmentBoosts = [D(0),D(0),D(0)]
 
-const battleRewardBases = [D(15),D(20)]
+const battleRewardBases = [D(20),D(15)]
 let battleRewards = [D(0),D(0)]
 let difficultyScale = D(0)
 
@@ -24,6 +24,7 @@ function updateBattleground() {
         battleRewards[0] = Decimal.round(battleRewards[0].times(2.0))
     if(data.promotionUpgrades[9])
         battleRewards[0] = Decimal.round(battleRewards[0].times(4.0))
+    if(battleRewards[1].gt(100)) battleRewards[1] = D(100)
     for(let i = 0; i < 3; i++) {
         if(i === 2)
             equipmentBoosts[i] = D(1).plus(Decimal.sqrt(Decimal.sqrt(data.equipment[i+1])))
@@ -119,7 +120,6 @@ function battle() {
             if(data.enlisted[i].lt(0))
                 data.enlisted[i] = D(0)
         }
-        
         if(officerChecks[0].gt(officerChecks[1])) {
             data.officers[i] = data.officers[i].sub(data.currentEnemy.officers[i])
             data.currentEnemy.officers[i] = D(0)
