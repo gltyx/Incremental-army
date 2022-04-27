@@ -26,15 +26,16 @@ function updateAutomators() {
         else if(i <= 12)
             DOMCacheGetOrSet(`auto${i}`).style.display = data.promotionUpgrades[5]?"inline-block":"none"
         else if(i === 13)
-            DOMCacheGetOrSet(`acquireAutoHolder`).style.display = data.promotionUpgrades[8]?"flex":"none"
+            DOMCacheGetOrSet(`acquireAutoHolder`).style.display = data.promotionUpgrades[8]?"flex":"flex"
         DOMCacheGetOrSet(`auto${i}`).className = data.autoActive[i]?"on":"off"
         DOMCacheGetOrSet(`auto${i}`).innerHTML = data.autoActive[i]?"Automator: ON":"Automator: OFF"
     }
 }
 
 function runAutomators() {
-    if(DOMCacheGetOrSet('acquireInput').value > data.acquireAutoReq)
+    if(D(DOMCacheGetOrSet('acquireInput').value).gt(data.acquireAutoReq) || D(DOMCacheGetOrSet('acquireInput').value).lt(data.acquireAutoReq))
         data.acquireAutoReq = D(DOMCacheGetOrSet('acquireInput').value)
+    if(data.acquireAutoReq.gt(100)) data.acquireAutoReq = D(100)
     DOMCacheGetOrSet('inputText').innerHTML = `Input Minimum Req to Acquire (Current: ${format(data.acquireAutoReq)})`
     for(let i = 3; i > -1; i--)
         if(data.autoActive[i]) buyMP(i,0)
