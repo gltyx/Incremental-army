@@ -89,6 +89,10 @@ function generateEnemy() {
     enemy.officers[1] = data.wins.gt(60) ? getRandomDecimal(D(1), D(1).times(difficultyScale)) : D(0)
     enemy.officers[2] = data.wins.gt(70) ? getRandomDecimal(D(1), D(1).times(difficultyScale)) : D(0)
     enemy.officers[3] = data.wins.gt(80) ? getRandomDecimal(D(1), D(1).times(difficultyScale)) : D(0)
+
+    enemy.equipment[1] = data.wins.gt(30) ? getRandomDecimal(D(1), D(1).times(difficultyScale)) : D(0)
+    enemy.equipment[2] = data.wins.gt(40) ? getRandomDecimal(D(1), D(3).times(difficultyScale)) : D(0)
+    enemy.equipment[3] = data.wins.gt(75) ? getRandomDecimal(D(1), D(5).times(difficultyScale)) : D(0)
     
     data.currentEnemy = enemy
     enemy = defaultEnemyObj
