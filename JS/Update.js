@@ -5,7 +5,7 @@ const rankNameIds = ['pvt','cpl','sgt','ssgt','2lt','1lt','cpt','maj']
 const equipIds = ['ie','at','art','transport']
 const equipNames = ['Infantry Equipment','Anti-Tank Gun','Artillery Gun','Transport']
 
-const difficultyNames = ['Recruit','Novice','Veteran','Specialist','Commando']
+const difficultyNames = ['Conscript','Recruit','Novice','Veteran','Elite','Specialist','Commando','Elite Commando','Hunter','Elite Hunter','Expert','Elite Expert','Master','Elite Master','Legend','Elite Legend']
 let enlistString = []
 let officerString = []
 let equipmentString = []
@@ -72,7 +72,9 @@ function updateHTML() {
             [${format(equipmentBoosts[2])}x More Troops]`
             DOMCacheGetOrSet('enemyArmy').innerHTML = `Soldiers<hr>${enlistString[1]}<br>Officers<hr>${officerString[1]}<br>Equipment<hr>Anti-Tank Guns: ${format(data.currentEnemy.equipment[1])} [+${format(enemyEquipmentBoosts[0])} Damage to Armor]<br>Artillery Guns: ${format(data.currentEnemy.equipment[2])} [+${format(enemyEquipmentBoosts[1])} Damage to Infantry]<br>Transports: ${format(data.currentEnemy.equipment[3])}
             [${format(enemyEquipmentBoosts[2])}x More Troops]`
-            DOMCacheGetOrSet('battleRewardText').innerHTML = `Rewards: +${format(battleRewards[0])} Medals | +/-${format(battleRewards[1])} Approval<br>Total Wins: ${format(data.wins)} | Difficulty Scale ${format(difficultyScale)}x`
+            DOMCacheGetOrSet('battleRewardText').innerHTML = `Rewards: +${format(battleRewards[0])} Medals | +/-${format(battleRewards[1])} Approval
+            <br>Total Wins: ${format(data.wins)} | Difficulty Scale ${format(difficultyScale)}x<br>
+            Difficulty Rating: ${difficultyNames[difficultyNameIndex]}`
             DOMCacheGetOrSet('tiebreakText').innerHTML = (manpowerTotal[0].sub(attackTotal[1])).gte(manpowerTotal[1].sub(attackTotal[0])) ? `Vs.<br>Tie Breaker Status: Win` : `Vs.<br>Tie Breaker Status: Lose`
         }
     }

@@ -8,10 +8,15 @@ let equipmentBoosts = [D(0),D(0),D(0)]
 let enemyEquipmentBoosts = [D(0),D(0),D(0)]
 
 const battleRewardBases = [D(20),D(15)]
+let difficultyNameIndex = 0
 let battleRewards = [D(0),D(0)]
 let difficultyScale = D(0)
 
 function updateBattleground() {
+    for(let i = 0; i < difficultyNames.length; i++) {
+        if(decimalRemainder(data.wins,D(10 * i+1)).lt(10))
+            difficultyNameIndex = i
+    }
     manpowerTotal[0] = D(0)
     manpowerTotal[1] = D(0)
     attackTotal[0] = D(0)
