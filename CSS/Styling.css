@@ -12,7 +12,7 @@
 }
 /*Globals*/
 
-@keyframes settings {
+@keyframes testingKeyFrames {
     0%{color: #ff0000; border-color: #ff0000;}
     17% {color: #ffff00; border-color: #ffff00;}
     33%{color: #00ff00; border-color: #00ff00;}
@@ -43,7 +43,7 @@ button:hover {
     cursor: pointer;
 }
 
-hr {
+hr, input {
     border: 1px solid whitesmoke;
 }
 
@@ -98,7 +98,7 @@ hr {
     font-weight: bold;
 }
 
-#modalContainer {
+.modalContainer {
     display: none;
     position: fixed;
     top: 50%;

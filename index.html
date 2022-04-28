@@ -9,12 +9,19 @@
     <title>Incremental Army</title>
 </head>
 <body>
-    <div id="modalContainer">
+    <div id="alertContainer" class="modalContainer">
         <div id="alert">
             <h3 id="alertTitle">Welcome back gamer!</h3>
             <p id="alertContent">New things have been added since last time</p>
-            <button id="closeAlert" style="border: 2px solid;" onclick="closeModal()">Thanks!</button>
+            <button id="closeAlert" style="border: 2px solid;" onclick="closeModal(0)">Thanks!</button>
             <br>
+        </div>
+    </div>
+    <div id="promptContainer" class="modalContainer">
+        <div id="prompt">
+            <h3 id="promptTitle"></h3>
+            <input id="promptInput" type="text" placeholder="Enter your name">
+            <button id="promptButton" style="border: 2px solid;">Submit</button>
         </div>
     </div>
     <div id="navBar" class="flexBox" style="flex-direction: row;">
@@ -210,7 +217,7 @@
             <button id="setTog0" onclick="toggle(0)">Newsticker: ON</button>
         </div>
         <div style="margin-top:1vh;">
-            <button onclick="nameArmy()">Rename your Army</button>
+            <button onclick="createPrompt('Name your Army!',0)">Rename your Army</button>
         </div>
         <div style="margin-top:1vh;">
             <a href="https://discord.gg/JkQUnubuhx">Discord Invite!</a>
