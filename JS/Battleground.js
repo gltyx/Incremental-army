@@ -8,15 +8,25 @@ let equipmentBoosts = [D(0),D(0),D(0)]
 let enemyEquipmentBoosts = [D(0),D(0),D(0)]
 
 const battleRewardBases = [D(20),D(15)]
+let difficultyNameIndex = 0
 let battleRewards = [D(0),D(0)]
 let difficultyScale = D(0)
 
 function updateBattleground() {
+    for(let i = 0; i < difficultyNames.length; i++) {
+        if(data.wins.lt(10)) {
+            difficultyNameIndex = 0
+            break
+        }
+        if(decimalRemainder(data.wins,D(10 * i+1)).lt(10))
+            difficultyNameIndex = i
+    }
     manpowerTotal[0] = D(0)
     manpowerTotal[1] = D(0)
     attackTotal[0] = D(0)
     attackTotal[1] = D(0)
-    difficultyScale = D(1).plus(Decimal.sqrt(data.wins))
+    difficultyScale = Decimal.sqrt(data.wins).times(Decimal.floor(Decimal.sqrt(D(1.25).times(data.wins))).plus(1))
+    difficultyScale = D(1).plus(difficultyScale)
     for(let i = 0; i < 2; i++) {
         battleRewards[i] = Decimal.round(battleRewardBases[i].times(difficultyScale))
     }
@@ -84,6 +94,10 @@ function generateEnemy() {
     enemy.officers[1] = data.wins.gt(60) ? getRandomDecimal(D(1), D(1).times(difficultyScale)) : D(0)
     enemy.officers[2] = data.wins.gt(70) ? getRandomDecimal(D(1), D(1).times(difficultyScale)) : D(0)
     enemy.officers[3] = data.wins.gt(80) ? getRandomDecimal(D(1), D(1).times(difficultyScale)) : D(0)
+
+    enemy.equipment[1] = data.wins.gt(30) ? getRandomDecimal(D(1), D(1).times(difficultyScale)) : D(0)
+    enemy.equipment[2] = data.wins.gt(40) ? getRandomDecimal(D(1), D(3).times(difficultyScale)) : D(0)
+    enemy.equipment[3] = data.wins.gt(75) ? getRandomDecimal(D(1), D(5).times(difficultyScale)) : D(0)
     
     data.currentEnemy = enemy
     enemy = defaultEnemyObj

@@ -2,15 +2,16 @@
 function nameArmy() {
     const nameRegex = /[^\w ]|_/g  
     // \w = word library (i.e. all numbers & letters, not case-specific)
-    let name = prompt("Name your army!:")
+    let name = DOMCacheGetOrSet('promptInput').value
+    closeModal(1)
     if (!name) { //lol why would you input nothing?
-      alert("Error!: You must name your army!")
-      nameArmy()
+      createAlert('Error!','No Name Inputted!','#ff0000')
+      createPrompt('Name your Army!',0)
       return
     }
     if (name.length > 20) {//prevent too long names
-      alert("Error!: Your army name is too long!")
-      nameArmy()
+      createAlert('Error!','Your army name is too long!','#ff0000')
+      createPrompt('Name your Army!',0)
       return
     }
       name = name.replace(nameRegex, "")
@@ -21,6 +22,10 @@ const toggleNames = ['Newsticker']
 function toggle(i) {
     data.settingsToggles[i] = !data.settingsToggles[i]
     DOMCacheGetOrSet(`setTog${i}`).innerHTML = data.settingsToggles[i] ? `${toggleNames[i]}: On` : `${toggleNames[i]}: Off`
+    if (i === 0) {
+        DOMCacheGetOrSet('newsHolder').style.display = data.settingsToggles[i] ? 'block' : 'none'
+        scrollNextMessage()
+    }
 }
 
 function changeTab(a) {
@@ -41,16 +46,41 @@ function mainLoop() {
 }
 
 function createAlert(a,b,c) {
-    document.getElementById('modalContainer').style.border = `4px solid #${c}`
-    document.getElementById('alertTitle').innerHTML = a
-    document.getElementById('alertContent').innerHTML = b
-    document.getElementById('alert').style.display = 'block'
-    document.getElementById('modalContainer').style.display = 'block'
+    DOMCacheGetOrSet('alertContainer').style.border = `4px solid #${c}`
+    DOMCacheGetOrSet('alertTitle').innerHTML = a
+    DOMCacheGetOrSet('alertContent').innerHTML = b
+    DOMCacheGetOrSet('alert').style.display = 'block'
+    DOMCacheGetOrSet('alertContainer').style.display = 'block'
 }
 
-function closeModal() {
-    document.getElementById('modalContainer').style.display = 'none'
-    document.getElementById('alert').style.display = 'none'
+function createPrompt(a,b) {
+    let old_element = document.getElementById("promptButton");
+    let new_element = old_element.cloneNode(true);
+    old_element.parentNode.replaceChild(new_element, old_element);
+    DOMCacheGetOrSet('promptInput').value = ''
+    DOMCacheGetOrSet('promptContainer').style.border = `4px solid whitesmoke`
+    DOMCacheGetOrSet('promptTitle').innerHTML = a
+    DOMCacheGetOrSet('prompt').style.display = 'block'
+    DOMCacheGetOrSet('promptContainer').style.display = 'block'
+    switch(b) {
+        case 0:
+            document.getElementById('promptButton').addEventListener('click', () => { nameArmy() })
+            break
+    }
+}
+
+function closeModal(i) {
+    switch(i) {
+        case 0:
+            document.getElementById('alertContainer').style.display = 'none'
+            document.getElementById('alert').style.display = 'none'
+            break
+        case 1:
+            document.getElementById('promptContainer').style.display = 'none'
+            document.getElementById('prompt').style.display = 'none'
+            break
+    }
+    
 }
 
 function setupHold(el, func) {

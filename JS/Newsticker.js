@@ -6,7 +6,9 @@ newsArray = [//always true
     ["Lol among US","true"],["can this be a newticker?","true"],["US army vs the void - coming soonTM","true"],["never gonna give you a rickroll","true"],
     ["I am your friendly news ticker, I tick when there is news. I'm like a Geiger counter, but for news!","true"],["This is a certified Void Moment","true"],
     ["VoidCloud sends his regards","true"],["127.0.0.1","true"],["gamening","true"],["Communism Doesn't Work","true"],["Your mom says hi","true"],
-    ["χάος","true"],
+    ["χάος","true"],["Fact Check - False","true"],["If you have the newsticker hidden you can't see this","true"],[`${data.armyName} has won ${data.wins} battles GG!`,"true"],
+    [`The ${data.currentEnemy.name} is far superior to you`,'true'],[`You may be good at this so far but can you beat ${difficultyNames[difficultyNames.length - 1]} difficulty?`,'true'],
+    [':texas:','true'],[`Today is ${formatDate(Date.now())}`,'true'],
     //Hard to find
     ["This message is extremely rare","getRandom(0,10000)===1000"]
 

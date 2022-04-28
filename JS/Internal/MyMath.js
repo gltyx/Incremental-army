@@ -6,6 +6,33 @@ function getRandomDecimal(min,max) {
     return Decimal.floor(D(Math.random()).times(max.sub(min))).plus(min)
 }
 
+function decimalRemainder(num1, num2) {
+    if(num1.eq(0)){
+           return D(0);
+           }
+    if(num2.eq(0)){
+           return NaN;
+    }
+
+
+      var newNum1 = Decimal.abs(num1);
+      var newNum2 = Decimal.abs(num2);
+
+      var quot = newNum1.sub(Decimal.floor( newNum1.div(newNum2) ).times(newNum2));
+
+      if(num1.lt(0)){
+            return quot.times(-1);
+      }
+      else{
+            return quot;
+      }
+}
+
+function formatDate(a) {
+    let d = new Date(a)
+    return `${d.getMonth() + 1}/${d.getDate()}/${d.getFullYear()}`
+}
+
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
 }
