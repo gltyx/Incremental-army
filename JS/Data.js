@@ -24,7 +24,7 @@ function getDefaultObject() {
         time: Date.now(),
         currentTab: 1,
         settingsToggles: [true],
-        currentUpdate: 'v0.0.4',
+        currentUpdate: 'v0.0.5',
         devSpeed: 1,
     }
 }
@@ -40,9 +40,9 @@ function load() {
     else if (savedata !== undefined) fixSave(data, savedata)
     if(data.armyName === undefined)
         nameArmy()
-    if(data.currentUpdate !== "v0.0.4") {
-        createAlert("Welcome Back!","The current version is v0.0.4, View the Changelog for details","812626")
-        data.currentUpdate = "v0.0.4"
+    if(data.currentUpdate !== "v0.0.5") {
+        createAlert("Welcome Back!","The current version is v0.0.5, View the Changelog for details","812626")
+        data.currentUpdate = "v0.0.5"
     }
     updateAutomators()
     updatePromotionButtons()
