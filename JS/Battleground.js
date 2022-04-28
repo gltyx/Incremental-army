@@ -21,7 +21,8 @@ function updateBattleground() {
     manpowerTotal[1] = D(0)
     attackTotal[0] = D(0)
     attackTotal[1] = D(0)
-    difficultyScale = D(1).plus(Decimal.sqrt(data.wins))
+    difficultyScale = Decimal.sqrt(data.wins).times(Decimal.floor(Decimal.sqrt(D(0.15).times(data.wins))).plus(1))
+    difficultyScale = D(1).plus(difficultyScale)
     for(let i = 0; i < 2; i++) {
         battleRewards[i] = Decimal.round(battleRewardBases[i].times(difficultyScale))
     }
