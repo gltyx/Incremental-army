@@ -14,6 +14,10 @@ let difficultyScale = D(0)
 
 function updateBattleground() {
     for(let i = 0; i < difficultyNames.length; i++) {
+        if(data.wins.lt(10)) {
+            difficultyNameIndex = 0
+            break
+        }
         if(decimalRemainder(data.wins,D(10 * i+1)).lt(10))
             difficultyNameIndex = i
     }
@@ -21,7 +25,7 @@ function updateBattleground() {
     manpowerTotal[1] = D(0)
     attackTotal[0] = D(0)
     attackTotal[1] = D(0)
-    difficultyScale = Decimal.sqrt(data.wins).times(Decimal.floor(Decimal.sqrt(D(0.15).times(data.wins))).plus(1))
+    difficultyScale = Decimal.sqrt(data.wins).times(Decimal.floor(Decimal.sqrt(D(1.25).times(data.wins))).plus(1))
     difficultyScale = D(1).plus(difficultyScale)
     for(let i = 0; i < 2; i++) {
         battleRewards[i] = Decimal.round(battleRewardBases[i].times(difficultyScale))
