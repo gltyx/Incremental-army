@@ -43,9 +43,8 @@ button:hover {
     cursor: pointer;
 }
 
-hr, input {
-    border: 1px solid whitesmoke;
-}
+hr { border: 1px solid whitesmoke; }
+input { border: 2px solid whitesmoke; }
 
 /*Classes*/
 

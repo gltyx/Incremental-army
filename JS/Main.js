@@ -6,12 +6,12 @@ function nameArmy() {
     closeModal(1)
     if (!name) { //lol why would you input nothing?
       createAlert('Error!','No Name Inputted!','#ff0000')
-      nameArmy()
+      createPrompt('Name your Army!',0)
       return
     }
     if (name.length > 20) {//prevent too long names
       createAlert('Error!','Your army name is too long!','#ff0000')
-      nameArmy()
+      createPrompt('Name your Army!',0)
       return
     }
       name = name.replace(nameRegex, "")
