@@ -26,7 +26,12 @@ function decimalRemainder(num1, num2) {
       else{
             return quot;
       }
- }
+}
+
+function formatDate(a) {
+    let d = new Date(a)
+    return `${d.getMonth() + 1}/${d.getDate()}/${d.getFullYear()}`
+}
 
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
