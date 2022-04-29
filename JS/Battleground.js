@@ -14,11 +14,8 @@ let difficultyScale = D(0)
 
 function updateBattleground() {
     for(let i = 0; i < difficultyNames.length; i++) {
-        if(data.wins.lt(10)) {
-            difficultyNameIndex = 0
-            break
-        }
-        if(decimalRemainder(data.wins,D(10 * i+1)).lt(10))
+        if(data.wins.lte(20)) {difficultyNameIndex = 0; break;}
+        if(decimalRemainder(data.wins,D(20 * i+1)).lt(20))
             difficultyNameIndex = i
     }
     manpowerTotal[0] = D(0)

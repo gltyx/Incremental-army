@@ -15,19 +15,24 @@ function updateMP() {
 }
 
 function buyMP(a,b) {
-    switch(b) {
-        case 0:
-            if(data.equipment[0].gte(enlistCost[a])) {
-                data.equipment[0] = data.equipment[0].sub(enlistCost[a])
-                data.enlisted[a] = data.enlisted[a].add(D(1))
-            }
-            break
-        case 1:
-            if(data.medals.gte(officerCost[a])) {
-                data.medals = data.medals.sub(officerCost[a])
-                data.officers[a] = data.officers[a].add(D(1))
-            }
-            break
+    const buyAmounts = [1,10,100,1000]
+    for(let i = 0; i < buyAmounts[data.buyAmounts[b]]; i++) {
+        if(b === 0 && data.equipment[0].lt(enlistCost[a])) break
+        if(b === 1 && data.medals.lt(officerCost[a])) break
+        switch(b) {
+            case 0:
+                if(data.equipment[0].gte(enlistCost[a])) {
+                    data.equipment[0] = data.equipment[0].sub(enlistCost[a])
+                    data.enlisted[a] = data.enlisted[a].add(D(1))
+                }
+                break
+            case 1:
+                if(data.medals.gte(officerCost[a])) {
+                    data.medals = data.medals.sub(officerCost[a])
+                    data.officers[a] = data.officers[a].add(D(1))
+                }
+                break
+        }
+        updateMP()
     }
-    updateMP()
 }

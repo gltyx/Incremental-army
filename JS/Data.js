@@ -19,12 +19,13 @@ function getDefaultObject() {
         wins: D(0),
         promotionUpgrades: [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
         autoActive: [false,false,false,false,false,false,false,false,false,false,false,false,false,false],
+        buyAmounts: [0,0,0],
         acquireAutoReq: D(0),
         level: 0,
         time: Date.now(),
         currentTab: 1,
-        settingsToggles: [true],
-        currentUpdate: 'v0.0.5',
+        settingsToggles: [true,true],
+        currentUpdate: 'v0.0.6',
         devSpeed: 1,
     }
 }
@@ -40,14 +41,19 @@ function load() {
     else if (savedata !== undefined) fixSave(data, savedata)
     if(data.armyName === undefined)
         nameArmy()
-    if(data.currentUpdate !== "v0.0.5") {
-        createAlert("Welcome Back!","The current version is v0.0.5, View the Changelog for details","812626")
-        data.currentUpdate = "v0.0.5"
+    if(data.currentUpdate !== "v0.0.6") {
+        createAlert("Welcome Back!","The current version is v0.0.6, View the Changelog for details","812626")
+        data.currentUpdate = "v0.0.6"
     }
     updateAutomators()
     updatePromotionButtons()
-    for(let i = 0; i < toggleNames.length; i++)
+    for(let i = 0; i < toggleNames.length; i++) {
+        if(i !== 1)
         DOMCacheGetOrSet(`setTog${i}`).innerHTML = data.settingsToggles[i] ? `${toggleNames[i]}: On` : `${toggleNames[i]}: Off`
+    else
+        DOMCacheGetOrSet(`setTog${i}`).innerHTML = data.settingsToggles[i] ? `${toggleNames[i]}: Mixed Sci` : `${toggleNames[i]}: Sci`
+    }
+    updateBuyAmounts()
 }
 //fix saves
 function fixSave(main=getDefaultObject(), data) {
@@ -89,6 +95,8 @@ window.onload = function (){
     load()
     tabChangeHTML()
     scrollNextMessage()
+    generateEventHandlers()
+    console.log('Event Handlers Initialized...')
 }
 //full reset
 function fullReset(){

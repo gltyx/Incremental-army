@@ -5,7 +5,7 @@ const rankNameIds = ['pvt','cpl','sgt','ssgt','2lt','1lt','cpt','maj']
 const equipIds = ['ie','at','art','transport']
 const equipNames = ['Infantry Equipment','Anti-Tank Gun','Artillery Gun','Transport']
 
-const difficultyNames = ['Conscript','Recruit','Novice','Veteran','Elite','Specialist','Commando','Elite Commando','Hunter','Elite Hunter','Expert','Elite Expert','Master','Elite Master','Legend','Elite Legend','Grand Master - I','Grand Master - II','Grand Master - III','Grand Master - IV','Grand Master - V']
+const difficultyNames = ['Conscript','Recruit','Novice','Veteran','Elite','Specialist','Commando','Elite Commando','Hunter','Elite Hunter','Expert','Elite Expert','Master','Elite Master','Legend','Elite Legend']
 let enlistString = []
 let officerString = []
 let equipmentString = []
@@ -61,20 +61,48 @@ function updateHTML() {
         DOMCacheGetOrSet('battlegroundStatsHolder').style.display = data.enlisted[0].gte(1) || data.enlisted[1].gte(1) || data.enlisted[2].gte(1) || data.enlisted[3].gte(1) ? 'flex' : 'none'
         if(data.enlisted[0].gte(1) || data.enlisted[1].gte(1) || data.enlisted[2].gte(1) || data.enlisted[3].gte(1)) {
             //Strings
-            enlistString[1] = `${rankNameShort[0]}: ${format(data.currentEnemy.enlisted[0].times(enemyEquipmentBoosts[2]))}<br>${rankNameShort[1]}: ${format(data.currentEnemy.enlisted[1].times(enemyEquipmentBoosts[2]))}<br>${rankNameShort[2]}: ${format(data.currentEnemy.enlisted[2].times(enemyEquipmentBoosts[2]))}<br>${rankNameShort[3]}: ${format(data.currentEnemy.enlisted[3].times(enemyEquipmentBoosts[2]))}<br>`
+            if(data.wins.lt(10))
+                enlistString[1] = `${rankNameShort[0]}: ${format(data.currentEnemy.enlisted[0].times(enemyEquipmentBoosts[2]))}<br>Deployed at 10 Wins<br>Deployed at 20 Wins<br>Deployed at 30 Wins<br>`
+            else if(data.wins.lt(20))
+                enlistString[1] = `${rankNameShort[0]}: ${format(data.currentEnemy.enlisted[0].times(enemyEquipmentBoosts[2]))}<br>${rankNameShort[1]}: ${format(data.currentEnemy.enlisted[1].times(enemyEquipmentBoosts[2]))}<br>Deployed at 20 Wins<br>Deployed at 30 Wins<br>`
+            else if(data.wins.lt(30))
+                enlistString[1] = `${rankNameShort[0]}: ${format(data.currentEnemy.enlisted[0].times(enemyEquipmentBoosts[2]))}<br>${rankNameShort[1]}: ${format(data.currentEnemy.enlisted[1].times(enemyEquipmentBoosts[2]))}<br>${rankNameShort[2]}: ${format(data.currentEnemy.enlisted[2].times(enemyEquipmentBoosts[2]))}<br>Deployed at 30 Wins<br>`
+            else
+                enlistString[1] = `${rankNameShort[0]}: ${format(data.currentEnemy.enlisted[0].times(enemyEquipmentBoosts[2]))}<br>${rankNameShort[1]}: ${format(data.currentEnemy.enlisted[1].times(enemyEquipmentBoosts[2]))}<br>${rankNameShort[2]}: ${format(data.currentEnemy.enlisted[2].times(enemyEquipmentBoosts[2]))}<br>${rankNameShort[3]}: ${format(data.currentEnemy.enlisted[3].times(enemyEquipmentBoosts[2]))}<br>`
             enlistString[0] = `${rankNameShort[0]}: ${format(data.enlisted[0].times(equipmentBoosts[2]))} [${format(data.enlisted[0])} - ${format(data.currentEnemy.enlisted[0])}]<br>${rankNameShort[1]}: ${format(data.enlisted[1].times(equipmentBoosts[2]))} [${format(data.enlisted[1])} - ${format(data.currentEnemy.enlisted[1])}]<br>${rankNameShort[2]}: ${format(data.enlisted[2].times(equipmentBoosts[2]))} [${format(data.enlisted[2])} - ${format(data.currentEnemy.enlisted[2])}]<br>${rankNameShort[3]}: ${format(data.enlisted[3].times(equipmentBoosts[2]))}  [${format(data.enlisted[3])} - ${format(data.currentEnemy.enlisted[3])}]<br>`
+            
+            if(data.wins.lt(50))
+                officerString[1] = `Deployed at 50 Wins<br>Deployed at 60 Wins<br>Deployed at 70 Wins<br>Deployed at 80 Wins<br>`
+            else if(data.wins.lt(60))
+            officerString[1] = `${rankNameShort[4]}: ${format(data.currentEnemy.officers[0].times(enemyEquipmentBoosts[2]))}<br>Deployed at 60 Wins<br>Deployed at 70 Wins<br>Deployed at 80 Wins<br>`
+            else if(data.wins.lt(70))
+            officerString[1] = `${rankNameShort[4]}: ${format(data.currentEnemy.officers[0].times(enemyEquipmentBoosts[2]))}<br>${rankNameShort[5]}: ${format(data.currentEnemy.officers[1].times(enemyEquipmentBoosts[2]))}<br>Deployed at 70 Wins<br>Deployed at 80 Wins<br>`
+            else if(data.wins.lt(80))
+            officerString[1] = `${rankNameShort[4]}: ${format(data.currentEnemy.officers[0].times(enemyEquipmentBoosts[2]))}<br>${rankNameShort[5]}: ${format(data.currentEnemy.officers[1].times(enemyEquipmentBoosts[2]))}<br>${rankNameShort[6]}: ${format(data.currentEnemy.officers[2].times(enemyEquipmentBoosts[2]))}<br>Deployed at 80 Wins<br>`
+            else
             officerString[1] = `${rankNameShort[4]}: ${format(data.currentEnemy.officers[0].times(enemyEquipmentBoosts[2]))}<br>${rankNameShort[5]}: ${format(data.currentEnemy.officers[1].times(enemyEquipmentBoosts[2]))}<br>${rankNameShort[6]}: ${format(data.currentEnemy.officers[2].times(enemyEquipmentBoosts[2]))}<br>${rankNameShort[7]}: ${format(data.currentEnemy.officers[3].times(enemyEquipmentBoosts[2]))}<br>`
             officerString[0] = `${rankNameShort[4]}: ${format(data.officers[0].times(equipmentBoosts[2]))} [${format(data.officers[0])} - ${format(data.currentEnemy.officers[0])}]<br>${rankNameShort[5]}: ${format(data.officers[1].times(equipmentBoosts[2]))} [${format(data.officers[1])} - ${format(data.currentEnemy.officers[1])}]<br>${rankNameShort[6]}: ${format(data.officers[2].times(equipmentBoosts[2]))} [${format(data.officers[2])} - ${format(data.currentEnemy.officers[2])}]<br>${rankNameShort[7]}: ${format(data.officers[3].times(equipmentBoosts[2]))} [${format(data.officers[3])} - ${format(data.currentEnemy.officers[3])}]<br>`
+            
+            equipmentString[0] = `Anti-Tank Guns: ${format(data.equipment[1])} [+${format(equipmentBoosts[0])} Damage to Armor]<br>Artillery Guns: ${format(data.equipment[2])} [+${format(equipmentBoosts[1])} Damage to Infantry]<br>Transports: ${format(data.equipment[3])} [${format(equipmentBoosts[2])}x More Troops]`
+            if(data.wins.lt(30))
+                equipmentString[1] = 'Deployed at 30 Wins<br>Deployed at 40 Wins<br>Deployed at 75 Wins'
+            else if(data.wins.lt(40))
+                equipmentString[1] = `Anti-Tank Guns: ${format(data.currentEnemy.equipment[1])} [+${format(enemyEquipmentBoosts[0])} Damage to Armor]<br>Deployed at 40 Wins<br>Deployed at 75 Wins`
+            else if(data.wins.lt(75))
+                equipmentString[1] = `Anti-Tank Guns: ${format(data.currentEnemy.equipment[1])} [+${format(enemyEquipmentBoosts[0])} Damage to Armor]<br>Artillery Guns: ${format(data.currentEnemy.equipment[2])} [+${format(enemyEquipmentBoosts[1])} Damage to Infantry]<br>Deployed at 75 Wins`
+            else
+                equipmentString[1] = `Anti-Tank Guns: ${format(data.currentEnemy.equipment[1])} [+${format(enemyEquipmentBoosts[0])} Damage to Armor]<br>Artillery Guns: ${format(data.currentEnemy.equipment[2])} [+${format(enemyEquipmentBoosts[1])} Damage to Infantry]<br>Transports: ${format(data.currentEnemy.equipment[3])} [${format(enemyEquipmentBoosts[2])}x More Troops]`
             //Updates
             DOMCacheGetOrSet('playerStats').innerHTML = `${data.armyName}<br>Manpower: ${format(manpowerTotal[0])}<br>Attack Power: ${format(attackTotal[0])}`
             DOMCacheGetOrSet('enemyStats').innerHTML = `${data.currentEnemy.name}<br>Manpower: ${format(manpowerTotal[1])}<br>Attack Power: ${format(attackTotal[1])}`
-            DOMCacheGetOrSet('playerArmy').innerHTML = `Soldiers<hr>${enlistString[0]}<br>Officers<hr>${officerString[0]}<br>Equipment<hr>Anti-Tank Guns: ${format(data.equipment[1])} [+${format(equipmentBoosts[0])} Damage to Armor]<br>Artillery Guns: ${format(data.equipment[2])} [+${format(equipmentBoosts[1])} Damage to Infantry]<br>Transports: ${format(data.equipment[3])}
-            [${format(equipmentBoosts[2])}x More Troops]`
+            DOMCacheGetOrSet('playerArmy').innerHTML = `Soldiers<hr>${enlistString[0]}<br>Officers<hr>${officerString[0]}<br>Equipment<hr>${equipmentString[0]}`
             DOMCacheGetOrSet('enemyArmy').innerHTML = `Soldiers<hr>${enlistString[1]}<br>Officers<hr>${officerString[1]}<br>Equipment<hr>Anti-Tank Guns: ${format(data.currentEnemy.equipment[1])} [+${format(enemyEquipmentBoosts[0])} Damage to Armor]<br>Artillery Guns: ${format(data.currentEnemy.equipment[2])} [+${format(enemyEquipmentBoosts[1])} Damage to Infantry]<br>Transports: ${format(data.currentEnemy.equipment[3])}
             [${format(enemyEquipmentBoosts[2])}x More Troops]`
-            DOMCacheGetOrSet('battleRewardText').innerHTML = `Rewards: +${format(battleRewards[0])} Medals | +/-${format(battleRewards[1])} Approval
+            DOMCacheGetOrSet('battleRewardText').innerHTML = difficultyNameIndex < difficultyNames.length ? `Rewards: +${format(battleRewards[0])} Medals | +/-${format(battleRewards[1])} Approval
             <br>Total Wins: ${format(data.wins)} | Difficulty Scale ${format(difficultyScale)}x<br>
-            Difficulty Rating: ${difficultyNames[difficultyNameIndex]}`
+            Difficulty Rating: ${difficultyNames[difficultyNameIndex]}` : `Rewards: +${format(battleRewards[0])} Medals | +/-${format(battleRewards[1])} Approval
+            <br>Total Wins: ${format(data.wins)} | Difficulty Scale ${format(difficultyScale)}x<br>
+            Difficulty Rating: Grand Master - ${romanize(difficultyNameIndex - difficultyNames.length)}`
             DOMCacheGetOrSet('tiebreakText').innerHTML = (manpowerTotal[0].sub(attackTotal[1])).gte(manpowerTotal[1].sub(attackTotal[0])) ? `Vs.<br>Tie Breaker Status: Win` : `Vs.<br>Tie Breaker Status: Lose`
         }
     }

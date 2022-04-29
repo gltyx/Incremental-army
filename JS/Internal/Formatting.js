@@ -40,7 +40,7 @@ function sumValues(x) {
     return x.reduce((a, b) => Decimal.add(a, b))
 }
 
-function format(decimal, precision = 2) {
+function formatSci(decimal, precision = 2) {
     decimal = new Decimal(decimal)
         if (isNaN(decimal)) return  '[ERROR]: NaN'
         if (decimal.sign < 0) return "-" + format(decimal.neg(), precision)
