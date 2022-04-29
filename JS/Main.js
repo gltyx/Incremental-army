@@ -27,10 +27,13 @@ function nameArmy() {
       console.log(name)
     data.armyName = name
 }
-const toggleNames = ['Newsticker']
+const toggleNames = ['Newsticker','Notation']
 function toggle(i) {
     data.settingsToggles[i] = !data.settingsToggles[i]
-    DOMCacheGetOrSet(`setTog${i}`).innerHTML = data.settingsToggles[i] ? `${toggleNames[i]}: On` : `${toggleNames[i]}: Off`
+    if(i !== 1)
+        DOMCacheGetOrSet(`setTog${i}`).innerHTML = data.settingsToggles[i] ? `${toggleNames[i]}: On` : `${toggleNames[i]}: Off`
+    else
+        DOMCacheGetOrSet(`setTog${i}`).innerHTML = data.settingsToggles[i] ? `${toggleNames[i]}: Mixed Sci` : `${toggleNames[i]}: Sci`
     if (i === 0) {
         DOMCacheGetOrSet('newsHolder').style.display = data.settingsToggles[i] ? 'block' : 'none'
         scrollNextMessage()

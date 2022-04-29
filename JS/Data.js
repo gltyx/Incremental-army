@@ -24,7 +24,7 @@ function getDefaultObject() {
         level: 0,
         time: Date.now(),
         currentTab: 1,
-        settingsToggles: [true],
+        settingsToggles: [true,true],
         currentUpdate: 'v0.0.4',
         devSpeed: 1,
     }
@@ -47,8 +47,12 @@ function load() {
     }
     updateAutomators()
     updatePromotionButtons()
-    for(let i = 0; i < toggleNames.length; i++)
+    for(let i = 0; i < toggleNames.length; i++) {
+        if(i !== 1)
         DOMCacheGetOrSet(`setTog${i}`).innerHTML = data.settingsToggles[i] ? `${toggleNames[i]}: On` : `${toggleNames[i]}: Off`
+    else
+        DOMCacheGetOrSet(`setTog${i}`).innerHTML = data.settingsToggles[i] ? `${toggleNames[i]}: Mixed Sci` : `${toggleNames[i]}: Sci`
+    }
     updateBuyAmounts()
 }
 //fix saves

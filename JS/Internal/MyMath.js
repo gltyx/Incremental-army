@@ -1,3 +1,21 @@
+function format(a) {
+    if(data.settingsToggles[1]) {
+        const standardPrefix = ['K','M','B','T','Qa','Qi','Sx','Sp','Oc','No','Dc']
+        const standardReq = [D(1e3),D(1e6),D(1e9),D(1e12),D(1e15),D(1e18),D(1e21),D(1e24),D(1e27),D(1e30),D(1e33)]
+        for(let i = standardReq.length-1; i > -1; i--) {
+            if(i === standardReq.length-1 && (a.div(standardReq[i]).gte(1e3)))
+                return formatSci(a)
+            if(a.gte(standardReq[i]))
+                return `${formatSci(a.divide(standardReq[i]))} ${standardPrefix[i]}`
+            if(a.lt(standardReq[0]))
+                return formatSci(a)
+        }
+    }
+    else {
+        return formatSci(a)
+    }
+}
+
 function getRandom(min, max) {
     return Math.floor(Math.random() * (max - min) ) + min
 }
