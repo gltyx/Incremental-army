@@ -61,6 +61,7 @@ function formatPrefix(a,b) {
         return `${format(a.divide(amts[index]))} ${prefixes[index]}${b.toLowerCase()}`
     }
 }
+
 //https://blog.stevenlevithan.com/archives/javascript-roman-numeral-converter
 function romanize (num) {
     if (!+num) return false;

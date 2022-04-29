@@ -1,3 +1,12 @@
+function generateEventHandlers() {
+    for(let i = 0; i < 4; i++) {
+        DOMCacheGetOrSet(`${rankNameIds[i]}Button`).addEventListener('click', () => {buyMP(i,0)})
+        DOMCacheGetOrSet(`${rankNameIds[i+4]}Button`).addEventListener('click', () => {buyMP(i,1)})
+        DOMCacheGetOrSet(`${equipIds[i]}Button`).addEventListener('click', () => {buyEquip(i)})
+    }
+    
+}
+
 
 function nameArmy() {
     const nameRegex = /[^\w ]|_/g  
@@ -81,6 +90,25 @@ function closeModal(i) {
             break
     }
     
+}
+
+function toggleBA(i) {
+    if(data.buyAmounts[i] === 0)
+    data.buyAmounts[i] = 1
+    else if(data.buyAmounts[i] === 1)
+    data.buyAmounts[i] = 2
+    else if(data.buyAmounts[i] === 2)
+    data.buyAmounts[i] = 3
+    else if(data.buyAmounts[i] === 3)
+    data.buyAmounts[i] = 0
+    updateBuyAmounts()
+}
+
+function updateBuyAmounts() {
+    const baName = ['1','10','100','1e3']
+    for(let i = 0; i < data.buyAmounts.length; i++) {
+        DOMCacheGetOrSet(`ba${i}`).innerHTML = `Buy Amount: ${baName[data.buyAmounts[i]]}`
+    }
 }
 
 function setupHold(el, func) {
