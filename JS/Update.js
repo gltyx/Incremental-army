@@ -5,7 +5,7 @@ const rankNameIds = ['pvt','cpl','sgt','ssgt','2lt','1lt','cpt','maj']
 const equipIds = ['ie','at','art','transport']
 const equipNames = ['Infantry Equipment','Anti-Tank Gun','Artillery Gun','Transport']
 
-const difficultyNames = ['Conscript','Recruit','Novice','Veteran','Elite','Specialist','Commando','Elite Commando','Hunter','Elite Hunter','Expert','Elite Expert','Master','Elite Master','Legend','Elite Legend','Grand Master - I','Grand Master - II','Grand Master - III','Grand Master - IV','Grand Master - V']
+const difficultyNames = ['Conscript','Recruit','Novice','Veteran','Elite','Specialist','Commando','Elite Commando','Hunter','Elite Hunter','Expert','Elite Expert','Master','Elite Master','Legend','Elite Legend']
 let enlistString = []
 let officerString = []
 let equipmentString = []
@@ -98,9 +98,11 @@ function updateHTML() {
             DOMCacheGetOrSet('playerArmy').innerHTML = `Soldiers<hr>${enlistString[0]}<br>Officers<hr>${officerString[0]}<br>Equipment<hr>${equipmentString[0]}`
             DOMCacheGetOrSet('enemyArmy').innerHTML = `Soldiers<hr>${enlistString[1]}<br>Officers<hr>${officerString[1]}<br>Equipment<hr>Anti-Tank Guns: ${format(data.currentEnemy.equipment[1])} [+${format(enemyEquipmentBoosts[0])} Damage to Armor]<br>Artillery Guns: ${format(data.currentEnemy.equipment[2])} [+${format(enemyEquipmentBoosts[1])} Damage to Infantry]<br>Transports: ${format(data.currentEnemy.equipment[3])}
             [${format(enemyEquipmentBoosts[2])}x More Troops]`
-            DOMCacheGetOrSet('battleRewardText').innerHTML = `Rewards: +${format(battleRewards[0])} Medals | +/-${format(battleRewards[1])} Approval
+            DOMCacheGetOrSet('battleRewardText').innerHTML = difficultyNameIndex < difficultyNames.length ? `Rewards: +${format(battleRewards[0])} Medals | +/-${format(battleRewards[1])} Approval
             <br>Total Wins: ${format(data.wins)} | Difficulty Scale ${format(difficultyScale)}x<br>
-            Difficulty Rating: ${difficultyNames[difficultyNameIndex]}`
+            Difficulty Rating: ${difficultyNames[difficultyNameIndex]}` : `Rewards: +${format(battleRewards[0])} Medals | +/-${format(battleRewards[1])} Approval
+            <br>Total Wins: ${format(data.wins)} | Difficulty Scale ${format(difficultyScale)}x<br>
+            Difficulty Rating: Grand Master - ${romanize(difficultyNameIndex - difficultyNames.length)}`
             DOMCacheGetOrSet('tiebreakText').innerHTML = (manpowerTotal[0].sub(attackTotal[1])).gte(manpowerTotal[1].sub(attackTotal[0])) ? `Vs.<br>Tie Breaker Status: Win` : `Vs.<br>Tie Breaker Status: Lose`
         }
     }
