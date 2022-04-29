@@ -84,7 +84,14 @@ function updateHTML() {
             officerString[0] = `${rankNameShort[4]}: ${format(data.officers[0].times(equipmentBoosts[2]))} [${format(data.officers[0])} - ${format(data.currentEnemy.officers[0])}]<br>${rankNameShort[5]}: ${format(data.officers[1].times(equipmentBoosts[2]))} [${format(data.officers[1])} - ${format(data.currentEnemy.officers[1])}]<br>${rankNameShort[6]}: ${format(data.officers[2].times(equipmentBoosts[2]))} [${format(data.officers[2])} - ${format(data.currentEnemy.officers[2])}]<br>${rankNameShort[7]}: ${format(data.officers[3].times(equipmentBoosts[2]))} [${format(data.officers[3])} - ${format(data.currentEnemy.officers[3])}]<br>`
             
             equipmentString[0] = `Anti-Tank Guns: ${format(data.equipment[1])} [+${format(equipmentBoosts[0])} Damage to Armor]<br>Artillery Guns: ${format(data.equipment[2])} [+${format(equipmentBoosts[1])} Damage to Infantry]<br>Transports: ${format(data.equipment[3])} [${format(equipmentBoosts[2])}x More Troops]`
-            equipmentString[1] = `Anti-Tank Guns: ${format(data.currentEnemy.equipment[1])} [+${format(enemyEquipmentBoosts[0])} Damage to Armor]<br>Artillery Guns: ${format(data.currentEnemy.equipment[2])} [+${format(enemyEquipmentBoosts[1])} Damage to Infantry]<br>Transports: ${format(data.currentEnemy.equipment[3])} [${format(enemyEquipmentBoosts[2])}x More Troops]`
+            if(data.wins.lt(30))
+                equipmentString[1] = 'Deployed at 30 Wins<br>Deployed at 40 Wins<br>Deployed at 75 Wins'
+            else if(data.wins.lt(40))
+                equipmentString[1] = `Anti-Tank Guns: ${format(data.currentEnemy.equipment[1])} [+${format(enemyEquipmentBoosts[0])} Damage to Armor]<br>Deployed at 40 Wins<br>Deployed at 75 Wins`
+            else if(data.wins.lt(75))
+                equipmentString[1] = `Anti-Tank Guns: ${format(data.currentEnemy.equipment[1])} [+${format(enemyEquipmentBoosts[0])} Damage to Armor]<br>Artillery Guns: ${format(data.currentEnemy.equipment[2])} [+${format(enemyEquipmentBoosts[1])} Damage to Infantry]<br>Deployed at 75 Wins`
+            else
+                equipmentString[1] = `Anti-Tank Guns: ${format(data.currentEnemy.equipment[1])} [+${format(enemyEquipmentBoosts[0])} Damage to Armor]<br>Artillery Guns: ${format(data.currentEnemy.equipment[2])} [+${format(enemyEquipmentBoosts[1])} Damage to Infantry]<br>Transports: ${format(data.currentEnemy.equipment[3])} [${format(enemyEquipmentBoosts[2])}x More Troops]`
             //Updates
             DOMCacheGetOrSet('playerStats').innerHTML = `${data.armyName}<br>Manpower: ${format(manpowerTotal[0])}<br>Attack Power: ${format(attackTotal[0])}`
             DOMCacheGetOrSet('enemyStats').innerHTML = `${data.currentEnemy.name}<br>Manpower: ${format(manpowerTotal[1])}<br>Attack Power: ${format(attackTotal[1])}`
