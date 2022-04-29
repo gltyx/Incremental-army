@@ -1,3 +1,2 @@
 # Incremental Army
-Content None<br>
-Features None
+Its a game that exists
