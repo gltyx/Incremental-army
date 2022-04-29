@@ -96,8 +96,7 @@ function updateHTML() {
             DOMCacheGetOrSet('playerStats').innerHTML = `${data.armyName}<br>Manpower: ${format(manpowerTotal[0])}<br>Attack Power: ${format(attackTotal[0])}`
             DOMCacheGetOrSet('enemyStats').innerHTML = `${data.currentEnemy.name}<br>Manpower: ${format(manpowerTotal[1])}<br>Attack Power: ${format(attackTotal[1])}`
             DOMCacheGetOrSet('playerArmy').innerHTML = `Soldiers<hr>${enlistString[0]}<br>Officers<hr>${officerString[0]}<br>Equipment<hr>${equipmentString[0]}`
-            DOMCacheGetOrSet('enemyArmy').innerHTML = `Soldiers<hr>${enlistString[1]}<br>Officers<hr>${officerString[1]}<br>Equipment<hr>Anti-Tank Guns: ${format(data.currentEnemy.equipment[1])} [+${format(enemyEquipmentBoosts[0])} Damage to Armor]<br>Artillery Guns: ${format(data.currentEnemy.equipment[2])} [+${format(enemyEquipmentBoosts[1])} Damage to Infantry]<br>Transports: ${format(data.currentEnemy.equipment[3])}
-            [${format(enemyEquipmentBoosts[2])}x More Troops]`
+            DOMCacheGetOrSet('enemyArmy').innerHTML = `Soldiers<hr>${enlistString[1]}<br>Officers<hr>${officerString[1]}<br>Equipment<hr>${equipmentString[1]}`
             DOMCacheGetOrSet('battleRewardText').innerHTML = difficultyNameIndex < difficultyNames.length ? `Rewards: +${format(battleRewards[0])} Medals | +/-${format(battleRewards[1])} Approval
             <br>Total Wins: ${format(data.wins)} | Difficulty Scale ${format(difficultyScale)}x<br>
             Difficulty Rating: ${difficultyNames[difficultyNameIndex]}` : `Rewards: +${format(battleRewards[0])} Medals | +/-${format(battleRewards[1])} Approval
