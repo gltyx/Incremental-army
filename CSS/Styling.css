@@ -9,6 +9,7 @@
     --finance-color: #349348;
     --battleground-color: #935534;
     --promotion-color: #346d93;
+    --achievement-color: #4d41be;
 }
 /*Globals*/
 
@@ -76,8 +77,10 @@ input { border: 2px solid whitesmoke; }
 .on:hover {color:#202020;background-color: #268135;border-color: #268135;}
 .off {color: #812626;border-color: #812626;}
 .off:hover {color:#202020;background-color: #812626;border-color: #812626;}
+.achLock {margin-top:1vh;background-color: #4d4d4d;border: 2px solid whitesmoke; width:6em;height:6em;text-align: center;font-size: 1em;}
+.achUnlock {margin-top:1vh;background-color: #2b6733;border: 2px solid whitesmoke; width: 6em;height:6em;text-align:center;font-size: 1em;}
 /*IDs*/
-
+#achCol {margin-left: .5vw;margin-right: .5vw;}
 #newsHolder {
     border: 2px solid whitesmoke;
     padding: 2px;
@@ -127,6 +130,8 @@ input { border: 2px solid whitesmoke; }
 #bB:hover {color: #202020; background-color: var(--battleground-color);}
 #pB {color: var(--promotion-color); border-color: var(--promotion-color);}
 #pB:hover {color: #202020; background-color: var(--promotion-color);}
+#aB {color: var(--achievement-color); border-color: var(--achievement-color);}
+#aB:hover {color: #202020; background-color: var(--achievement-color);}
 
 #playerStats {color:#4a53db}
 #enemyStats {color:#db4a4a}

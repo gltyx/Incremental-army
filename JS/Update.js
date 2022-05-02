@@ -129,7 +129,7 @@ function updateHTML() {
     }
 }
 
-const tabIDs = ['manpower','equipment','finances','battleground','promotions','settings']
+const tabIDs = ['manpower','equipment','finances','battleground','promotions','settings','achievements']
 
 function tabChangeHTML() {
     for(let i = 0; i < tabIDs.length; i++)
