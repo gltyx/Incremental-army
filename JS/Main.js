@@ -78,6 +78,9 @@ function createPrompt(a,b) {
         case 0:
             document.getElementById('promptButton').addEventListener('click', () => { nameArmy() })
             break
+        case 1:
+            document.getElementById('promptButton').addEventListener('click', () => { importSave() })
+            break
     }
 }
 

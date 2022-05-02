@@ -83,7 +83,11 @@ function exportSave(){
     document.body.removeChild(exportedDataText);
 }
 function importSave(){
-    let importedData = prompt("Paste your save data here!")
+    let importedData = DOMCacheGetOrSet('promptInput').value
+    if(importedData.length <= 0 || importedData === undefined) {
+        createAlert('Error!','No data was entered!','#ff0000')
+        return
+    }
     data = Object.assign(getDefaultObject(), JSON.parse(atob(importedData)))
     save()
     location.reload()

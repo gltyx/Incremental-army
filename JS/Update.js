@@ -97,7 +97,7 @@ function updateHTML() {
             DOMCacheGetOrSet('enemyStats').innerHTML = `${data.currentEnemy.name}<br>Manpower: ${format(manpowerTotal[1])}<br>Attack Power: ${format(attackTotal[1])}`
             DOMCacheGetOrSet('playerArmy').innerHTML = `Soldiers<hr>${enlistString[0]}<br>Officers<hr>${officerString[0]}<br>Equipment<hr>${equipmentString[0]}`
             DOMCacheGetOrSet('enemyArmy').innerHTML = `Soldiers<hr>${enlistString[1]}<br>Officers<hr>${officerString[1]}<br>Equipment<hr>${equipmentString[1]}`
-            DOMCacheGetOrSet('battleRewardText').innerHTML = difficultyNameIndex < difficultyNames.length ? `Rewards: +${format(battleRewards[0])} Medals | +/-${format(battleRewards[1])} Approval
+            DOMCacheGetOrSet('battleRewardText').innerHTML = difficultyNameIndex < difficultyNames.length-1 ? `Rewards: +${format(battleRewards[0])} Medals | +/-${format(battleRewards[1])} Approval
             <br>Total Wins: ${format(data.wins)} | Difficulty Scale ${format(difficultyScale)}x<br>
             Difficulty Rating: ${difficultyNames[difficultyNameIndex]}` : `Rewards: +${format(battleRewards[0])} Medals | +/-${format(battleRewards[1])} Approval
             <br>Total Wins: ${format(data.wins)} | Difficulty Scale ${format(difficultyScale)}x<br>
