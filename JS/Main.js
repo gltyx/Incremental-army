@@ -54,6 +54,7 @@ function mainLoop() {
     updateFinances()
     updateBattleground()
     runAutomators()
+    checkAchieves()
     updateHTML()
 }
 

@@ -127,6 +127,8 @@ function updateHTML() {
         DOMCacheGetOrSet('forUp').style.display = data.level >= 4 ? 'flex' : 'none'
         DOMCacheGetOrSet('fivUp').style.display = data.level >= 5 ? 'flex' : 'none'
     }
+    else if(data.currentTab === 6)
+        updateAchieves()
 }
 
 const tabIDs = ['manpower','equipment','finances','battleground','promotions','settings','achievements']

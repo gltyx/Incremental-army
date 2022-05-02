@@ -79,6 +79,7 @@ input { border: 2px solid whitesmoke; }
 .off:hover {color:#202020;background-color: #812626;border-color: #812626;}
 .achLock {margin-top:1vh;background-color: #4d4d4d;border: 2px solid whitesmoke; width:60px;height:60px;text-align: center;font-size: .60em;}
 .achUnlock {margin-top:1vh;background-color: #2b6733;border: 2px solid whitesmoke; width:60px;height:60px;text-align:center;font-size: .60em;}
+.achPlaceholder {margin-top:1vh;background-color: #202020;border: 2px solid whitesmoke; width:60px;height:60px;text-align: center;font-size: .60em;}
 /*IDs*/
 #achCol {margin-left: .5vw;margin-right: .5vw;}
 #newsHolder {

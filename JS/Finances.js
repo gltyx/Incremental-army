@@ -30,6 +30,8 @@ function specialItem(a) {
             if(data.approval.lt(100)) return
             data.approval = data.approval.sub(90)
             data.lobbyLevel = data.lobbyLevel.add(1)
+            if(data.achievement[16] === false)
+                data.achievement[16] = true
             break
         case 1:
             if(data.approval.gt(0)) return
@@ -40,7 +42,8 @@ function specialItem(a) {
                 data.funds = data.funds.sub(data.funds.times(.5))
             else if((!data.promotionUpgrades[1] && data.promotionUpgrades[6]) || (data.promotionUpgrades[1] && data.promotionUpgrades[6]))
                 data.funds = data.funds.sub(data.funds.times(.25))
+            if(data.achievement[17] === false)
+                data.achievement[17] = true
             break
-
     }
 }

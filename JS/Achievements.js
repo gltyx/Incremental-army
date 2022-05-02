@@ -13,7 +13,42 @@ function changeDesc(i) {
     else if(i < 27) {achName = achNames[3]; achNum = i-18 < 10 ? `0${i-18}` : `${i-18}`}
     else if(i < 33) {achName = achNames[4]; achNum = i-26 < 10 ? `0${i-26}` : `${i-26}`}
 
-    DOMCacheGetOrSet(`achDescText`).innerHTML = `<hr>${achName}-${achNum}: ${achDescs[i]}`
+    DOMCacheGetOrSet(`achDescText`).innerHTML = data.achievement[i] ? `<hr>${achName}-${achNum}: ${achDescs[i]}<br>[Unlocked]` : `<hr>${achName}-${achNum}: ${achDescs[i]}<br>[Locked]`
+}
+const battleAchReqs = [D(1),D(10),D(20),D(40),D(60),D(80),D(100),D(340)]
+function checkAchieves() {
+    //Alpha
+    for(let i = 0; i < 4; i++) {
+        if(data.achievement[i] === false && data.enlisted[i].gte(1))
+            data.achievement[i] = true
+        if(data.achievement[i+4] === false && data.officers[i].gte(1))
+            data.achievement[i+4] = true
+    }
+    //Bravo
+    for(let i = 0; i < 4; i++) {
+        if(data.achievement[i+8] === false && data.equipment[i].gte(1))
+            data.achievement[i+8] = true
+        if(data.achievement[i+12] === false && data.equipment[i].gte(100))
+            data.achievement[i+12] = true
+    }
+    //Charlie
+    if(data.achievement[18] === false && data.approval.eq(100))
+        data.achievement[18] = true
+    //Delta
+    for(let i = 0; i < battleAchReqs.length; i++) {
+        if(data.achievement[i+19] === false && data.wins.gte(battleAchReqs[i]))
+            data.achievement[i+19] = true
+    }
+    //Echo
+    for(let i = 0; i < 5; i++)
+        if(data.level <= i+1)
+            data.achievement[i+26] = true
+
+}
+
+function updateAchieves() {
+    for(let i = 0; i < achDescs.length; i++) 
+        DOMCacheGetOrSet(`ach${i}`).className = data.achievement[i] ? 'achUnlock' : 'achLock'
 }
 
 const achDescs = [
