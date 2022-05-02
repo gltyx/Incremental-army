@@ -4,7 +4,7 @@ function generateEventHandlers() {
         DOMCacheGetOrSet(`${rankNameIds[i+4]}Button`).addEventListener('click', () => {buyMP(i,1)})
         DOMCacheGetOrSet(`${equipIds[i]}Button`).addEventListener('click', () => {buyEquip(i)})
     }
-    
+    generateAchievementHandlers()
 }
 
 
