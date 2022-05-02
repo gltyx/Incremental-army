@@ -91,7 +91,6 @@
             <button id="majButton" style="margin-left: .5vw;"></button>
             <button id="auto12" style="margin-left: .5vw;" class="off">Automator: OFF</button>
         </div>
-
     </div>
     <div id="equipmentArea" class="flexBox mainArea">
         <h4 id="equipFundsText" style="text-align:center">Equipment<br><br>Funds to Spend:</h4>
@@ -119,6 +118,26 @@
             <div id="transportAmt" style="color:var(--equipment-color);margin-left: .5vw;">Transports: 0.00</div>
             <button id="transportButton" style="margin-left: .5vw;">Fabricate 1.00 Transport | Cost: $220,000.00</button>
             <button id="auto7" style="margin-left: .5vw;" class="off">Automator: OFF</button>
+        </div>
+        <h3 id="armoredDisplay" style="text-align:center">Armored<br>Funds: $0.00<hr></h3>
+        <button id="ba3" onclick="toggleBA(3)">Buy Amount: 1</button>
+        <div class="currencyHolder">
+            <img style="border: 2px solid var(--equipment-color);" src="Imgs/PVT.png">
+            <div id="arm0Amt" style="color:var(--equipment-color);margin-left: .5vw;">Light Tank: 0.00</div>
+            <button id="arm0Button" style="margin-left: .5vw;">Fabricate 1 Light Tank | Cost: $1.00e6</button>
+            <button id="auto14" style="margin-left: .5vw;" class="off">Automator: OFF</button>
+        </div>
+        <div class="currencyHolder">
+            <img style="border: 2px solid var(--equipment-color);" src="Imgs/CPL.png">
+            <div id="arm1Amt" style="color:var(--equipment-color);margin-left: .5vw;">Medium Tank: 0.00</div>
+            <button id="arm1Button" style="margin-left: .5vw;">Fabricate 1 Medium Tank | Cost: $5.00e6</button>
+            <button id="auto15" style="margin-left: .5vw;" class="off">Automator: OFF</button>
+        </div>
+        <div class="currencyHolder">
+            <img style="border: 2px solid var(--equipment-color);" src="Imgs/SGT.png">
+            <div id="arm2Amt" style="color:var(--equipment-color);margin-left: .5vw;">Heavy Tank: 0.00</div>
+            <button id="arm2Button" style="margin-left: .5vw;">Enlist 1 Heavy Tank | Cost: $1.00e7</button>
+            <button id="auto16" style="margin-left: .5vw;" class="off">Automator: OFF</button>
         </div>
     </div>
     <div id="financesArea" class="flexBox mainArea">

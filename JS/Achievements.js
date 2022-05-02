@@ -41,8 +41,8 @@ function checkAchieves() {
     }
     //Echo
     for(let i = 0; i < 5; i++)
-        if(data.level <= i+1)
-            data.achievement[i+26] = true
+        if(data.level >= i+1 && data.achievement[i+27] === false)
+            data.achievement[i+27] = true
 
 }
 

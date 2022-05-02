@@ -22,7 +22,7 @@ function getDefaultObject() {
         achievement: [false,false,false,false,false,false,false,false,false,false,false,false,false,
         false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
         false,false,false],
-        buyAmounts: [0,0,0],
+        buyAmounts: [0,0,0,0],
         acquireAutoReq: D(0),
         level: 0,
         time: Date.now(),
