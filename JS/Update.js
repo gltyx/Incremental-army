@@ -5,7 +5,9 @@ const rankNameIds = ['pvt','cpl','sgt','ssgt','2lt','1lt','cpt','maj']
 const equipIds = ['ie','at','art','transport']
 const equipNames = ['Infantry Equipment','Anti-Tank Gun','Artillery Gun','Transport']
 
-const difficultyNames = ['Conscript','Recruit','Novice','Veteran','Elite','Specialist','Commando','Elite Commando','Hunter','Elite Hunter','Expert','Elite Expert','Master','Elite Master','Legend','Elite Legend']
+const difficultyNames = ['Conscript','Recruit','Novice','Veteran','Elite','Specialist','Novice Commando','Commando','Elite Commando','Novice Seeker','Seeker','Elite Seeker',
+'Novice Hunter','Hunter','Elite Hunter','Novice Expert','Expert','Elite Expert','Novice Master',
+'Master','Elite Master','Novice Legend','Legend','Elite Legend','Master Legend','Elite Master Legend']
 let enlistString = []
 let officerString = []
 let equipmentString = []
