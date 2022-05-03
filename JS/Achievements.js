@@ -43,7 +43,12 @@ function checkAchieves() {
     for(let i = 0; i < 5; i++)
         if(data.level >= i+1 && data.achievement[i+27] === false)
             data.achievement[i+27] = true
-
+    for(let i = 0; i < data.promotionUpgrades.length; i++) {
+        if(data.promotionUpgrades[i] === false) 
+            break
+        if(i === data.promotionUpgrades.length-1 && data.promotionUpgrades[i] === true)
+            data.achievement[32] = true
+    }
 }
 
 function updateAchieves() {
