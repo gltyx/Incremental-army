@@ -80,6 +80,7 @@ input { border: 2px solid whitesmoke; }
 .achLock {margin-top:1.5vh;background-color: #4d4d4d;border: 2px solid whitesmoke; width:60px;height:60px;text-align: center;font-size: .60em;background-position: center;background-size: 32px;background-repeat:no-repeat;}
 .achUnlock {margin-top:1.5vh;background-color: #2b6733;border: 2px solid whitesmoke; width:60px;height:60px;text-align:center;font-size: .60em;background-position: center;background-size: 32px;background-repeat:no-repeat;}
 .achPlaceholder {margin-top:1.5vh;background-color: #202020;border: 2px solid whitesmoke; width:60px;height:60px;text-align: center;font-size: .60em;}
+.achOmega {margin-top:1.5vh;background-color: #7c008c;border: 2px solid #b401cb; width:60px;height:60px;text-align: center;font-size: .60em;}
 /*IDs*/
 #achCol {margin-left: .5vw;margin-right: .5vw;}
 #newsHolder {

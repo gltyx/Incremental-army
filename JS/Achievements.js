@@ -4,7 +4,7 @@ function generateAchievementHandlers() {
 }
 
 function changeDesc(i) {
-    const achNames = ['Alpha','Bravo','Charlie','Delta','Echo']
+    const achNames = ['Alpha','Bravo','Charlie','Delta','Echo','Ω']
     let achName
     let achNum
     if(i < 8) {achName = achNames[0]; achNum = i+1 < 10 ? `0${i+1}` : `${i+1}`}
@@ -12,10 +12,11 @@ function changeDesc(i) {
     else if(i < 19) {achName = achNames[2]; achNum = i-15 < 10 ? `0${i-15}` : `${i-15}`}
     else if(i < 27) {achName = achNames[3]; achNum = i-18 < 10 ? `0${i-18}` : `${i-18}`}
     else if(i < 33) {achName = achNames[4]; achNum = i-26 < 10 ? `0${i-26}` : `${i-26}`}
-
+    else if(i === 33) {achName = achNames[5]; achNum = i-26 < 10 ? `0${i-32}` : `${i-32}`}
     DOMCacheGetOrSet(`achDescText`).innerHTML = data.achievement[i] ? `<hr>${achName}-${achNum}: ${achDescs[i]}<br>[Unlocked]` : `<hr>${achName}-${achNum}: ${achDescs[i]}<br>[Locked]`
 }
 const battleAchReqs = [D(1),D(10),D(20),D(40),D(60),D(80),D(100),D(340)]
+let achCompletions = 0
 function checkAchieves() {
     //Alpha
     for(let i = 0; i < 4; i++) {
@@ -49,11 +50,19 @@ function checkAchieves() {
         if(i === data.promotionUpgrades.length-1 && data.promotionUpgrades[i] === true)
             data.achievement[32] = true
     }
+    for(let i = 0; i < data.achievement.length; i++)
+        if(data.achievement[i] === true)
+            achCompletions++
+    if(achCompletions === data.achievement.length-1)
+        data.achievement[33] = true
 }
 
 function updateAchieves() {
-    for(let i = 0; i < achDescs.length; i++) 
-        DOMCacheGetOrSet(`ach${i}`).className = data.achievement[i] ? 'achUnlock' : 'achLock'
+    for(let i = 0; i < achDescs.length; i++) {
+        if(i !== 33)
+            DOMCacheGetOrSet(`ach${i}`).className = data.achievement[i] ? 'achUnlock' : 'achLock'
+    }
+        
 }
 
 const achDescs = [
@@ -66,5 +75,7 @@ const achDescs = [
     //Battleground
     'Win 1 Battle','Win 10 Battles','Win 20 Battles','Win 40 Battles','Win 60 Battles','Win 80 Battles','Win 100 Battles','Reach Grand Master Difficulty',
     //Promotions
-    'Achieve Brigadier General Rank','Achieve Major General Rank','Achieve Lieutenant General Rank','Achieve General Rank','Achieve General of the Army Rank','Unlock All Promotion Upgrades'
+    'Achieve Brigadier General Rank','Achieve Major General Rank','Achieve Lieutenant General Rank','Achieve General Rank','Achieve General of the Army Rank','Unlock All Promotion Upgrades',
+    //Omegas
+    'Unlock all Achievements'
 ]
