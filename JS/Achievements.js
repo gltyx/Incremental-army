@@ -15,7 +15,7 @@ function changeDesc(i) {
     else if(i >= 33) {achName = achNames[5]; achNum = i-26 < 10 ? `0${i-32}` : `${i-32}`}
     DOMCacheGetOrSet(`achDescText`).innerHTML = data.achievement[i] ? `<hr>${achName}-${achNum}: ${achDescs[i]}<br>[Unlocked]` : `<hr>${achName}-${achNum}: ${achDescs[i]}<br>[Locked]`
 }
-const battleAchReqs = [D(1),D(10),D(20),D(40),D(60),D(80),D(100),D(340)]
+const battleAchReqs = [D(1),D(10),D(20),D(40),D(60),D(80),D(100),D(260)]
 let achCompletions = 0
 function checkAchieves() {
     //Alpha
@@ -75,7 +75,7 @@ const achDescs = [
     //Finances
     'Release Propaganda','Lobby Congress','Reach Max Approval',
     //Battleground
-    'Win 1 Battle','Win 10 Battles','Win 20 Battles','Win 40 Battles','Win 60 Battles','Win 80 Battles','Win 100 Battles','Reach Grand Master Difficulty',
+    'Win 1 Battle','Win 10 Battles','Win 20 Battles','Win 40 Battles','Win 60 Battles','Win 80 Battles','Win 100 Battles','Reach Grand Master Difficulty (260 Wins)',
     //Promotions
     'Achieve Brigadier General Rank','Achieve Major General Rank','Achieve Lieutenant General Rank','Achieve General Rank','Achieve General of the Army Rank','Unlock All Promotion Upgrades',
     //Omegas
