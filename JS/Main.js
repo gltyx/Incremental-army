@@ -4,7 +4,7 @@ function generateEventHandlers() {
         DOMCacheGetOrSet(`${rankNameIds[i+4]}Button`).addEventListener('click', () => {buyMP(i,1)})
         DOMCacheGetOrSet(`${equipIds[i]}Button`).addEventListener('click', () => {buyEquip(i)})
     }
-    
+    generateAchievementHandlers()
 }
 
 
@@ -54,6 +54,7 @@ function mainLoop() {
     updateFinances()
     updateBattleground()
     runAutomators()
+    checkAchieves()
     updateHTML()
 }
 
@@ -77,6 +78,9 @@ function createPrompt(a,b) {
     switch(b) {
         case 0:
             document.getElementById('promptButton').addEventListener('click', () => { nameArmy() })
+            break
+        case 1:
+            document.getElementById('promptButton').addEventListener('click', () => { importSave() })
             break
     }
 }

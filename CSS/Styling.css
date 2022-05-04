@@ -9,6 +9,7 @@
     --finance-color: #349348;
     --battleground-color: #935534;
     --promotion-color: #346d93;
+    --achievement-color: #4d41be;
 }
 /*Globals*/
 
@@ -20,6 +21,14 @@
     67%{color: #0000ff; border-color: #0000ff;}
     83%{color: #ff00ff; border-color: #ff00ff;}
     100%{color: #ff0000; border-color: #ff0000;}
+}
+
+@keyframes omega {
+    0% {background-color: #7c008c;}
+    25% {background-color: #b401cb;}
+    50% {background-color: #ff00ff;}
+    75% {background-color: #b401cb;}
+    100% {background-color: #7c008c;}
 }
 
 * {
@@ -45,7 +54,7 @@ button:hover {
 
 hr { border: 1px solid whitesmoke; }
 input { border: 2px solid whitesmoke; }
-
+img {width:32px;height: 32px;}
 /*Classes*/
 
 .mainArea {
@@ -76,8 +85,12 @@ input { border: 2px solid whitesmoke; }
 .on:hover {color:#202020;background-color: #268135;border-color: #268135;}
 .off {color: #812626;border-color: #812626;}
 .off:hover {color:#202020;background-color: #812626;border-color: #812626;}
+.achLock {margin-top:1.5vh;background-color: #4d4d4d;border: 2px solid whitesmoke; width:60px;height:60px;text-align: center;font-size: .60em;background-position: center;background-size: 48px;background-repeat:no-repeat;}
+.achUnlock {margin-top:1.5vh;background-color: #2b6733;border: 2px solid whitesmoke; width:60px;height:60px;text-align:center;font-size: .60em;background-position: center;background-size: 48px;background-repeat:no-repeat;}
+.achPlaceholder {margin-top:1.5vh;background-color: #202020;border: 2px solid whitesmoke; width:60px;height:60px;text-align: center;font-size: .60em;}
+.achOmega {animation-name: omega;animation-duration: 3.5s;animation-iteration-count: infinite;animation-timing-function:linear;margin-top:1.5vh;border: 2px solid #b401cb; width:60px;height:60px;text-align: center;font-size: .60em;}
 /*IDs*/
-
+#achCol {margin-left: .5vw;margin-right: .5vw;}
 #newsHolder {
     border: 2px solid whitesmoke;
     padding: 2px;
@@ -127,6 +140,8 @@ input { border: 2px solid whitesmoke; }
 #bB:hover {color: #202020; background-color: var(--battleground-color);}
 #pB {color: var(--promotion-color); border-color: var(--promotion-color);}
 #pB:hover {color: #202020; background-color: var(--promotion-color);}
+#aB {color: var(--achievement-color); border-color: var(--achievement-color);}
+#aB:hover {color: #202020; background-color: var(--achievement-color);}
 
 #playerStats {color:#4a53db}
 #enemyStats {color:#db4a4a}

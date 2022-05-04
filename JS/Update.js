@@ -5,7 +5,9 @@ const rankNameIds = ['pvt','cpl','sgt','ssgt','2lt','1lt','cpt','maj']
 const equipIds = ['ie','at','art','transport']
 const equipNames = ['Infantry Equipment','Anti-Tank Gun','Artillery Gun','Transport']
 
-const difficultyNames = ['Conscript','Recruit','Novice','Veteran','Elite','Specialist','Commando','Elite Commando','Hunter','Elite Hunter','Expert','Elite Expert','Master','Elite Master','Legend','Elite Legend']
+const difficultyNames = ['Conscript','Recruit','Novice','Veteran','Elite','Specialist','Novice Commando','Commando','Elite Commando','Novice Seeker','Seeker','Elite Seeker',
+'Novice Hunter','Hunter','Elite Hunter','Novice Expert','Expert','Elite Expert','Novice Master',
+'Master','Elite Master','Novice Legend','Legend','Elite Legend','Master Legend','Elite Master Legend']
 let enlistString = []
 let officerString = []
 let equipmentString = []
@@ -97,7 +99,7 @@ function updateHTML() {
             DOMCacheGetOrSet('enemyStats').innerHTML = `${data.currentEnemy.name}<br>Manpower: ${format(manpowerTotal[1])}<br>Attack Power: ${format(attackTotal[1])}`
             DOMCacheGetOrSet('playerArmy').innerHTML = `Soldiers<hr>${enlistString[0]}<br>Officers<hr>${officerString[0]}<br>Equipment<hr>${equipmentString[0]}`
             DOMCacheGetOrSet('enemyArmy').innerHTML = `Soldiers<hr>${enlistString[1]}<br>Officers<hr>${officerString[1]}<br>Equipment<hr>${equipmentString[1]}`
-            DOMCacheGetOrSet('battleRewardText').innerHTML = difficultyNameIndex < difficultyNames.length ? `Rewards: +${format(battleRewards[0])} Medals | +/-${format(battleRewards[1])} Approval
+            DOMCacheGetOrSet('battleRewardText').innerHTML = difficultyNameIndex < difficultyNames.length-1 ? `Rewards: +${format(battleRewards[0])} Medals | +/-${format(battleRewards[1])} Approval
             <br>Total Wins: ${format(data.wins)} | Difficulty Scale ${format(difficultyScale)}x<br>
             Difficulty Rating: ${difficultyNames[difficultyNameIndex]}` : `Rewards: +${format(battleRewards[0])} Medals | +/-${format(battleRewards[1])} Approval
             <br>Total Wins: ${format(data.wins)} | Difficulty Scale ${format(difficultyScale)}x<br>
@@ -127,9 +129,11 @@ function updateHTML() {
         DOMCacheGetOrSet('forUp').style.display = data.level >= 4 ? 'flex' : 'none'
         DOMCacheGetOrSet('fivUp').style.display = data.level >= 5 ? 'flex' : 'none'
     }
+    else if(data.currentTab === 6)
+        updateAchieves()
 }
 
-const tabIDs = ['manpower','equipment','finances','battleground','promotions','settings']
+const tabIDs = ['manpower','equipment','finances','battleground','promotions','settings','achievements']
 
 function tabChangeHTML() {
     for(let i = 0; i < tabIDs.length; i++)

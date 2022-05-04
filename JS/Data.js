@@ -19,13 +19,16 @@ function getDefaultObject() {
         wins: D(0),
         promotionUpgrades: [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
         autoActive: [false,false,false,false,false,false,false,false,false,false,false,false,false,false],
+        achievement: [false,false,false,false,false,false,false,false,false,false,false,false,false,
+        false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
+        false,false,false,false,false],
         buyAmounts: [0,0,0],
         acquireAutoReq: D(0),
         level: 0,
         time: Date.now(),
         currentTab: 1,
         settingsToggles: [true,true],
-        currentUpdate: 'v0.0.6',
+        currentUpdate: 'v0.0.7',
         devSpeed: 1,
     }
 }
@@ -40,10 +43,10 @@ function load() {
     if(savedata === null || savedata === undefined) savedata = getDefaultObject()
     else if (savedata !== undefined) fixSave(data, savedata)
     if(data.armyName === undefined)
-        nameArmy()
-    if(data.currentUpdate !== "v0.0.6") {
-        createAlert("Welcome Back!","The current version is v0.0.6, View the Changelog for details","812626")
-        data.currentUpdate = "v0.0.6"
+        createPrompt('Name your Army!',0)
+    if(data.currentUpdate !== "v0.0.7") {
+        createAlert("Welcome Back!","The current version is v0.0.7, View the Changelog for details","812626")
+        data.currentUpdate = "v0.0.7"
     }
     updateAutomators()
     updatePromotionButtons()
@@ -83,7 +86,11 @@ function exportSave(){
     document.body.removeChild(exportedDataText);
 }
 function importSave(){
-    let importedData = prompt("Paste your save data here!")
+    let importedData = DOMCacheGetOrSet('promptInput').value
+    if(importedData.length <= 0 || importedData === undefined) {
+        createAlert('Error!','No data was entered!','#ff0000')
+        return
+    }
     data = Object.assign(getDefaultObject(), JSON.parse(atob(importedData)))
     save()
     location.reload()

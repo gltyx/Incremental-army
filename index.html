@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="CSS/Styling.css">
-    <link rel="icon" type="image/png" href="Imgs/PVT.png">
+    <link rel="icon" type="image/svg" href="Imgs/private.svg">
     <title>Incremental Army</title>
 </head>
 <body>
@@ -30,6 +30,7 @@
         <button style="margin: 0.25vw;" id="fB" onclick="changeTab(2)">Finances</button>
         <button style="margin: 0.25vw;" id="bB" onclick="changeTab(3)">Battleground</button>
         <button style="margin: 0.25vw;" id="pB" onclick="changeTab(4)">Promotions</button>
+        <button style="margin: 0.25vw;" id="aB" onclick="changeTab(6)">Achievements</button>
         <button style="margin: 0.25vw;" id="sB" onclick="changeTab(5)">Settings</button>
     </div>
     <div id="newsHolder">
@@ -41,25 +42,25 @@
         <h3 id="enlistedDisplay" style="text-align:center">Enlisted<br>Infantry Equipment: 0.00<hr></h3>
         <button id="ba0" onclick="toggleBA(0)">Buy Amount: 1</button>
         <div class="currencyHolder">
-            <img style="border: 2px solid var(--manpower-color);" src="Imgs/PVT.png">
+            <img style="border: 2px solid var(--manpower-color);" src="Imgs/private.svg">
             <div id="pvtAmt" style="color:var(--manpower-color);margin-left: .5vw;">Private: 0.00</div>
             <button id="pvtButton" style="margin-left: .5vw;">Enlist 1 PVT | Cost: 1.00 Infantry Equipment</button>
             <button id="auto0" style="margin-left: .5vw;" class="off">Automator: OFF</button>
         </div>
         <div class="currencyHolder">
-            <img style="border: 2px solid var(--manpower-color);" src="Imgs/CPL.png">
+            <img style="border: 2px solid var(--manpower-color);" src="Imgs/corporal.svg">
             <div id="cplAmt" style="color:var(--manpower-color);margin-left: .5vw;">Corporal: 0.00</div>
             <button id="cplButton" style="margin-left: .5vw;">Enlist 1 CPL | Cost: 2.00 Infantry Equipment</button>
             <button id="auto1" style="margin-left: .5vw;" class="off">Automator: OFF</button>
         </div>
         <div class="currencyHolder">
-            <img style="border: 2px solid var(--manpower-color);" src="Imgs/SGT.png">
+            <img style="border: 2px solid var(--manpower-color);" src="Imgs/sergeant.svg">
             <div id="sgtAmt" style="color:var(--manpower-color);margin-left: .5vw;">Sergeant: 0.00</div>
             <button id="sgtButton" style="margin-left: .5vw;">Enlist 1 SGT | Cost: 3.00 Infantry Equipment</button>
             <button id="auto2" style="margin-left: .5vw;" class="off">Automator: OFF</button>
         </div>
         <div class="currencyHolder">
-            <img style="border: 2px solid var(--manpower-color);" src="Imgs/SSGT.png">
+            <img style="border: 2px solid var(--manpower-color);" src="Imgs/staff_sergeant.svg">
             <div id="ssgtAmt" style="color:var(--manpower-color);margin-left: .5vw;">Staff Sergeant: 0.00</div>
             <button id="ssgtButton" style="margin-left: .5vw;">Enlist 1 SSGT | Cost: 4.00 Infantry Equipment</button>
             <button id="auto3" style="margin-left: .5vw;" class="off">Automator: OFF</button>
@@ -67,30 +68,29 @@
         <h3 id="officerDisplay" style="text-align:center">Officers<br>Medals: 0.00<hr></h3>
         <button id="ba1" onclick="toggleBA(1)">Buy Amount: 1</button>
         <div class="currencyHolder">
-            <img style="border: 2px solid var(--manpower-color);" src="Imgs/LT2.png">
+            <img style="border: 2px solid var(--manpower-color);" src="Imgs/second_lieutenant.svg">
             <div id="2ltAmt" style="color:var(--manpower-color);margin-left: .5vw;">2nd Lieutenant: 0.00</div>
             <button id="2ltButton" style="margin-left: .5vw;">
             <button id="auto9" style="margin-left: .5vw;" class="off">Automator: OFF</button>
         </div>
         <div class="currencyHolder">
-            <img style="border: 2px solid var(--manpower-color);" src="Imgs/LT1.png">
+            <img style="border: 2px solid var(--manpower-color);" src="Imgs/first_lieutenant.svg">
             <div id="1ltAmt" style="color:var(--manpower-color);margin-left: .5vw;">1st Lieutenant: 0.00</div>
             <button id="1ltButton" style="margin-left: .5vw;"></button>
             <button id="auto10" style="margin-left: .5vw;" class="off">Automator: OFF</button>
         </div>
         <div class="currencyHolder">
-            <img style="border: 2px solid var(--manpower-color);" src="Imgs/CPT.png">
+            <img style="border: 2px solid var(--manpower-color);" src="Imgs/captain.svg">
             <div id="cptAmt" style="color:var(--manpower-color);margin-left: .5vw;">Captain: 0.00</div>
             <button id="cptButton" style="margin-left: .5vw;"></button>
             <button id="auto11" style="margin-left: .5vw;" class="off">Automator: OFF</button>
         </div> 
         <div class="currencyHolder">
-            <img style="border: 2px solid var(--manpower-color);" src="Imgs/MAJ.png">
+            <img style="border: 2px solid var(--manpower-color);" src="Imgs/major.svg">
             <div id="majAmt" style="color:var(--manpower-color);margin-left: .5vw;">Major: 0.00</div>
             <button id="majButton" style="margin-left: .5vw;"></button>
             <button id="auto12" style="margin-left: .5vw;" class="off">Automator: OFF</button>
         </div>
-
     </div>
     <div id="equipmentArea" class="flexBox mainArea">
         <h4 id="equipFundsText" style="text-align:center">Equipment<br><br>Funds to Spend:</h4>
@@ -119,6 +119,29 @@
             <button id="transportButton" style="margin-left: .5vw;">Fabricate 1.00 Transport | Cost: $220,000.00</button>
             <button id="auto7" style="margin-left: .5vw;" class="off">Automator: OFF</button>
         </div>
+        <!--
+            <h3 id="armoredDisplay" style="text-align:center">Armored<br>Funds: $0.00<hr></h3>
+        <button id="ba3" onclick="toggleBA(3)">Buy Amount: 1</button>
+        <div class="currencyHolder">
+            <img style="border: 2px solid var(--equipment-color);" src="Imgs/PVT.png">
+            <div id="arm0Amt" style="color:var(--equipment-color);margin-left: .5vw;">Light Tank: 0.00</div>
+            <button id="arm0Button" style="margin-left: .5vw;">Fabricate 1 Light Tank | Cost: $1.00e6</button>
+            <button id="auto14" style="margin-left: .5vw;" class="off">Automator: OFF</button>
+        </div>
+        <div class="currencyHolder">
+            <img style="border: 2px solid var(--equipment-color);" src="Imgs/CPL.png">
+            <div id="arm1Amt" style="color:var(--equipment-color);margin-left: .5vw;">Medium Tank: 0.00</div>
+            <button id="arm1Button" style="margin-left: .5vw;">Fabricate 1 Medium Tank | Cost: $5.00e6</button>
+            <button id="auto15" style="margin-left: .5vw;" class="off">Automator: OFF</button>
+        </div>
+        <div class="currencyHolder">
+            <img style="border: 2px solid var(--equipment-color);" src="Imgs/SGT.png">
+            <div id="arm2Amt" style="color:var(--equipment-color);margin-left: .5vw;">Heavy Tank: 0.00</div>
+            <button id="arm2Button" style="margin-left: .5vw;">Enlist 1 Heavy Tank | Cost: $1.00e7</button>
+            <button id="auto16" style="margin-left: .5vw;" class="off">Automator: OFF</button>
+        </div>
+        -->
+        
     </div>
     <div id="financesArea" class="flexBox mainArea">
         <div id="fundsText">Funds: $0.00</div>
@@ -208,11 +231,77 @@
         </div>
         <button id="promotionButton" onclick="promote()">Promote</button>
     </div>
+    <div id="achievementsArea" class="flexBox mainArea">
+        <div id="achHold" class="flexBox" style="flex-direction:row">
+            <div id="achCol" class="flexBox">
+                <div id="ach0" class="achLock" style="background-image:url('Imgs/private.svg');">Alpha-01</div>
+                <div id="ach1" class="achLock" style="background-image:url('Imgs/corporal.svg');">Alpha-02</div>
+                <div id="ach2" class="achLock" style="background-image:url('Imgs/sergeant.svg');">Alpha-03</div>
+                <div id="ach3" class="achLock" style="background-image:url('Imgs/staff_sergeant.svg');">Alpha-04</div>
+                <div id="ach4" class="achLock" style="background-image:url('Imgs/second_lieutenant.svg');">Alpha-05</div>
+                <div id="ach5" class="achLock" style="background-image:url('Imgs/first_lieutenant.svg');">Alpha-06</div>
+                <div id="ach6" class="achLock" style="background-image:url('Imgs/captain.svg');">Alpha-07</div>
+                <div id="ach7" class="achLock" style="background-image:url('Imgs/major.svg');">Alpha-08</div>
+            </div>
+            <div id="achCol" class="flexBox">
+                <div id="ach8" class="achLock" style="background-image:url('Imgs/Ammo.png');">Bravo-01</div>
+                <div id="ach9" class="achLock" style="background-image:url('Imgs/AT.png');">Bravo-02</div>
+                <div id="ach10" class="achLock" style="background-image:url('Imgs/ART.png');">Bravo-03</div>
+                <div id="ach11" class="achLock" style="background-image:url('Imgs/TRANSPORT.png');">Bravo-04</div>
+                <div id="ach12" class="achLock" style="background-image:url('Imgs/Ammo.png');">Bravo-05</div>
+                <div id="ach13" class="achLock" style="background-image:url('Imgs/AT.png');">Bravo-06</div>
+                <div id="ach14" class="achLock" style="background-image:url('Imgs/ART.png');">Bravo-07</div>
+                <div id="ach15" class="achLock" style="background-image:url('Imgs/TRANSPORT.png');">Bravo-08</div>
+            </div>
+            <div id="achCol" class="flexBox">
+                <div id="ach16" class="achLock">Charlie-01</div>
+                <div id="ach17" class="achLock">Charlie-02</div>
+                <div id="ach18" class="achLock">Charlie-03</div>
+                <div class="achPlaceholder"></div>
+                <div class="achPlaceholder"></div>
+                <div class="achPlaceholder"></div>
+                <div class="achPlaceholder"></div>
+                <div class="achPlaceholder"></div>
+            </div>
+            <div id="achCol" class="flexBox">
+                <div id="ach19" class="achLock">Delta-01</div>
+                <div id="ach20" class="achLock">Delta-02</div>
+                <div id="ach21" class="achLock">Delta-03</div>
+                <div id="ach22" class="achLock">Delta-04</div>
+                <div id="ach23" class="achLock">Delta-05</div>
+                <div id="ach24" class="achLock">Delta-06</div>
+                <div id="ach25" class="achLock">Delta-07</div>
+                <div id="ach26" class="achLock">Delta-08</div>
+            </div>
+            <div id="achCol" class="flexBox">
+                <div id="ach27" class="achLock" style="background-image:url('Imgs/brigadier_general.svg');">Echo-01</div>
+                <div id="ach28" class="achLock" style="background-image:url('Imgs/major_general.svg');">Echo-02</div>
+                <div id="ach29" class="achLock" style="background-image:url('Imgs/lieutenant_general.svg');">Echo-03</div>
+                <div id="ach30" class="achLock" style="background-image:url('Imgs/general.svg');">Echo-04</div>
+                <div id="ach31" class="achLock" style="background-image:url('Imgs/general_of_the_army.svg');">Echo-05</div>
+                <div id="ach32" class="achLock" >Echo-06</div>
+                <div class="achPlaceholder"></div>
+                <div class="achPlaceholder"></div>
+            </div>
+            <div id="achCol" class="flexBox">
+                <div id="ach33" class="achOmega">Ω-01</div>
+                <div id="ach34" class="achOmega">Ω-02</div>
+                <div class="achPlaceholder"></div>
+                <div class="achPlaceholder"></div>
+                <div class="achPlaceholder"></div>
+                <div class="achPlaceholder"></div>
+                <div class="achPlaceholder"></div>
+                <div class="achPlaceholder"></div>
+            </div>
+        </div>
+        
+        <div id="achDescText" style="text-align:center"><hr>Hover Over An Achievement to See its Description</div>
+    </div>
     <div id="settingsArea" class="flexBox mainArea">
         <div>
             <button onclick="save()">Manual Save</button>
             <button onclick="exportSave()">Export Save</button>
-            <button onclick="importSave()">Import Save</button>
+            <button onclick="createPrompt('Input Save String',1)">Import Save</button>
             <button id="delete" onclick="deleteSave()">Delete Save</button>
             
         </div>
@@ -226,10 +315,12 @@
         <div style="margin-top:1vh;">
             <a href="https://discord.gg/JkQUnubuhx">Discord Invite!</a>
         </div>
+        <div style="margin-top:1vh">Insignias from: <a href="https://www.army.mil/ranks/">https://www.army.mil/ranks/</a></div>
         <div style="margin-top:1vh;">
             <h1>Changelog :O<hr></h1>
-            <h3>Current Version: v0.0.6</h3>
+            <h3>Current Version: v0.0.7</h3>
             <h3>Beta Versions</h3>
+            <p>v0.0.7 - Achievements, Promotions Balancing, Solider Balancing</p>
             <p>v0.0.6 - Buy Amounts(1,10,100,1e3),Mixed Sci Notation/Qol Pt.3</p>
             <p>v0.0.5 - Custom Prompt Modal/Implementing Feedback</p>
             <p>v0.0.4 - Battleground Rework/QoL Pt.1</p>
@@ -247,10 +338,11 @@
     <script src="JS/Data.js"></script>
     <script src="JS/Update.js"></script>
     <script src="JS/Main.js"></script>
-    <script src="JS/Newsticker.js"></script>
     <script src="JS/Manpower.js"></script>
     <script src="JS/Equipment.js"></script>
     <script src="JS/Finances.js"></script>
     <script src="JS/Battleground.js"></script>
     <script src="JS/Promotions.js"></script>
+    <script src="JS/Achievements.js"></script>
+    <script src="JS/Newsticker.js"></script>
 </html>

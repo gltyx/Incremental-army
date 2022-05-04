@@ -13,11 +13,7 @@ let battleRewards = [D(0),D(0)]
 let difficultyScale = D(0)
 
 function updateBattleground() {
-    for(let i = 0; i < difficultyNames.length; i++) {
-        if(data.wins.lte(20)) {difficultyNameIndex = 0; break;}
-        if(decimalRemainder(data.wins,D(20 * i+1)).lt(20))
-            difficultyNameIndex = i
-    }
+    difficultyNameIndex = Decimal.floor(data.wins.div(10))
     manpowerTotal[0] = D(0)
     manpowerTotal[1] = D(0)
     attackTotal[0] = D(0)
