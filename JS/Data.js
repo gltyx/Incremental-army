@@ -43,7 +43,7 @@ function load() {
     if(savedata === null || savedata === undefined) savedata = getDefaultObject()
     else if (savedata !== undefined) fixSave(data, savedata)
     if(data.armyName === undefined)
-        nameArmy()
+        createPrompt('Name your Army!',0)
     if(data.currentUpdate !== "v0.0.7") {
         createAlert("Welcome Back!","The current version is v0.0.7, View the Changelog for details","812626")
         data.currentUpdate = "v0.0.7"
