@@ -54,7 +54,7 @@ button:hover {
 
 hr { border: 1px solid whitesmoke; }
 input { border: 2px solid whitesmoke; }
-
+img {width:32px;height: 32px;}
 /*Classes*/
 
 .mainArea {
