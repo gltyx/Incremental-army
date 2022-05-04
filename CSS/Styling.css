@@ -85,8 +85,8 @@ img {width:32px;height: 32px;}
 .on:hover {color:#202020;background-color: #268135;border-color: #268135;}
 .off {color: #812626;border-color: #812626;}
 .off:hover {color:#202020;background-color: #812626;border-color: #812626;}
-.achLock {margin-top:1.5vh;background-color: #4d4d4d;border: 2px solid whitesmoke; width:60px;height:60px;text-align: center;font-size: .60em;background-position: center;background-size: 32px;background-repeat:no-repeat;}
-.achUnlock {margin-top:1.5vh;background-color: #2b6733;border: 2px solid whitesmoke; width:60px;height:60px;text-align:center;font-size: .60em;background-position: center;background-size: 32px;background-repeat:no-repeat;}
+.achLock {margin-top:1.5vh;background-color: #4d4d4d;border: 2px solid whitesmoke; width:60px;height:60px;text-align: center;font-size: .60em;background-position: center;background-size: 48px;background-repeat:no-repeat;}
+.achUnlock {margin-top:1.5vh;background-color: #2b6733;border: 2px solid whitesmoke; width:60px;height:60px;text-align:center;font-size: .60em;background-position: center;background-size: 48px;background-repeat:no-repeat;}
 .achPlaceholder {margin-top:1.5vh;background-color: #202020;border: 2px solid whitesmoke; width:60px;height:60px;text-align: center;font-size: .60em;}
 .achOmega {animation-name: omega;animation-duration: 3.5s;animation-iteration-count: infinite;animation-timing-function:linear;margin-top:1.5vh;border: 2px solid #b401cb; width:60px;height:60px;text-align: center;font-size: .60em;}
 /*IDs*/
