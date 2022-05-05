@@ -124,7 +124,7 @@ function toggleBA(i) {
 
 function updateBuyAmounts() {
     const baName = ['1','10','100','1e3']
-    for(let i = 0; i < data.buyAmounts.length; i++) {
+    for(let i = 0; i < 3; i++) {
         DOMCacheGetOrSet(`ba${i}`).innerHTML = `Buy Amount: ${baName[data.buyAmounts[i]]}`
     }
 }
