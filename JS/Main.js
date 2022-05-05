@@ -57,7 +57,12 @@ function mainLoop() {
     checkAchieves()
     updateHTML()
 }
-
+/**
+ * 
+ * @param {*} a The Alert Title
+ * @param {*} b The Alert Content
+ * @param {*} c The Alert Border Color
+ */
 function createAlert(a,b,c) {
     DOMCacheGetOrSet('alertContainer').style.border = `4px solid #${c}`
     DOMCacheGetOrSet('alertTitle').innerHTML = a
@@ -66,7 +71,13 @@ function createAlert(a,b,c) {
     DOMCacheGetOrSet('alertContainer').style.display = 'block'
 }
 
+/**
+ * 
+ * @param {*} a Prompt Title
+ * @param {*} b Function Switch
+ */
 function createPrompt(a,b) {
+    
     let old_element = document.getElementById("promptButton");
     let new_element = old_element.cloneNode(true);
     old_element.parentNode.replaceChild(new_element, old_element);
@@ -84,7 +95,7 @@ function createPrompt(a,b) {
             break
     }
 }
-
+createPrompt
 function closeModal(i) {
     switch(i) {
         case 0:
