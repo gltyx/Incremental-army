@@ -50,6 +50,7 @@ function checkAchieves() {
         if(i === data.promotionUpgrades.length-1 && data.promotionUpgrades[i] === true)
             data.achievement[32] = true
     }
+    achCompletions = 0
     for(let i = 0; i < data.achievement.length; i++)
         if(data.achievement[i] === true)
             achCompletions++
