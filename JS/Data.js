@@ -47,9 +47,9 @@ function load() {
         createAlert('Welcome to Incremental Army!','This game is still in very early development so expect bugs and bad balancing.<br>Anyways once you hide this popup you will be able to name your army.','349348')
     }
         
-    if(data.currentUpdate !== "v0.0.7") {
-        createAlert("Welcome Back!","The current version is v0.0.7, View the Changelog for details","812626")
-        data.currentUpdate = "v0.0.7"
+    if(data.currentUpdate !== getDefaultObject().currentUpdate){
+        createAlert("Welcome Back!",`The current version is ${getDefaultObject().currentUpdate}, View the Changelog for details`,"812626")
+        data.currentUpdate = getDefaultObject().currentUpdate
     }
     updateAutomators()
     updatePromotionButtons()
