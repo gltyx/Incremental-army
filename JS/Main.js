@@ -95,7 +95,6 @@ function createPrompt(a,b) {
             break
     }
 }
-createPrompt
 function closeModal(i) {
     switch(i) {
         case 0:
