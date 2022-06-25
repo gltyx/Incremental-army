@@ -1,0 +1,147 @@
+@font-face {
+    font-family: 'Roboto Mono';
+    src: url('./RobotoMono-Medium.ttf');
+}
+
+:root {
+    --manpower-color: #4f9979;
+    --equipment-color: #544f99;
+    --finance-color: #349348;
+    --battleground-color: #935534;
+    --promotion-color: #346d93;
+    --achievement-color: #4d41be;
+}
+/*Globals*/
+
+@keyframes testingKeyFrames {
+    0%{color: #ff0000; border-color: #ff0000;}
+    17% {color: #ffff00; border-color: #ffff00;}
+    33%{color: #00ff00; border-color: #00ff00;}
+    50%{color: #00ffff; border-color: #00ffff;}
+    67%{color: #0000ff; border-color: #0000ff;}
+    83%{color: #ff00ff; border-color: #ff00ff;}
+    100%{color: #ff0000; border-color: #ff0000;}
+}
+
+@keyframes omega {
+    0% {background-color: #7c008c;}
+    25% {background-color: #b401cb;}
+    50% {background-color: #ff00ff;}
+    75% {background-color: #b401cb;}
+    100% {background-color: #7c008c;}
+}
+
+* {
+    background-color: #202020;
+    font-family: 'Roboto Mono';
+    color: whitesmoke;
+    font-size: 0.995em;
+}
+
+button {
+    border: 2px solid whitesmoke;
+    transition-duration: 0.2s;
+    font-size: 0.995em;
+}
+
+button:hover {
+    transition-duration: 0.2s;
+    border-color: whitesmoke;
+    background-color: whitesmoke;
+    color: #202020;
+    cursor: pointer;
+}
+
+hr { border: 1px solid whitesmoke; }
+input { border: 2px solid whitesmoke; }
+img {width:32px;height: 32px;}
+/*Classes*/
+
+.mainArea {
+    margin-top: 1vh;
+}
+
+.flexBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.currencyHolder {
+    display: flex; 
+    justify-content: flex-start; 
+    align-items: center; 
+    min-width: 3vw; 
+}
+
+.unlocked {color: #268135;border-color: #268135;}
+.unlocked:hover {color:#202020;background-color: #268135;border-color: #268135;}
+.locked {color: #812626;border-color: #812626;}
+.locked:hover {color:#202020;background-color: #812626;border-color: #812626;cursor: not-allowed;}
+.maxed {color: #34a3b1;border-color: #34a3b1;}
+.maxed:hover {color:#202020;background-color: #34a3b1;border-color: #34a3b1;cursor: not-allowed;}
+.on {color: #268135;border-color: #268135;}
+.on:hover {color:#202020;background-color: #268135;border-color: #268135;}
+.off {color: #812626;border-color: #812626;}
+.off:hover {color:#202020;background-color: #812626;border-color: #812626;}
+.achLock {margin-top:1.5vh;background-color: #4d4d4d;border: 2px solid whitesmoke; width:60px;height:60px;text-align: center;font-size: .60em;background-position: center;background-size: 48px;background-repeat:no-repeat;}
+.achUnlock {margin-top:1.5vh;background-color: #2b6733;border: 2px solid whitesmoke; width:60px;height:60px;text-align:center;font-size: .60em;background-position: center;background-size: 48px;background-repeat:no-repeat;}
+.achPlaceholder {margin-top:1.5vh;background-color: #202020;border: 2px solid whitesmoke; width:60px;height:60px;text-align: center;font-size: .60em;}
+.achOmega {animation-name: omega;animation-duration: 3.5s;animation-iteration-count: infinite;animation-timing-function:linear;margin-top:1.5vh;border: 2px solid #b401cb; width:60px;height:60px;text-align: center;font-size: .60em;}
+/*IDs*/
+#achCol {margin-left: .5vw;margin-right: .5vw;}
+#newsHolder {
+    border: 2px solid whitesmoke;
+    padding: 2px;
+    width: 45%;
+    overflow:hidden;
+    margin:auto;
+    text-align: left;
+}
+
+#news {
+    color:inherit;
+    position: relative;
+    display:inline-block;
+    font-size:15px;
+    font-family:inherit;
+    white-space: nowrap;
+    font-weight: bold;
+}
+
+.modalContainer {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 6969;
+    padding: 5px;
+    border: 4px solid #812626;
+}
+
+#alert {
+    height: 100%;
+    display: none;
+    align-content: center;
+    text-align: center;
+}
+
+#delete {color:#812626; border-color: #812626;}
+#delete:hover{color: #202020; background-color: #812626;}
+#mB {color: var(--manpower-color); border-color: var(--manpower-color);}
+#mB:hover {color: #202020; background-color: var(--manpower-color);}
+#eB {color: var(--equipment-color); border-color: var(--equipment-color);}
+#eB:hover {color: #202020; background-color: var(--equipment-color);}
+#fB {color: var(--finance-color); border-color: var(--finance-color);}
+#fB:hover {color: #202020; background-color: var(--finance-color);}
+#bB {color: var(--battleground-color); border-color: var(--battleground-color);}
+#bB:hover {color: #202020; background-color: var(--battleground-color);}
+#pB {color: var(--promotion-color); border-color: var(--promotion-color);}
+#pB:hover {color: #202020; background-color: var(--promotion-color);}
+#aB {color: var(--achievement-color); border-color: var(--achievement-color);}
+#aB:hover {color: #202020; background-color: var(--achievement-color);}
+
+#playerStats {color:#4a53db}
+#enemyStats {color:#db4a4a}
